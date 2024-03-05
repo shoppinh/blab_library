@@ -9,7 +9,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "BLAB Library",
-  tagline: "BLAB Library document",
+  tagline: "An supporting Library for ETH development",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -75,7 +75,7 @@ const config = {
             label: "Docs",
           },
           {
-            href: "https://github.com/shoppinh/eth_library",
+            href: "https://github.com/shoppinh/blab_library",
             label: "GitHub",
             position: "right",
           },
@@ -98,7 +98,7 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/shoppinh/eth_library",
+                href: "https://github.com/shoppinh/blab_library",
               },
             ],
           },

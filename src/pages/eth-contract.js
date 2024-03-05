@@ -1,11 +1,13 @@
 import React from "react";
 import Layout from "@theme/Layout";
+import * as _ from "lodash";
 
 export default function MyReactPage() {
+  const [count, setCount] = React.useState(0);
   return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
+    <>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </>
   );
 }
