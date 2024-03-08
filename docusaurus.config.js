@@ -89,7 +89,7 @@ const config = {
             items: [
               {
                 label: "ETH Contract",
-                to: "/docs/eth-contract",
+                to: "/docs/smart-contracts/eth-contract",
               },
             ],
           },
