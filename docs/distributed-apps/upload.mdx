@@ -3,3 +3,56 @@ sidebar_position: 4
 ---
 
 # Upload các tệp, thư mục hoặc dữ liệu thô trên các ứng dụng phân tán (swam)
+## upload
+```javascript
+web3.bzz.upload(mixed)
+```
+Uploads files, folders or raw data to swarm.
+### Parameters
+1. `mixed` - `String|Buffer|Uint8Array|Object`: **The data to upload, can be a file content, file Buffer/Uint8Array, multiple files, or a directory or file (only in node.js). The following types are allowed:**
++ `String|Buffer|Uint8Array`: A file content, file Uint8Array or Buffer to upload, or:
++ `**Object**`:
+    + **Multiple key values for files and directories. The paths will be kept the same:**
+        + **key must be the files path, or name, e.g. `**"/foo.txt"**` and its value is an object with:**
+            + `type`: The mime-type of the file, e.g. `"text/html"`.
+            + `data`: A file content, file Uint8Array or Buffer to upload.
+    + **Upload a file or a directory from disk in Node.js. Requires and object with the following properties:**
+        + `path`: The path to the file or directory.
+        + `kind`: The type of the source `"directory"`, `"file"` or `"data"`.
+        + `defaultFile` (optional): Path of the “defaultFile” when `"kind"`: `"directory"`, e.g. `"/index.html"`.
+    + **Upload file or folder in the browser. Requires and object with the following properties:**
+        + `pick`: The file picker to launch. Can be `"file"`, `"directory"` or `"data"`.
+### Returns
+`Promise` returning `String`: Returns the content hash of the manifest.
+### Example
+```javascript
+var bzz = web3.bzz;
+
+// raw data
+bzz.upload("test file").then(function(hash) {
+    console.log("Uploaded file. Address:", hash);
+})
+
+// raw directory
+var dir = {
+    "/foo.txt": {type: "text/plain", data: "sample file"},
+    "/bar.txt": {type: "text/plain", data: "another file"}
+};
+bzz.upload(dir).then(function(hash) {
+    console.log("Uploaded directory. Address:", hash);
+});
+
+// upload from disk in node.js
+bzz.upload({
+    path: "/path/to/thing",      // path to data / file / directory
+    kind: "directory",           // could also be "file" or "data"
+    defaultFile: "/index.html"   // optional, and only for kind === "directory"
+})
+.then(console.log)
+.catch(console.log);
+
+// upload from disk in the browser
+bzz.upload({pick: "file"}) // could also be "directory" or "data"
+.then(console.log);
+```
+### Try it yourself

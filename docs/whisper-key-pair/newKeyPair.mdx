@@ -3,3 +3,22 @@ sidebar_position: 1
 ---
 
 # Tạo cặp khóa riêng và khóa công khai
+
+## newKeyPair
+```javascript
+web3.shh.newKeyPair([callback])
+```
+Generates a new public and private key pair for message decryption and encryption.
+
+### Parameters
+`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`String` - Key ID on success and an error on failure.
+
+### Example
+```javascript
+web3.shh.newKeyPair()
+.then(console.log);
+> "5e57b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f"
+```
+### Try it yourself

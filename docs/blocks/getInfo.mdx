@@ -4,3 +4,29 @@ sidebar_position: 5
 
 # Xem thông tin node (Số lượng tin nhắn, kích thước tin nhắn, kích thước bộ nhớ)
 
+## getInfo
+```javascript
+web3.shh.getInfo([callback])
+```
+Gets information about the current whisper node.
+### Parameters
+`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Object` - The information of the node with the following properties:
+
++ `messages` - `Number`: Number of currently floating messages.
++ `maxMessageSize` - `Number`: The current message size limit in bytes.
++ `memory` - `Number`: The memory size of the floating messages in bytes.
++ `minPow` - `Number`: The current minimum PoW requirement.
+### Example
+```javascript
+web3.shh.getInfo()
+.then(console.log);
+> {
+"minPow": 0.8,
+"maxMessageSize": 12345,
+"memory": 1234335,
+"messages": 20
+}
+```
+### Try it yourself

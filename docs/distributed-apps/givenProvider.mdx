@@ -3,3 +3,15 @@ sidebar_position: 2
 ---
 
 # Trả về nhà cung cấp hiện tại
+## givenProvider
+```javascript
+web3.givenProvider
+web3.eth.givenProvider
+web3.shh.givenProvider
+web3.bzz.givenProvider
+...
+```
+When using web3.js in an Ethereum compatible browser, it will set with the current native provider by that browser. Will return the given provider by the (browser) environment, otherwise `null`.
+### Returns
+`Object`: The given provider set or `null`;
+### Try it yourself

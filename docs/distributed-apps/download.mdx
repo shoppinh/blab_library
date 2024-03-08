@@ -3,3 +3,40 @@ sidebar_position: 5
 ---
 
 # Download các tệp và thư mục từ swarm về dưới dạng bộ nhớ đệm hoặc ổ cứng
+## download
+```javascript
+web3.bzz.download(bzzHash [, localpath])
+```
+Downloads files and folders from swarm as buffer or to disk (only node.js).
+### Parameters
+1. `bzzHash` - `String`: The file or directory to download. If the hash is a raw file it will return a Buffer, if a manifest file, it will return the directory structure. If the `localpath` is given, it will return that path where it downloaded the files to.
+2. `localpath` - `String`: The local folder to download the content into. (only node.js)
+### Returns
+`Promise` returning` Buffer|Object|String`: The Buffer of the file downloaded, an object with the directory structure, or the path where it was downloaded to.
+### Example
+```javascript
+var bzz = web3.bzz;
+
+// download raw file
+var fileHash = "a5c10851ef054c268a2438f10a21f6efe3dc3dcdcc2ea0e6a1a7a38bf8c91e23";
+bzz.download(fileHash).then(function(buffer) {
+    console.log("Downloaded file:", buffer.toString());
+});
+
+// download directory, if the hash is manifest file.
+var dirHash = "7e980476df218c05ecfcb0a2ca73597193a34c5a9d6da84d54e295ecd8e0c641";
+bzz.download(dirHash).then(function(dir) {
+    console.log("Downloaded directory:");
+    > {
+        'bar.txt': { type: 'text/plain', data: <Buffer 61 6e 6f 74 68 65 72 20 66 69 6c 65> },
+        'foo.txt': { type: 'text/plain', data: <Buffer 73 61 6d 70 6c 65 20 66 69 6c 65> }
+    }
+});
+
+// download file/directory to disk (only node.js)
+var dirHash = "a5c10851ef054c268a2438f10a21f6efe3dc3dcdcc2ea0e6a1a7a38bf8c91e23";
+bzz.download(dirHash, "/target/dir")
+.then(path => console.log(`Downloaded directory to ${path}.`))
+.catch(console.log);
+```
+### Try it yourself

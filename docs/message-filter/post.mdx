@@ -3,3 +3,56 @@ sidebar_position: 1
 ---
 
 # Đăng tin nhắn lên mạng
+## post
+```javascript
+web3.shh.post(object [, callback])
+```
+This method should be called, when we want to post whisper a message to the network.
+
+### Parameters
+1. `Object` - The post object:
++ `symKeyID` - `String` (optional): ID of symmetric key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
+`pubKey` - `String` (optional): The public key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
+`sig` - `String` (optional): The ID of the signing key.
+`ttl` - `Number`: Time-to-live in seconds.
+`topic` - `String`: 4 Bytes (mandatory when key is symmetric): Message topic.
+`payload` - `String`: The payload of the message to be encrypted.
+`padding` - `Number` (optional): Padding (byte array of arbitrary length).
+`powTime` - `Number` (optional)?: Maximal time in seconds to be spent on proof of work.
+`powTarget` - `Number` (optional)?: Minimal PoW target required for this message.
+`targetPeer` - `Number` (optional): Peer ID (for peer-to-peer message only).
+2. `callback` - `Function`: (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Promise` - returns a promise. Upon success, the then function will be passed a string representing the hash of the sent message. On error, the catch function will be passed a string containing the reason for the error.
+
+### Example
+```javascript
+var identities = {};
+var subscription = null;
+
+Promise.all([
+web3.shh.newSymKey().then((id) => {identities.symKey = id;}),
+web3.shh.newKeyPair().then((id) => {identities.keyPair = id;})
+
+]).then(() => {
+
+    // will receive also its own message send, below
+    subscription = web3.shh.subscribe("messages", {
+        symKeyID: identities.symKey,
+        topics: ['0xffaadd11']
+    }).on('data', console.log);
+
+}).then(() => {
+web3.shh.post({
+symKeyID: identities.symKey, // encrypts using the sym key ID
+sig: identities.keyPair, // signs the message using the keyPair ID
+ttl: 10,
+topic: '0xffaadd11',
+payload: '0xffffffdddddd1122',
+powTime: 3,
+powTarget: 0.5
+}).then(h => console.log(`Message with hash ${h} was successfuly sent`))
+.catch(err => console.log("Error: ", err));
+});
+```
+### Try it yourself

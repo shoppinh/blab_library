@@ -3,3 +3,58 @@ sidebar_position: 2
 ---
 
 # Đăng ký nhận tin nhắn
+## subscribe
+```javascript
+web3.shh.subscribe('messages', options [, callback])
+```
+Subscribe for incoming whisper messages.
+
+Parameters
+1. `"messages"` - String: Type of the subscription.
+2. `Object` - The subscription options:
++ `symKeyID` - `String`: ID of symmetric key for message decryption.
++ `privateKeyID` - `String`: ID of private (asymmetric) key for message decryption.
++ `sig` - `String` (optional): Public key of the signature, to verify.
++ `topics`- `Array` (optional when “privateKeyID” key is given): Filters messages by this topic(s). Each topic must be a 4 bytes HEX string.
++ `minPow` - `Number` (optional): Minimal PoW requirement for incoming messages.
++ `allowP2P` - `Boolean` (optional): Indicates if this filter allows processing of direct peer-to-peer messages (which are not to be forwarded any further, because they might be expired). This might be the case in some very rare cases, e.g. if you intend to communicate to MailServers, etc.
+3. `callback` - `Function`: (optional) Optional callback, returns an error object as first parameter and the result as second. Will be called for each incoming subscription, and the subscription itself as 3 parameter.
+### Notification Returns
+`Object` - The incoming message:
+
++ `hash` - `String`: Hash of the enveloped message.
++ `sig` - `String`: Public key which signed this message.
++ `recipientPublicKey` - `String`: The recipients public key.
++ `timestamp` - `String`: Unix timestamp of the message genertion.
++ `ttl` - `Number`: Time-to-live in seconds.
++ `topic` - `String`: 4 Bytes HEX string message topic.
++ `payload` - `String`: Decrypted payload.
++ `padding` - `Number`: Optional padding (byte array of arbitrary length).
++ `pow` - `Number`: Proof of work value.
+### Example
+```javascript
+web3.shh.subscribe('messages', {
+symKeyID: 'bf31b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f',
+sig: '0x04d1574d4eab8f3dde4d2dc7ed2c4d699d77cbbdd09167b8fffa099652ce4df00c4c6e0263eafe05007a46fdf0c8d32b11aeabcd3abbc7b2bc2bb967368a68e9c6',
+ttl: 20,
+topics: ['0xffddaa11'],
+minPow: 0.8,
+}, function(error, message, subscription){
+
+    console.log(message);
+    > {
+        "hash": "0x4158eb81ad8e30cfcee67f20b1372983d388f1243a96e39f94fd2797b1e9c78e",
+        "padding": "0xc15f786f34e5cef0fef6ce7c1185d799ecdb5ebca72b3310648c5588db2e99a0d73301c7a8d90115a91213f0bc9c72295fbaf584bf14dc97800550ea53577c9fb57c0249caeb081733b4e605cdb1a6011cee8b6d8fddb972c2b90157e23ba3baae6c68d4f0b5822242bb2c4cd821b9568d3033f10ec1114f641668fc1083bf79ebb9f5c15457b538249a97b22a4bcc4f02f06dec7318c16758f7c008001c2e14eba67d26218ec7502ad6ba81b2402159d7c29b068b8937892e3d4f0d4ad1fb9be5e66fb61d3d21a1c3163bce74c0a9d16891e2573146aa92ecd7b91ea96a6987ece052edc5ffb620a8987a83ac5b8b6140d8df6e92e64251bf3a2cec0cca",
+        "payload": "0xdeadbeaf",
+        "pow": 0.5371803278688525,
+        "recipientPublicKey": null,
+        "sig": null,
+        "timestamp": 1496991876,
+        "topic": "0x01020304",
+        "ttl": 50
+    }
+})
+// or
+.on('data', function(message){ ... });
+```
+### Try it yourself

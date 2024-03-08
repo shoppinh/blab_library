@@ -3,3 +3,32 @@ sidebar_position: 1
 ---
 
 # Chuyển về giá trị hexa
+## toHex
+```javascript
+web3.utils.toHex(mixed)
+```
+Will auto convert any given value to HEX. Number strings will be interpreted as numbers. Text strings will be interpreted as UTF-8 strings.
+
+### Parameters
+`mixed` - `String|Number|BN|BigNumber`: The input to convert to HEX.
+### Returns
+`String`: The resulting HEX string.
+
+### Example
+```javascript
+web3.utils.toHex('234');
+> "0xea"
+
+web3.utils.toHex(234);
+> "0xea"
+
+web3.utils.toHex(new BN('234'));
+> "0xea"
+
+web3.utils.toHex(new BigNumber('234'));
+> "0xea"
+
+web3.utils.toHex('I have 100€');
+> "0x49206861766520313030e282ac"
+```
+### Try it yourself

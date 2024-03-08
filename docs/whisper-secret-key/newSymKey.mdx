@@ -1,0 +1,23 @@
+---
+sidebar_position: 1
+---
+
+# Tạo, xóa, trả về khóa đối xứng
+## newSymKey
+```javascript
+web3.shh.newSymKey([callback])
+```
+Generates a random symmetric key and stores it under an ID, which is then returned. Will be used for encrypting and decrypting of messages where the sym key is known to both parties.
+
+### Parameters
+`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`String` - Key ID on success and an error on failure.
+
+### Example
+```javascript
+web3.shh.newSymKey()
+.then(console.log);
+> "cec94d139ff51d7df1d228812b90c23ec1f909afa0840ed80f1e04030bb681e4"
+```
+### Try it yourself

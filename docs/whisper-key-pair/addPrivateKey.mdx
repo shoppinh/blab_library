@@ -2,4 +2,23 @@
 sidebar_position: 2
 ---
 
-# Xóa cặp khóa riêng và khóa công khai
+# Thêm cặp khóa
+## addPrivateKey
+```javascript
+web3.shh.addPrivateKey(privateKey, [callback])
+```
+Stores a key pair derived from a private key, and returns its ID.
+
+### Parameters
+1. `String` - The private key as HEX bytes to import.
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`String` - Key ID on success and an error on failure.
+
+###  Example
+```javascript
+web3.shh.addPrivateKey('0x8bda3abeb454847b515fa9b404cede50b1cc63cfdeddd4999d074284b4c21e15')
+.then(console.log);
+> "3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f"
+```
+### Try it yourself

@@ -2,4 +2,42 @@
 sidebar_position: 5
 ---
 
-# Lấy khóa riêng và khóa công khai 
+# Lấy khóa riêng và khóa công khai
+## getPublicKey
+```javascript
+web3.shh.getPublicKey(id, [callback])
+```
+Returns the public key for a key pair ID.
+
+### Parameters
+1. `String` - The key pair ID, returned by the creation functions (shh.newKeyPair and shh.addPrivateKey).
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`String` - Public key on success and an error on failure.
+
+### Example
+```javascript
+web3.shh.getPublicKey('3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f')
+.then(console.log);
+> "0x04d1574d4eab8f3dde4d2dc7ed2c4d699d77cbbdd09167b8fffa099652ce4df00c4c6e0263eafe05007a46fdf0c8d32b11aeabcd3abbc7b2bc2bb967368a68e9c6"
+```
+### Try it yourself
+## getPrivateKey
+```javascript
+web3.shh.getPrivateKey(id, [callback])
+```
+Returns the private key for a key pair ID.
+
+### Parameters
+1. `String` - The key pair ID, returned by the creation functions (shh.newKeyPair and shh.addPrivateKey).
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`String` - Private key on success and an error on failure.
+
+### Example
+```javascript
+web3.shh.getPrivateKey('3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f')
+.then(console.log);
+> "0x234234e22b9ffc2387e18636e0534534a3d0c56b0243567432453264c16e78a2adc"
+```
+### Try it yourself

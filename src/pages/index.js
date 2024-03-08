@@ -19,7 +19,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/hello"
+            to="/docs/smart-contracts"
           >
             Go to BLAB Library Document
           </Link>

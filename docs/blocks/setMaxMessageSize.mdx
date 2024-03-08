@@ -4,3 +4,22 @@ sidebar_position: 6
 
 # Thiết lập độ dài tin nhắn tối đa
 
+## setMaxMessageSize
+```javascript
+web3.shh.setMaxMessageSize(size, [callback])
+```
+Sets the maximal message size allowed by this node. Incoming and outgoing messages with a larger size will be rejected. Whisper message size can never exceed the limit imposed by the underlying P2P protocol (10 Mb).
+
+### Parameters
+1. `Number` - Message size in bytes.
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Boolean` - `true` on success, error on failure.
+
+### Example
+```javascript
+web3.shh.setMaxMessageSize(1234565)
+.then(console.log);
+> true
+```
+### Try it yourself

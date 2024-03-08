@@ -3,3 +3,22 @@ sidebar_position: 3
 ---
 
 # Chuyển chuỗi định dạng UTF-8 về giá trị hexa
+## utf8ToHex
+```javascript
+web3.utils.utf8ToHex(string)
+web3.utils.stringToHex(string) // ALIAS
+web3.utils.fromUtf8(string) // ALIAS, deprecated
+```
+Returns the HEX representation of a given UTF-8 string.
+
+### Parameters
+`string` - `String`: A UTF-8 string to convert to a HEX string.
+### Returns
+`String`: The HEX string.
+
+### Example
+```javascript
+web3.utils.utf8ToHex('I have 100€');
+> "0x49206861766520313030e282ac"
+```
+### Try it yourself

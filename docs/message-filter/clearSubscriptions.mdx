@@ -3,3 +3,27 @@ sidebar_position: 3
 ---
 
 # Đặt lại đăng ký
+## clearSubscriptions
+```javascript
+web3.shh.clearSubscriptions()
+```
+Resets subscriptions.
+
+:::note
+
+This will not reset subscriptions from other packages like web3-eth, as they use their own requestManager.
+:::
+### Parameters
+`Boolean`: If true it keeps the "syncing" subscription.
+### Returns
+`Boolean`
+
+### Example
+```javascript
+web3.shh.subscribe('messages', {...} ,function(){ ... });
+
+...
+
+web3.shh.clearSubscriptions();
+```
+### Try it yourself

@@ -4,3 +4,25 @@ sidebar_position: 8
 
 # Đánh dấu các node tin cậy
 
+## markTrustedPeer
+```javascript
+web3.shh.markTrustedPeer(enode, [callback])
+```
+Marks specific peer trusted, which will allow it to send historic (expired) messages.
+
+:::note
+This function is not adding new nodes, the node needs to be an existing peer.
+:::
+### Parameters
+1. `String` - Enode of the trusted peer.
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Boolean` - `true` on success, error on failure.
+
+### Example
+```javascript
+web3.shh.markTrustedPeer()
+.then(console.log);
+> true
+```
+### Try it yourself

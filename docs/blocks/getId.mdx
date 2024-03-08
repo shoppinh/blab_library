@@ -4,3 +4,21 @@ sidebar_position: 1
 
 # Nhận ID mạng hiện tại
 
+## getId
+```javascript
+web3.eth.net.getId([callback])
+web3.bzz.net.getId([callback])
+web3.shh.net.getId([callback])
+```
+Gets the current network ID.
+## Parameters
+none
+### Returns
+`Promise` returns `Number`: The network ID.
+### Example
+```javascript
+web3.eth.net.getId()
+.then(console.log);
+> 1
+```
+### Try it yourself

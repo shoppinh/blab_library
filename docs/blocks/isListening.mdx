@@ -4,3 +4,21 @@ sidebar_position: 2
 
 # Kiểm tra các block có liên kết với nhau không
 
+## isListening
+```javascript
+web3.eth.net.isListening([callback])
+web3.bzz.net.isListening([callback])
+web3.shh.net.isListening([callback])
+```
+Checks if the node is listening for peers.
+### Parameters
+none
+### Returns
+`Promise` returns `Boolean`
+### Example
+```javascript
+web3.eth.net.isListening()
+.then(console.log);
+> true
+```
+### Try it yourself

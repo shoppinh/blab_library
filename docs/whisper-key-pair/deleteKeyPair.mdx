@@ -2,4 +2,24 @@
 sidebar_position: 3
 ---
 
-# Thêm cặp khóa
+# Xóa cặp khóa riêng và khóa công khai
+## deleteKeyPair
+```javascript
+web3.shh.deleteKeyPair(id, [callback])
+```
+Deletes the specifies key if it exists.
+
+### Parameters
+1. `String` - The key pair ID, returned by the creation functions (shh.newKeyPair and shh.addPrivateKey).
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Boolean` - `true` on success, error on failure.
+
+### Example
+```javascript
+web3.shh.deleteKeyPair('3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f')
+.then(console.log);
+> true
+`
+```
+### Try it yourself

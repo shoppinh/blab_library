@@ -3,3 +3,23 @@ sidebar_position: 4
 ---
 
 # Kiểm tra khóa riêng tương ứng với ID đã cho hay không
+
+## hasSymKey
+```javascript
+web3.shh.hasSymKey(id, [callback])
+```
+Checks if there is a symmetric key stored with the given ID.
+
+### Parameters
+1. `String` - The key pair ID, returned by the creation functions (shh.newSymKey, shh.addSymKey or shh.generateSymKeyFromPassword).
+2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+### Returns
+`Boolean` - `true` on if the symmetric key exist in the node, false if not. Error on failure.
+
+### Example
+```javascript
+web3.shh.hasSymKey('f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92')
+.then(console.log);
+> true
+```
+### Try it yourself

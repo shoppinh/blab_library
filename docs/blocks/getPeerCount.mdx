@@ -3,4 +3,26 @@ sidebar_position: 3
 ---
 
 # Lấy số lượng block đã kết nối với nhau
+## getPeerCount
 
+```javascript
+web3.eth.net.getPeerCount([callback])
+web3.bzz.net.getPeerCount([callback])
+web3.shh.net.getPeerCount([callback])
+```
+Get the number of peers connected to.
+
+
+### Parameters
+none
+
+### Returns
+`Promise` returns `Number`
+
+### Example
+```javascript
+web3.eth.net.getPeerCount()
+.then(console.log);
+> 25
+```
+### Try it yourself
