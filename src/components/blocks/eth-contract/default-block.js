@@ -1,39 +1,17 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
-const NewContract = () => {
+const DefaultBlock = () => {
   const web3 = useWeb3();
-  const [result, setResult] = React.useState(null);
+  const [result, setResult] = React.useState("");
+
   const [error, setError] = React.useState(null);
 
-  const handleCreateNewContract = useCallback(async () => {
+  const handleGetDefaultBlock = useCallback(async () => {
     setError(null);
-    console.log("handleCreateNewContract");
     try {
-      const newContract = new web3.eth.Contract(
-        [
-          {
-            constant: false,
-            inputs: [
-              {
-                name: "name",
-                type: "string",
-              },
-            ],
-            name: "create",
-            outputs: [],
-            payable: false,
-            stateMutability: "nonpayable",
-            type: "function",
-          },
-        ],
-        process.env.TO_ADDRESS,
-        {
-          from: process.env.FROM_ADDRESS,
-          gas: 3000000,
-        }
-      );
+      const defaultBlock = web3.eth.Contract.defaultBlock;
 
-      setResult(newContract);
+      setResult(defaultBlock);
     } catch (error) {
       console.error(error);
       setResult(null);
@@ -52,13 +30,13 @@ const NewContract = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleCreateNewContract}
+        onClick={handleGetDefaultBlock}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        create new contract
+        get default block
       </button>
       {result && (
         <div
@@ -69,9 +47,7 @@ const NewContract = () => {
           }}
           name="result"
         >
-          <div>
-            <pre>{JSON.stringify(result, null, 2)}</pre>
-          </div>
+          <div>{result}</div>
         </div>
       )}
       {error && (
@@ -90,4 +66,4 @@ const NewContract = () => {
   );
 };
 
-export default NewContract;
+export default DefaultBlock;

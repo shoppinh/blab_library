@@ -110,6 +110,14 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  plugins: [
+    [
+      "docusaurus2-dotenv",
+      {
+        systemvars: true,
+      },
+    ],
+  ],
 };
 
 export default config;

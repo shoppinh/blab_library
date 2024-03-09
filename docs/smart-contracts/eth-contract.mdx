@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 ---
+import NewContract from "@site/src/components/blocks/eth-contract/new-contract";
+import DefaultAccount from "@site/src/components/blocks/eth-contract/default-account";
+import DefaultBlock from "@site/src/components/blocks/eth-contract/default-block";
+import DefaultChain from "@site/src/components/blocks/eth-contract/default-chain";
 
 # Tương tác với hợp đồng thông minh trên blockchain
 ## new contract
@@ -21,6 +25,9 @@ var myContract = new web3.eth.Contract([...], '0xde0B295669a9FD93d5F28D9Ec85E40f
     gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
 });
 ```
+### Try it yourself
+
+<NewContract/>
 
 ## = Properties =
 
@@ -46,6 +53,9 @@ web3.eth.defaultAccount;
 // set the default account
 web3.eth.defaultAccount = '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe';
 ```
+### Try it yourself
+
+<DefaultAccount/>
 ## defaultBlock
 ```javascript
 web3.eth.Contract.defaultBlock
@@ -71,16 +81,32 @@ contract.defaultBlock;
 // set the default block
 contract.defaultBlock = 231;
 ```
-## defaultHardfork
+### Try it yourself
+<DefaultBlock/>
 ## defaultChain
-## defaultCommon
-## transactionBlockTimeout
-## blockHeaderTimeout
-## transactionConfirmationBlocks
-## transactionPollingTimeout
-## transactionPollingInterval
-## handleRevert
-## options
-## options.address
+```javascript
+contract.defaultChain
+```
+The default chain property is used for signing transactions locally.
 
+### Property
+The default chain property can be one of the following:
 
+`"mainnet"` - `String`
+`"goerli"` - `String`
+`"kovan"` - `String`
+`"rinkeby"` - `String`
+`"ropsten"` - `String`
+Default is `"mainnet"`
+
+### Example
+```javascript
+contract.defaultChain;
+> "mainnet"
+
+// set the default chain
+contract.defaultChain = 'goerli';
+
+```
+### Try it yourself
+<DefaultChain/>

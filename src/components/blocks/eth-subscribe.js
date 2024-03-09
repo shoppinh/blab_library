@@ -1,50 +1,101 @@
 import React, { useCallback } from "react";
-import Web3 from "web3";
-
+import { useWeb3 } from "../../utils/useWeb3";
 
 const EthSubscribe = () => {
   const [subscribeType, setSubscribeType] = React.useState("");
   const [result, setResult] = React.useState("");
-    // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+  const web3 = useWeb3();
+  const [error, setError] = React.useState(null);
 
-    const handleSubscribe = useCallback(() => {
-    // const result = web3.eth.subscribe(subscribeType, {
-    //     address: process.env.USER_ADDRESS
-    // }, (error, result) => {
-    //   if (error) {
-    //     console.error(error);
-    //   }
-    //   console.log(result);
-    // });
-    // setResult(result);
+  const handleSubscribe = useCallback((subscribeType) => {
+    setError(null);
+    if (subscribeType === "logs") {
+      try {
+        web3.eth.subscribe(
+          subscribeType,
+          {
+            address: process.env.TO_ADDRESS,
+          },
+          (error, result) => {
+            if (error) {
+              console.error(error);
+              setError(error);
+            }
+            console.log(result);
+            setResult(result);
+          }
+        );
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      }
+    } else {
+      try {
+        web3.eth.subscribe(subscribeType, (error, result) => {
+          if (error) {
+            console.error(error);
+            setError(error);
+          }
+          console.log(result);
+          setResult(result);
+        });
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      }
+    }
   }, []);
   return (
-      <div style={{
+    <div
+      style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-      }}>
-
-          <input
-              type="text"
-              id="type"
-              name="type"
-              placeholder="Enter your subscription type"
-              onChange={(e) => setSubscribeType(e.target.value)}
-              style={{
-                    padding: "10px",
-                    margin: "10px",
-              }}
-          />
-          <button type="button" id="ethSubscribe" onClick={handleSubscribe} style={{
-              padding: "10px",
-              margin: "10px",
-          }}>
-              Subscribe
-          </button>
-          <div>{result}</div>
+      }}
+    >
+      <select
+        id="subscribeType"
+        onChange={(e) => setSubscribeType(e.target.value)}
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        <option value="newBlockHeaders">newBlockHeaders</option>
+        <option value="logs">logs</option>
+        <option value="pendingTransactions">pendingTransactions</option>
+        <option value="syncing">syncing</option>
+      </select>
+      <button
+        type="button"
+        id="ethSubscribe"
+        onClick={() => handleSubscribe(subscribeType)}
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        Subscribe
+      </button>
+      <div
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        {result}
       </div>
+      <div
+        style={{
+          padding: "10px",
+          margin: "10px",
+          color: "red",
+        }}
+      >
+        {error?.message ?? ""}
+      </div>
+    </div>
   );
 };
 

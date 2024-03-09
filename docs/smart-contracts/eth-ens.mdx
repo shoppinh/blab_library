@@ -7,29 +7,362 @@ sidebar_position: 5
 The `web3.eth.ens` functions let you interact with ENS. We recommend reading the ENS documentation to get deeper insights about the internals of the name service.
 
 ## registryAddress
+```javascript
+web3.eth.ens.registryAddress;
+```
+The registryAddress property can be used to define a custom registry address when you are connected to an unknown chain.
+
+:::note
+
+If no address is defined will it try to detect the registry on the chain you are currently connected with and on the call of setProvider in the Eth module will it keep the defined address and use it for the ENS module.
+:::
+### Returns
+`String` - The address of the custom registry.
+
+### Example
+```javascript
+web3.eth.ens.registryAddress;
+> "0x314159265dD8dbb310642f98f50C066173C1259b"
+```
+### Try it yourself
+
 ## registry
+```javascript
+web3.eth.ens.registry;
+```
+Returns the network specific ENS registry.
+
+### Returns
+`Registry` - The current ENS registry.
+
++ `contract: Contract` - The `Registry` contract with the interface we know from the Contract object.
++ `owner(name, callback): Promise` - Deprecated please use `getOwner`
++ `getOwner(name, callback): Promise`
++ `setOwner(name, address, txConfig, callback): PromiEvent`
++ `resolver(name, callback): Promise` - Deprecated please use `getResolver`
++ `getResolver(name, callback): Promise`
++ `setResolver(name, address, txConfig, callback): PromiEvent`
++ `getTTL(name, callback): Promise`
++ `setTTL(name, ttl, txConfig, callback): PromiEvent`
++ `setSubnodeOwner(name, label, address, txConfig, callback): PromiEvent`
++ `setRecord(name, owner, resolver, ttl, txConfig, callback): PromiEvent`
++ setSubnodeRecord(name, label, owner, resolver, ttl, txConfig, callback): PromiEvent`
++ `setApprovalForAll(operator, approved, txConfig, callback): PromiEvent`
++ `isApprovedForAll(owner, operator, callback): Promise
++ `recordExists(name, callback): Promise`
+### Example
+```javascript
+web3.eth.ens.registry;
+> {
+    contract: Contract,
+    owner: Function(name, callback), // Deprecated
+    getOwner: Function(name, callback),
+    setOwner: Function(name, address, txConfig, callback),
+    resolver: Function(name, callback), // Deprecated
+    getResolver: Function(name, callback),
+    setResolver: Function(name, address, txConfig, callback),
+    getTTL: Function(name, callback),
+    setTTL: Function(name, ttl, txConfig, callback),
+    setSubnodeOwner: Function(name, label, address, txConfig, callback),
+    setRecord(name, owner, resolver, ttl, txConfig, callback),
+    setSubnodeRecord(name, label, owner, resolver, ttl, txConfig, callback),
+    setApprovalForAll(operator, approved, txConfig, callback),
+    isApprovedForAll(owner, operator, txConfig, callback),
+    recordExists(name, callback)
+}
+```
+### Try it yourself
 ## resolver
+```javascript
+web3.eth.ens.resolver(name [, callback]);
+```
+Returns the resolver contract to an Ethereum address.
+
+:::note
+
+This method is deprecated please use getResolver
+
+### Parameters
+1. `name` - `String`: The ENS name.
+2. `callback` - `Function`: (optional) Optional callback
+### Returns
+`Promise<Resolver>` - The ENS resolver for this name.
+
+### Example
+```javascript
+web3.eth.ens.resolver('ethereum.eth').then(function (contract) {
+    console.log(contract);
+});
+> Contract<Resolver>
+```
+### Try it yourself
+
 ## getResolver
+```javascript
+web3.eth.ens.getResolver(name [, callback]);
+```
+Returns the resolver contract to an Ethereum address.
+
+### Parameters
+1. `name` - `String`: The ENS name.
+2. `callback` - `Function`: (optional) Optional callback
+### Returns
+`Promise<Resolver>` - The ENS resolver for this name.
+
+### Example
+```javascript
+web3.eth.ens.getResolver('ethereum.eth').then(function (contract) {
+    console.log(contract);
+});
+> Contract<Resolver>
+```
+### Try it yourself
+
 ## setResolver
+```javascript
+web3.eth.ens.setResolver(name, address [, txConfig ] [, callback]);
+```
+Sets the resolver contract address of a name.
+
+### Parameters
+1. `name` - `String`: The ENS name.
+2. `address` - `String`: The contract address of the deployed Resolver contract.
+3. `txConfig` - `Object`: (optional) The transaction options as described here
+4. `callback` - `Function`: (optional) Optional callback
+### Returns
+`PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
+
+### Example
+```javascript
+web3.eth.ens.setResolver('ethereum.eth', '0x...', {...}).then(function (receipt) {
+    console.log(receipt);
+});
+> {...}
+```
+### Try it yourself
+
 ## getOwner
+```javascript
+web3.eth.ens.getOwner(name [, callback]);
+```
+Returns the owner of a name.
+
+### Parameters
+1. `name` - `String`: The ENS name.
+2. `callback` - `Function`: (optional) Optional callback
+### Returns
+`Promise<String>` - The address of the registrar (EOA or CA).
+
+### Example
+```javascript
+web3.eth.ens.getOwner('ethereum.eth').then(function (owner) {
+    console.log(owner);
+});
+> '0x...'
+```
+### Try it yourself
+
 ## setOwner
-## getTTL
-## setTTL
-## setSubnodeOwner
-## setRecord
-## setSubnodeRecord
-## setApprovalForAll
-## isApprovedForAll
-## recordExists
+```javascript
+web3.eth.ens.setOwner(name [, txConfig ] [, callback]);
+```
+Sets the owner of the given name.
+
+### Parameters
+1. `name` - `String`: The ENS name.
+2. `txConfig` - `Object`: (optional) The transaction options as described here
+3. `callback` - `Function`: (optional) Optional callback
+### Returns
+`PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
+
+### Example
+```javascript
+web3.eth.ens.setOwner('ethereum.eth', {...}).then(function (receipt) {
+    console.log(receipt);
+});
+> {...}
+```
+### Try it yourself
+
 ## getAddress
+```javascript
+web3.eth.ens.getAddress(ENSName [, callback]);
+```
+Resolves an ENS name to an Ethereum address.
+
+### Parameters
+1. `ENSName` - `String`: The ENS name to resolve.
+2. `callback` - `Function`: (optional) Optional callback
+### Returns
+`String` - The Ethereum address of the given name.
+
+### Example
+```javascript
+web3.eth.ens.getAddress('ethereum.eth').then(function (address) {
+    console.log(address);
+})
+> 0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359
+```
+### Try it yourself
+
 ## setAddress
+```javascript
+web3.eth.ens.setAddress(ENSName, address [, txConfig ] [, callback]);
+```
+Sets the address of an ENS name in this resolver.
+
+### Parameters
+1. `ENSName` - `String`: The ENS name.
+2. `address` - `String`: The address to set.
+3. `txConfig` - `Object`: (optional) The transaction options as described here
+4. `callback` - `Function`: (optional) Optional callback
+Emits an `AddrChanged` event.
+
+### Returns
+`PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
+
+### Example
+```javascript
+web3.eth.ens.setAddress(
+    'ethereum.eth',
+    '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
+    {
+        from: '0x9CC9a2c777605Af16872E0997b3Aeb91d96D5D8c'
+    }
+).then(function (result) {
+         console.log(result.events);
+});
+> AddrChanged(...)
+
+// Or using the event emitter
+
+web3.eth.ens.setAddress(
+    'ethereum.eth',
+    '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
+    {
+        from: '0x9CC9a2c777605Af16872E0997b3Aeb91d96D5D8c'
+    }
+)
+.on('transactionHash', function(hash){
+    ...
+})
+.on('confirmation', function(confirmationNumber, receipt){
+    ...
+})
+.on('receipt', function(receipt){
+    ...
+})
+.on('error', console.error);
+
+// Or listen to the AddrChanged event on the resolver
+
+web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
+    resolver.events.AddrChanged({fromBlock: 0}, function(error, event) {
+        console.log(event);
+    })
+    .on('data', function(event){
+        console.log(event);
+    })
+    .on('changed', function(event){
+        // remove event from local database
+    })
+    .on('error', console.error);
+});
+```
+### Try it yourself
+
 ## getPubkey
+```javascript
+web3.eth.ens.getPubkey(ENSName [, callback]);
+```
+Returns the X and Y coordinates of the curve point for the public key.
+
+### Parameters
+1. `ENSName` - `String`: The ENS name.
+2. `callback` - `Function`: (optional) Optional callback
+### Returns
+`Promise<Object<String, String>>` - The X and Y coordinates.
+
+### Example
+```javascript
+web3.eth.ens.getPubkey('ethereum.eth').then(function (result) {
+    console.log(result)
+});
+> {
+    "0": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "1": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "x": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "y": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
+```
+### Try it yourself
+
 ## setPubkey
-## getContent
-## setContent
-## getMultihash
-## setMultihash
-## getContenthash
-## setContenthash
-## supportsInterface
-## ENS events
+```javascript
+web3.eth.ens.setPubkey(ENSName, x, y [, txConfig ] [, callback]);
+```
+Sets the SECP256k1 public key associated with an ENS node.
+
+### Parameters
+1. `ENSName` - `String`: The ENS name.
+2. `x` - `String`: The X coordinate of the public key.
+3. `y` - `String`: The Y coordinate of the public key.
+4. `txConfig` - `Object`: (optional) The transaction options as described here
+5. `callback` - `Function`: (optional) Optional callback
+Emits an `PubkeyChanged` event.
+
+### Returns
+`PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
+
+### Example
+```javascript
+web3.eth.ens.setPubkey(
+    'ethereum.eth',
+    '0x0000000000000000000000000000000000000000000000000000000000000000',
+    '0x0000000000000000000000000000000000000000000000000000000000000000',
+    {
+        from: '0x9CC9a2c777605Af16872E0997b3Aeb91d96D5D8c'
+    }
+).then(function (result) {
+    console.log(result.events);
+});
+> PubkeyChanged(...)
+
+// Or using the event emitter
+
+web3.eth.ens.setPubkey(
+    'ethereum.eth',
+    '0x0000000000000000000000000000000000000000000000000000000000000000',
+    '0x0000000000000000000000000000000000000000000000000000000000000000',
+    {
+        from: '0x9CC9a2c777605Af16872E0997b3Aeb91d96D5D8c'
+    }
+)
+.on('transactionHash', function(hash){
+    ...
+})
+.on('confirmation', function(confirmationNumber, receipt){
+    ...
+})
+.on('receipt', function(receipt){
+    ...
+})
+.on('error', console.error);
+
+// Or listen to the PubkeyChanged event on the resolver
+
+web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
+    resolver.events.PubkeyChanged({fromBlock: 0}, function(error, event) {
+        console.log(event);
+    })
+    .on('data', function(event){
+        console.log(event);
+    })
+    .on('changed', function(event){
+        // remove event from local database
+    })
+    .on('error', console.error);
+});
+```
+### Try it yourself
+

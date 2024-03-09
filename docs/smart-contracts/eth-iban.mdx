@@ -6,8 +6,110 @@ sidebar_position: 6
 The `web3.eth.Iban` function converts Ethereum addresses from and to IBAN and BBAN.
 
 ## Iban instance
+This instance of Iban.
+```javascript
+> Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
+```
 ## Iban constructor
+```javascript
+new web3.eth.Iban(ibanAddress)
+```
+Generates a iban object with conversion methods and validity checks.
+
+Also has singleton functions for conversion like:
+
++ Iban.toAddress()
++ Iban.toIban()
++ Iban.fromAddress()
++ Iban.fromBban()
++ Iban.createIndirect()
++ Iban.isValid()
+### Parameters
+`String`: the IBAN address to instantiate an Iban instance from.
+### Returns
+`Object` - The Iban instance.
+
+### Example
+```javascript
+var iban = new web3.eth.Iban("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
+> Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
+```
+### Try it yourself
 ## toAddress
+Static function.
+```javascript
+web3.eth.Iban.toAddress(ibanAddress)
+```
+Singleton: Converts a direct IBAN address into an Ethereum address.
+
+:::note
+
+This method also exists on the IBAN instance.
+:::
+### Parameters
+`String`: the IBAN address to convert.
+### Returns
+`String` - The Ethereum address.
+
+### Example
+```javascript
+web3.eth.Iban.toAddress("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
+> "0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8"
+```
+### Try it yourself
+
 ## toIban
+Static function.
+```javascript
+web3.eth.Iban.toIban(address)
+```
+Singleton: Converts an Ethereum address to a direct IBAN address.
+
+### Parameters
+`String`: the Ethereum address to convert.
+### Returns
+`String` - The IBAN address.
+
+### Example
+```javascript
+web3.eth.Iban.toIban("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
+> "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"
+```
+### Try it yourself
+
 ## fromAddress
+Static function, returns IBAN instance.
+```javascript
+web3.eth.Iban.fromAddress(address)
+```
+Singleton: Converts an Ethereum address to a direct IBAN instance.
+
+### Parameters
+`String`: the Ethereum address to convert.
+### Returns
+`Object` - The IBAN instance.
+
+### Example
+```javascript
+web3.eth.Iban.fromAddress("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
+> Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
+```
+### Try it yourself
+
 ## fromBan
+```javascript
+web3.eth.Iban.fromBban(bbanAddress)
+```
+Singleton: Converts an BBAN address to a direct IBAN instance.
+
+### Parameters
+`String`: the BBAN address to convert.
+### Returns
+`Object` - The IBAN instance.
+
+### Example
+```javascript
+web3.eth.Iban.fromBban('ETHXREGGAVOFYORK');
+> Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
+```
+### Try it yourself

@@ -1,39 +1,16 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
-const NewContract = () => {
+const SignAccount = () => {
   const web3 = useWeb3();
-  const [result, setResult] = React.useState(null);
+  const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [data, setData] = React.useState("");
 
-  const handleCreateNewContract = useCallback(async () => {
+  const handleSignAccount = useCallback(async (data) => {
     setError(null);
-    console.log("handleCreateNewContract");
     try {
-      const newContract = new web3.eth.Contract(
-        [
-          {
-            constant: false,
-            inputs: [
-              {
-                name: "name",
-                type: "string",
-              },
-            ],
-            name: "create",
-            outputs: [],
-            payable: false,
-            stateMutability: "nonpayable",
-            type: "function",
-          },
-        ],
-        process.env.TO_ADDRESS,
-        {
-          from: process.env.FROM_ADDRESS,
-          gas: 3000000,
-        }
-      );
-
-      setResult(newContract);
+      const signature = await web3.eth.sign(data, process.env.FROM_ADDRESS);
+      setResult(signature);
     } catch (error) {
       console.error(error);
       setResult(null);
@@ -49,29 +26,37 @@ const NewContract = () => {
         alignItems: "center",
       }}
     >
+      <input
+        type="text"
+        value={data}
+        onChange={(e) => setData(e.target.value)}
+        placeholder="Enter your data"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
+
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleCreateNewContract}
+        onClick={() => handleSignAccount(data)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        create new contract
+        sign data
       </button>
       {result && (
         <div
           style={{
             padding: "10px",
             margin: "10px",
-            wordBreak: "break-all",
           }}
           name="result"
         >
-          <div>
-            <pre>{JSON.stringify(result, null, 2)}</pre>
-          </div>
+          <div>{`Signature: ${result}`}</div>
         </div>
       )}
       {error && (
@@ -90,4 +75,4 @@ const NewContract = () => {
   );
 };
 
-export default NewContract;
+export default SignAccount;

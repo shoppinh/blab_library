@@ -1,39 +1,16 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
-const NewContract = () => {
+const DefaultChain = () => {
   const web3 = useWeb3();
-  const [result, setResult] = React.useState(null);
+  const [result, setResult] = React.useState("");
+
   const [error, setError] = React.useState(null);
 
-  const handleCreateNewContract = useCallback(async () => {
+  const handleGetDefaultChain = useCallback(async () => {
     setError(null);
-    console.log("handleCreateNewContract");
     try {
-      const newContract = new web3.eth.Contract(
-        [
-          {
-            constant: false,
-            inputs: [
-              {
-                name: "name",
-                type: "string",
-              },
-            ],
-            name: "create",
-            outputs: [],
-            payable: false,
-            stateMutability: "nonpayable",
-            type: "function",
-          },
-        ],
-        process.env.TO_ADDRESS,
-        {
-          from: process.env.FROM_ADDRESS,
-          gas: 3000000,
-        }
-      );
-
-      setResult(newContract);
+      web3.eth.Contract.defaultChain = "mainnet";
+      setResult(web3.eth.Contract.defaultChain);
     } catch (error) {
       console.error(error);
       setResult(null);
@@ -52,13 +29,13 @@ const NewContract = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleCreateNewContract}
+        onClick={handleGetDefaultChain}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        create new contract
+        get default chain
       </button>
       {result && (
         <div
@@ -69,9 +46,7 @@ const NewContract = () => {
           }}
           name="result"
         >
-          <div>
-            <pre>{JSON.stringify(result, null, 2)}</pre>
-          </div>
+          <div>{result}</div>
         </div>
       )}
       {error && (
@@ -90,4 +65,4 @@ const NewContract = () => {
   );
 };
 
-export default NewContract;
+export default DefaultChain;
