@@ -3,7 +3,6 @@ import { useWeb3 } from "../../../utils/useWeb3";
 const NewAccount = () => {
   const web3 = useWeb3();
   const [result, setResult] = React.useState("");
-  console.log("🚀 ~ NewAccount ~ result:", result);
   const [error, setError] = React.useState(null);
   const [password, setPassword] = React.useState("");
 
