@@ -1,6 +1,13 @@
 ---
 sidebar_position: 7
 ---
+import EncodeParameter from "@site/src/components/smart-contracts/eth-abi/encode-parameter";
+import EncodeParameters from "@site/src/components/smart-contracts/eth-abi/encode-parameters";
+import DecodeParameter from "@site/src/components/smart-contracts/eth-abi/decode-parameter";
+import DecodeParameters from "@site/src/components/smart-contracts/eth-abi/decode-parameters";
+
+
+
 
 # Mã hóa và giải mã các tham số thành ABI (Giao diện ứng dụng nhị phân)
 The `web3.eth.abi` functions let you encode and decode parameters to ABI (Application Binary Interface) for function calls to the EVM (Ethereum Virtual Machine).
@@ -58,6 +65,7 @@ web3.eth.abi.encodeParameter(
 > "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000038000000000000000000000000000000000000000000000000000000000000002d000000000000000000000000000000000000000000000000000000000000004e"
 ```
 ### Try it yourself
+<EncodeParameter/>
 
 ## encodeParameters
 ```javascript
@@ -110,6 +118,7 @@ web3.eth.abi.encodeParameters(
 
 
 ### Try it yourself
+<EncodeParameters/>
 
 ## decodeParameter
 ```javascript
@@ -187,6 +196,7 @@ web3.eth.abi.decodeParameter(
 }
 ```
 ### Try it yourself
+<DecodeParameter/>
 
 ## decodeParameters
 ```javascript
@@ -257,3 +267,4 @@ web3.eth.abi.decodeParameters([
 }
 ```
 ### Try it yourself
+<DecodeParameters/>

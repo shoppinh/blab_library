@@ -1,6 +1,12 @@
 ---
 sidebar_position: 8
 ---
+import GetId from "@site/src/components/smart-contracts/eth-net/get-id";
+import IsListening from "@site/src/components/smart-contracts/eth-net/is-listening";
+import GetPeerCount from "@site/src/components/smart-contracts/eth-net/get-peercount";
+
+
+
 
 # Lấy thông tin từ mạng hiện tại
 The `web3-net` package allows you to interact with an Ethereum node’s network properties.
@@ -42,6 +48,7 @@ web3.eth.net.getId()
 > 1
 ```
 ### Try it yourself
+<GetId/>
 
 ## isListening
 ```javascript
@@ -64,6 +71,7 @@ web3.eth.net.isListening()
 > true
 ```
 ### Try it yourself
+<IsListening/>
 
 ## getPeerCount
 ```javascript
@@ -86,3 +94,4 @@ web3.eth.net.getPeerCount()
 > 25
 ```
 ### Try it yourself
+<GetPeerCount/>

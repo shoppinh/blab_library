@@ -1,6 +1,18 @@
 ---
 sidebar_position: 5
 ---
+import RegistryAddress from "@site/src/components/smart-contracts/eth-ens/registry-address";
+
+import Registry  from "@site/src/components/smart-contracts/eth-ens/registry";
+import Resolver  from "@site/src/components/smart-contracts/eth-ens/resolver";
+import GetResolver  from "@site/src/components/smart-contracts/eth-ens/get-resolver";
+import SetResolver  from "@site/src/components/smart-contracts/eth-ens/set-resolver";
+import GetOwner  from "@site/src/components/smart-contracts/eth-ens/get-owner";
+import SetOwner  from "@site/src/components/smart-contracts/eth-ens/set-owner";
+import GetAddress  from "@site/src/components/smart-contracts/eth-ens/get-address";
+import SetAddress  from "@site/src/components/smart-contracts/eth-ens/set-address";
+import GetPubkey  from "@site/src/components/smart-contracts/eth-ens/get-pubkey";
+import SetPubkey  from "@site/src/components/smart-contracts/eth-ens/set-pubkey";
 
 # Tương tác với dịch vụ tên trên blockchain
 
@@ -25,6 +37,9 @@ web3.eth.ens.registryAddress;
 > "0x314159265dD8dbb310642f98f50C066173C1259b"
 ```
 ### Try it yourself
+{/* <RegistryAddress/> */}
+ENS is not supported in private networks. You can try this example on a public network 
+
 
 ## registry
 ```javascript
@@ -72,6 +87,10 @@ web3.eth.ens.registry;
 }
 ```
 ### Try it yourself
+
+{/* <Registry/> */}
+ENS is not supported in private networks. You can try this example on a public network 
+
 ## resolver
 ```javascript
 web3.eth.ens.resolver(name [, callback]);
@@ -96,6 +115,7 @@ web3.eth.ens.resolver('ethereum.eth').then(function (contract) {
 > Contract<Resolver>
 ```
 ### Try it yourself
+<Resolver/>
 
 ## getResolver
 ```javascript
@@ -117,6 +137,7 @@ web3.eth.ens.getResolver('ethereum.eth').then(function (contract) {
 > Contract<Resolver>
 ```
 ### Try it yourself
+<GetResolver/>
 
 ## setResolver
 ```javascript
@@ -140,6 +161,8 @@ web3.eth.ens.setResolver('ethereum.eth', '0x...', {...}).then(function (receipt)
 > {...}
 ```
 ### Try it yourself
+ENS is not supported in private networks. You can try this example on a public network 
+{/* <SetResolver/> */}
 
 ## getOwner
 ```javascript
@@ -161,6 +184,8 @@ web3.eth.ens.getOwner('ethereum.eth').then(function (owner) {
 > '0x...'
 ```
 ### Try it yourself
+ENS is not supported in private networks. You can try this example on a public network 
+{/* <GetOwner/> */}
 
 ## setOwner
 ```javascript
@@ -183,6 +208,8 @@ web3.eth.ens.setOwner('ethereum.eth', {...}).then(function (receipt) {
 > {...}
 ```
 ### Try it yourself
+{/* <SetOwner/> */}
+ENS is not supported in private networks. You can try this example on a public network 
 
 ## getAddress
 ```javascript
@@ -204,6 +231,8 @@ web3.eth.ens.getAddress('ethereum.eth').then(function (address) {
 > 0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359
 ```
 ### Try it yourself
+{/* <GetAddress/> */}
+ENS is not supported in private networks. You can try this example on a public network 
 
 ## setAddress
 ```javascript
@@ -270,6 +299,9 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
 });
 ```
 ### Try it yourself
+{/* <SetAddress/> */}
+ENS is not supported in private networks. You can try this example on a public network 
+
 
 ## getPubkey
 ```javascript
@@ -296,6 +328,8 @@ web3.eth.ens.getPubkey('ethereum.eth').then(function (result) {
 }
 ```
 ### Try it yourself
+{/* <GetPubkey /> */}
+ENS is not supported in private networks. You can try this example on a public network 
 
 ## setPubkey
 ```javascript
@@ -365,4 +399,5 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
 });
 ```
 ### Try it yourself
-
+{/* <SetPubkey /> */}
+ENS is not supported in private networks. You can try this example on a public network 

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 4
 ---
+import GivenProvider from "@site/src/components/smart-contracts/eth-personal/given-provider";
+import NewAccount from "@site/src/components/smart-contracts/eth-personal/new-account";
+import Sign from "@site/src/components/smart-contracts/eth-personal/sign";
+import SingTransaction from "@site/src/components/smart-contracts/eth-personal/sign-transaction";
+import SendTransaction from "@site/src/components/smart-contracts/eth-personal/send-transaction";
 
 # Tương tác với các tài khoản trên node
 
@@ -68,7 +73,7 @@ var web3 = new Web3(new Web3.providers.IpcProvider('/Users/myuser/Library/Ethere
 var Web3 = require('web3');
 var web3 = new Web3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
 ```
-### Try it yourself
+
 
 ## givenProvider
 ```javascript
@@ -83,7 +88,7 @@ When using web3.js in an Ethereum compatible browser, it will set with the curre
 ### Returns
 `Object`: The given provider set or null;
 ### Try it yourself
-
+<GivenProvider/>
 ## newAccount
 ```javascript
 web3.eth.personal.newAccount(password, [callback])
@@ -105,7 +110,7 @@ web3.eth.personal.newAccount('!@superpassword')
 > '0x1234567891011121314151617181920212223456'
 ```
 ### Try it yourself
-
+<NewAccount/>
 ## sign
 ```javascript
 web3.eth.personal.sign(dataToSign, address, password [, callback])
@@ -147,6 +152,7 @@ web3.eth.personal.ecRecover("Hello world", "0x30755ed65396...etc...")
 > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
 ```
 ### Try it yourself
+<Sign/>
 ## signTransaction
 ```javascript
 web3.eth.personal.signTransaction(transaction, password [, callback])
@@ -192,7 +198,7 @@ web3.eth.signTransaction({
 }
 ```
 ### Try it yourself
-
+<SingTransaction/>
 ## sendTransaction
 ```javascript
 web3.eth.personal.sendTransaction(transactionOptions, password [, callback])
@@ -223,3 +229,4 @@ web3.eth.personal.sendTransaction({
 > '0xda3be87732110de6c1354c83770aae630ede9ac308d9f7b399ecfba23d923384'
 ```
 ### Try it yourself
+<SendTransaction/>
