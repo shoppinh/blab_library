@@ -119,6 +119,7 @@ const config = {
         systemvars: true,
       },
     ],
+    "./src/plugins/webpack5.js",
   ],
 };
 

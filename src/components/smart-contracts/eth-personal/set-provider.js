@@ -1,18 +1,19 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
-const DefaultAccount = () => {
+const SetProvider = () => {
   const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [address, setAddress] = React.useState("");
 
-  const handleGetDefaultAccount = useCallback(async () => {
+  const handleSetProvider = useCallback(async (address) => {
     setError(null);
     try {
-      const defaultAccount = web3.eth.defaultAccount;
-
-      setResult(defaultAccount);
+      web3.setProvider(address);
+      const result = web3.eth.currentProvider;
+      setResult(result);
     } catch (error) {
-      console.error(error);
+      console.error("🚀 ~ handleCreateAccount ~ error:", error);
       setResult(null);
       setError(error);
     }
@@ -26,16 +27,27 @@ const DefaultAccount = () => {
         alignItems: "center",
       }}
     >
+      <input
+        type="text"
+        id="provider"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="provider"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleGetDefaultAccount}
+        onClick={() => handleSetProvider(address)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        get default account
+        set provider
       </button>
       {result && (
         <div
@@ -46,7 +58,11 @@ const DefaultAccount = () => {
           }}
           name="result"
         >
-          <div>{result}</div>
+          <div>
+            <pre style={{ wordBreak: "break-word", whiteSpace: "pre-wrap" }}>
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
         </div>
       )}
       {error && (
@@ -65,4 +81,4 @@ const DefaultAccount = () => {
   );
 };
 
-export default DefaultAccount;
+export default SetProvider;

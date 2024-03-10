@@ -1,6 +1,12 @@
 ---
 sidebar_position: 6
 ---
+import Constructor from "@site/src/components/smart-contracts/eth-iban/constructor";
+import FromAddress from "@site/src/components/smart-contracts/eth-iban/from-address";
+import FromBBan from "@site/src/components/smart-contracts/eth-iban/from-bban";
+import ToAddress from "@site/src/components/smart-contracts/eth-iban/to-address";
+import ToIBan from "@site/src/components/smart-contracts/eth-iban/to-iban";
+
 
 # Chuyển đổi địa chỉ của IBAN (International Bank Account Number) và BBAN (Basic Bank Account Number)
 The `web3.eth.Iban` function converts Ethereum addresses from and to IBAN and BBAN.
@@ -35,6 +41,7 @@ var iban = new web3.eth.Iban("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
 ```
 ### Try it yourself
+<Constructor/>
 ## toAddress
 Static function.
 ```javascript
@@ -57,6 +64,7 @@ web3.eth.Iban.toAddress("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > "0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8"
 ```
 ### Try it yourself
+<ToAddress/>
 
 ## toIban
 Static function.
@@ -76,7 +84,7 @@ web3.eth.Iban.toIban("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"
 ```
 ### Try it yourself
-
+<ToIBan/>
 ## fromAddress
 Static function, returns IBAN instance.
 ```javascript
@@ -95,6 +103,7 @@ web3.eth.Iban.fromAddress("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
 ### Try it yourself
+<FromAddress/>
 
 ## fromBan
 ```javascript
@@ -113,3 +122,4 @@ web3.eth.Iban.fromBban('ETHXREGGAVOFYORK');
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
 ### Try it yourself
+<FromBBan/>

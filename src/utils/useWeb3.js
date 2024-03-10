@@ -1,5 +1,7 @@
 import Web3 from "web3";
-
+import Bzz from "web3-bzz";
 export const useWeb3 = () => {
-  return new Web3(Web3.givenProvider || process.env.RPC_URL);
+  const web3 = new Web3(Web3.givenProvider || process.env.RPC_URL);
+  const bzz = new Bzz(process.env.BZZ_URL);
+  return { web3, bzz };
 };

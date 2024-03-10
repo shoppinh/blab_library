@@ -2,6 +2,7 @@
 sidebar_position: 4
 ---
 import GivenProvider from "@site/src/components/smart-contracts/eth-personal/given-provider";
+import SetProvider from "@site/src/components/smart-contracts/eth-personal/set-provider";
 import NewAccount from "@site/src/components/smart-contracts/eth-personal/new-account";
 import Sign from "@site/src/components/smart-contracts/eth-personal/sign";
 import SingTransaction from "@site/src/components/smart-contracts/eth-personal/sign-transaction";
@@ -73,7 +74,8 @@ var web3 = new Web3(new Web3.providers.IpcProvider('/Users/myuser/Library/Ethere
 var Web3 = require('web3');
 var web3 = new Web3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
 ```
-
+### Try it yourself
+<SetProvider/>
 
 ## givenProvider
 ```javascript

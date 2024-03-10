@@ -4,7 +4,7 @@ import { useWeb3 } from "../../utils/useWeb3";
 const EthSubscribe = () => {
   const [subscribeType, setSubscribeType] = React.useState("");
   const [result, setResult] = React.useState("");
-  const web3 = useWeb3();
+  const { web3 } = useWeb3();
   const [error, setError] = React.useState(null);
 
   const handleSubscribe = useCallback((subscribeType) => {

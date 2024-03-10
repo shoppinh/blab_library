@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
+
 const GivenProvider = () => {
-  const web3 = useWeb3();
+  const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
 
