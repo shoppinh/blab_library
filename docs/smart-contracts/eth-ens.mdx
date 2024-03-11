@@ -36,7 +36,7 @@ If no address is defined will it try to detect the registry on the chain you are
 web3.eth.ens.registryAddress;
 > "0x314159265dD8dbb310642f98f50C066173C1259b"
 ```
-### Try it yourself
+### Trial
 {/* <RegistryAddress/> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
@@ -86,7 +86,7 @@ web3.eth.ens.registry;
     recordExists(name, callback)
 }
 ```
-### Try it yourself
+### Trial
 
 {/* <Registry/> */}
 ENS is not supported in private networks. You can try this example on a public network 
@@ -114,7 +114,7 @@ web3.eth.ens.resolver('ethereum.eth').then(function (contract) {
 });
 > Contract<Resolver>
 ```
-### Try it yourself
+### Trial
 <Resolver/>
 
 ## getResolver
@@ -136,7 +136,7 @@ web3.eth.ens.getResolver('ethereum.eth').then(function (contract) {
 });
 > Contract<Resolver>
 ```
-### Try it yourself
+### Trial
 <GetResolver/>
 
 ## setResolver
@@ -160,7 +160,7 @@ web3.eth.ens.setResolver('ethereum.eth', '0x...', {...}).then(function (receipt)
 });
 > {...}
 ```
-### Try it yourself
+### Trial
 ENS is not supported in private networks. You can try this example on a public network 
 {/* <SetResolver/> */}
 
@@ -183,7 +183,7 @@ web3.eth.ens.getOwner('ethereum.eth').then(function (owner) {
 });
 > '0x...'
 ```
-### Try it yourself
+### Trial
 ENS is not supported in private networks. You can try this example on a public network 
 {/* <GetOwner/> */}
 
@@ -207,7 +207,7 @@ web3.eth.ens.setOwner('ethereum.eth', {...}).then(function (receipt) {
 });
 > {...}
 ```
-### Try it yourself
+### Trial
 {/* <SetOwner/> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
@@ -230,7 +230,7 @@ web3.eth.ens.getAddress('ethereum.eth').then(function (address) {
 })
 > 0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359
 ```
-### Try it yourself
+### Trial
 {/* <GetAddress/> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
@@ -298,7 +298,7 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
     .on('error', console.error);
 });
 ```
-### Try it yourself
+### Trial
 {/* <SetAddress/> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
@@ -327,7 +327,7 @@ web3.eth.ens.getPubkey('ethereum.eth').then(function (result) {
     "y": "0x0000000000000000000000000000000000000000000000000000000000000000"
 }
 ```
-### Try it yourself
+### Trial
 {/* <GetPubkey /> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
@@ -398,6 +398,6 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
     .on('error', console.error);
 });
 ```
-### Try it yourself
+### Trial
 {/* <SetPubkey /> */}
 ENS is not supported in private networks. You can try this example on a public network 

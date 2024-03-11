@@ -40,7 +40,7 @@ Also has singleton functions for conversion like:
 var iban = new web3.eth.Iban("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
 ```
-### Try it yourself
+### Trial
 <Constructor/>
 ## toAddress
 Static function.
@@ -63,7 +63,7 @@ This method also exists on the IBAN instance.
 web3.eth.Iban.toAddress("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > "0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8"
 ```
-### Try it yourself
+### Trial
 <ToAddress/>
 
 ## toIban
@@ -83,7 +83,7 @@ Singleton: Converts an Ethereum address to a direct IBAN address.
 web3.eth.Iban.toIban("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"
 ```
-### Try it yourself
+### Trial
 <ToIBan/>
 ## fromAddress
 Static function, returns IBAN instance.
@@ -102,7 +102,7 @@ Singleton: Converts an Ethereum address to a direct IBAN instance.
 web3.eth.Iban.fromAddress("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
-### Try it yourself
+### Trial
 <FromAddress/>
 
 ## fromBan
@@ -121,5 +121,5 @@ Singleton: Converts an BBAN address to a direct IBAN instance.
 web3.eth.Iban.fromBban('ETHXREGGAVOFYORK');
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
-### Try it yourself
+### Trial
 <FromBBan/>
