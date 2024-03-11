@@ -12,18 +12,18 @@ This method should be called, when we want to post whisper a message to the netw
 ### Parameters
 1. `Object` - The post object:
 + `symKeyID` - `String` (optional): ID of symmetric key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
-`pubKey` - `String` (optional): The public key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
-`sig` - `String` (optional): The ID of the signing key.
-`ttl` - `Number`: Time-to-live in seconds.
-`topic` - `String`: 4 Bytes (mandatory when key is symmetric): Message topic.
-`payload` - `String`: The payload of the message to be encrypted.
-`padding` - `Number` (optional): Padding (byte array of arbitrary length).
-`powTime` - `Number` (optional)?: Maximal time in seconds to be spent on proof of work.
-`powTarget` - `Number` (optional)?: Minimal PoW target required for this message.
-`targetPeer` - `Number` (optional): Peer ID (for peer-to-peer message only).
++ `pubKey` - `String` (optional): The public key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
++ `sig` - `String` (optional): The ID of the signing key.
++ `ttl` - `Number`: Time-to-live in seconds.
++ `topic` - `String`: 4 Bytes (mandatory when key is symmetric): Message topic.
++ `payload` - `String`: The payload of the message to be encrypted.
++ `padding` - `Number` (optional): Padding (byte array of arbitrary length).
++ `powTime` - `Number` (optional)?: Maximal time in seconds to be spent on proof of work.
++ `powTarget` - `Number` (optional)?: Minimal PoW target required for this message.
++ `targetPeer` - `Number` (optional): Peer ID (for peer-to-peer message only).
 2. `callback` - `Function`: (optional) Optional callback, returns an error object as first parameter and the result as second.
 ### Returns
-`Promise` - returns a promise. Upon success, the then function will be passed a string representing the hash of the sent message. On error, the catch function will be passed a string containing the reason for the error.
+`Promise` - returns a promise. Upon success, the `then` function will be passed a string representing the hash of the sent message. On error, the `catch` function will be passed a string containing the reason for the error.
 
 ### Example
 ```javascript

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 ---
+import Download from "@site/src/components/distributed-apps/download"
 
 # Download các tệp và thư mục từ swarm về dưới dạng bộ nhớ đệm hoặc ổ cứng
 ## download
@@ -33,10 +34,11 @@ bzz.download(dirHash).then(function(dir) {
     }
 });
 
-// download file/directory to disk (only node.js)
+//download file/directory to disk (only node.js)
 var dirHash = "a5c10851ef054c268a2438f10a21f6efe3dc3dcdcc2ea0e6a1a7a38bf8c91e23";
 bzz.download(dirHash, "/target/dir")
 .then(path => console.log(`Downloaded directory to ${path}.`))
 .catch(console.log);
 ```
 ### Try it yourself
+<Download/>

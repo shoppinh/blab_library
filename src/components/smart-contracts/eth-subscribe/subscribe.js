@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { useWeb3 } from "../../../utils/useWeb3";
 
 const EthSubscribe = () => {
-  const [subscribeType, setSubscribeType] = React.useState("");
+  const [subscribeType, setSubscribeType] = React.useState("newBlockHeaders");
   const [result, setResult] = React.useState("");
   const { web3 } = useWeb3();
   const [error, setError] = React.useState(null);
@@ -78,23 +78,30 @@ const EthSubscribe = () => {
       >
         Subscribe
       </button>
-      <div
-        style={{
-          padding: "10px",
-          margin: "10px",
-        }}
-      >
-        {result}
-      </div>
-      <div
-        style={{
-          padding: "10px",
-          margin: "10px",
-          color: "red",
-        }}
-      >
-        {error?.message ?? ""}
-      </div>
+      {result && (
+        <div
+          style={{
+            padding: "10px",
+            margin: "10px",
+            wordBreak: "break-all",
+          }}
+        >
+          <pre style={{ whiteSpace: "pre-wrap" }}>
+            {JSON.stringify(result, null, 2)}
+          </pre>
+        </div>
+      )}
+      {error && (
+        <div
+          style={{
+            padding: "10px",
+            margin: "10px",
+            color: "red",
+          }}
+        >
+          {error?.message ?? ""}
+        </div>
+      )}
     </div>
   );
 };
