@@ -1,15 +1,17 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
 const SignAccount = () => {
-  const { privateWeb3: web3 } = useWeb3();
+  const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
   const [data, setData] = React.useState("");
+  const [address, setAddress] = React.useState("");
 
-  const handleSignAccount = useCallback(async (data) => {
+  const handleSignAccount = useCallback(async (data, address) => {
     setError(null);
     try {
-      const signature = await web3.eth.sign(data, process.env.FROM_ADDRESS);
+      const signature = await web3.eth.sign(data, address);
+      console.log("🚀 ~ handleSignAccount ~ signature:", signature);
       setResult(signature);
     } catch (error) {
       console.error(error);
@@ -36,11 +38,20 @@ const SignAccount = () => {
           margin: "10px",
         }}
       />
-
+      <input
+        type="text"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="Enter your address"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleSignAccount(data)}
+        onClick={() => handleSignAccount(data, address)}
         style={{
           padding: "10px",
           margin: "10px",

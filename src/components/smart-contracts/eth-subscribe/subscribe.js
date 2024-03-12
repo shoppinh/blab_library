@@ -4,7 +4,7 @@ import { useWeb3 } from "../../../utils/useWeb3";
 const EthSubscribe = () => {
   const [subscribeType, setSubscribeType] = React.useState("newBlockHeaders");
   const [result, setResult] = React.useState("");
-  const { privateWeb3: web3 } = useWeb3();
+  const { privateWeb3WS: web3 } = useWeb3();
   const [error, setError] = React.useState(null);
 
   const handleSubscribe = useCallback((subscribeType) => {

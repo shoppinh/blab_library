@@ -3,7 +3,7 @@ import { useWeb3 } from "../../../utils/useWeb3";
 
 const ClearSubscription = () => {
   const [result, setResult] = React.useState("");
-  const { privateWeb3: web3 } = useWeb3();
+  const { privateWeb3WS: web3 } = useWeb3();
   const [error, setError] = React.useState(null);
 
   const handleClearSubscription = useCallback(async () => {
