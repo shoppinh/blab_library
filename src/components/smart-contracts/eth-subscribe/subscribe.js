@@ -4,7 +4,7 @@ import { useWeb3 } from "../../../utils/useWeb3";
 const EthSubscribe = () => {
   const [subscribeType, setSubscribeType] = React.useState("newBlockHeaders");
   const [result, setResult] = React.useState("");
-  const { web3 } = useWeb3();
+  const { privateWeb3: web3 } = useWeb3();
   const [error, setError] = React.useState(null);
 
   const handleSubscribe = useCallback((subscribeType) => {
@@ -78,7 +78,7 @@ const EthSubscribe = () => {
       >
         Subscribe
       </button>
-      {result && (
+      {result !== "" && (
         <div
           style={{
             padding: "10px",

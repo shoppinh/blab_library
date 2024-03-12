@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
 const SetProvider = () => {
-  const { web3 } = useWeb3();
+  const { privateWeb3: web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
   const [address, setAddress] = React.useState("");
@@ -49,7 +49,7 @@ const SetProvider = () => {
       >
         set provider
       </button>
-      {result && (
+      {result !== "" && (
         <div
           style={{
             padding: "10px",

@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
 const DefaultAccount = () => {
-  const { web3 } = useWeb3();
+  const { privateWeb3: web3 } = useWeb3();
+  console.log(web3.eth.currentProvider);
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
 
@@ -37,7 +38,7 @@ const DefaultAccount = () => {
       >
         get default account
       </button>
-      {result && (
+      {result !== "" && (
         <div
           style={{
             padding: "10px",

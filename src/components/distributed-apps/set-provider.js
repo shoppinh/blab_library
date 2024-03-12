@@ -49,7 +49,7 @@ const SetProvider = () => {
       >
         set provider
       </button>
-      {result && (
+      {result !== "" && (
         <div
           style={{
             padding: "10px",

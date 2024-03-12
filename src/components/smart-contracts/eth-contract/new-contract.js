@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
 const NewContract = () => {
-  const { web3 } = useWeb3();
-  const [result, setResult] = React.useState(null);
+  const { privateWeb3: web3 } = useWeb3();
+  const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
 
   const handleCreateNewContract = useCallback(async () => {
@@ -60,7 +60,7 @@ const NewContract = () => {
       >
         create new contract
       </button>
-      {result && (
+      {result !== "" && (
         <div
           style={{
             padding: "10px",
