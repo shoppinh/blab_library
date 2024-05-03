@@ -47,7 +47,7 @@ const HexToString = () => {
           margin: "10px",
         }}
       >
-        Convert to Hex
+        Chuyển đổi sang Hex
       </button>
       {result !== "" && (
         <div

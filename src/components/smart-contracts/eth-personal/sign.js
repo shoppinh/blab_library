@@ -60,7 +60,7 @@ const SignAccount = () => {
           margin: "10px",
         }}
       >
-        sign data
+        Ký dữ liệu
       </button>
       {result !== "" && (
         <div

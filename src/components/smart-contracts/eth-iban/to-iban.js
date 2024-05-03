@@ -46,7 +46,7 @@ const ToIBan = () => {
           margin: "10px",
         }}
       >
-        Convert to Iban address
+        Chuyển đổi sang địa chỉ IBAN
       </button>
       {result !== "" && (
         <div

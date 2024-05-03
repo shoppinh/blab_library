@@ -47,7 +47,7 @@ const SetProvider = () => {
           margin: "10px",
         }}
       >
-        set provider
+        Đặt nhà cung cấp
       </button>
       {result !== "" && (
         <div

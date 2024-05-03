@@ -66,7 +66,7 @@ const SendTransaction = () => {
           margin: "10px",
         }}
       >
-        send transaction
+        Gửi giao dịch
       </button>
       {result !== "" && (
         <div

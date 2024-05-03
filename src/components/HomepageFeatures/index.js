@@ -8,8 +8,8 @@ const FeatureList = [
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
     description: (
       <>
-        BLAB Library was designed from the ground up to be easily installed and
-        used to get applications up and running quickly.
+        Thư viện blab được thiết kế từ mặt đất để dễ dàng cài đặt và Được sử
+        dụng để có được các ứng dụng lên và chạy nhanh chóng.
       </>
     ),
   },
@@ -18,8 +18,9 @@ const FeatureList = [
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: (
       <>
-        BLAB Library lets you focus on ETH smart contract development, and we'll
-        do the chores. Go ahead and build your smart contract.
+        Thư viện blab cho phép bạn tập trung vào phát triển hợp đồng thông minh
+        ETH và chúng tôi sẽ Làm các công việc.Hãy tiếp tục và xây dựng hợp đồng
+        thông minh của bạn.
       </>
     ),
   },
@@ -28,8 +29,9 @@ const FeatureList = [
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>
-        BLAB Library uses Web3JS to interact with the Ethereum blockchain. You
-        can use it to interact with smart contracts and more.
+        Thư viện Blab sử dụng web3js để tương tác với blockchain Ethereum.Bạn Có
+        thể sử dụng nó để tương tác với các hợp đồng thông minh và nhiều hơn
+        nữa.
       </>
     ),
   },

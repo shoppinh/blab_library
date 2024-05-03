@@ -47,7 +47,7 @@ const SetMinPow = () => {
           margin: "10px",
         }}
       >
-        Set MinPoW
+        Đặt MinPoW
       </button>
       {result !== "" && (
         <div

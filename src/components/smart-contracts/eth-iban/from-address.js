@@ -46,7 +46,7 @@ const FromAddress = () => {
           margin: "10px",
         }}
       >
-        Create Iban from address
+        Tạo IBAN từ địa chỉ
       </button>
       {result !== "" && (
         <div

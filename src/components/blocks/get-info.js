@@ -35,7 +35,7 @@ const GetInfo = () => {
           margin: "10px",
         }}
       >
-        Get Info
+        Nhận thông tin
       </button>
       {result !== "" && (
         <div

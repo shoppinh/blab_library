@@ -35,7 +35,7 @@ const GetId = () => {
           margin: "10px",
         }}
       >
-        get Id
+        Nhận id
       </button>
       {result !== "" && (
         <div

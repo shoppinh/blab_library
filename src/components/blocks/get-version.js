@@ -37,7 +37,7 @@ const GetVersion = () => {
           margin: "10px",
         }}
       >
-        Get Version
+        Nhận phiên bản
       </button>
       {result !== "" && (
         <div

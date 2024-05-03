@@ -35,7 +35,7 @@ const NewSymKey = () => {
           margin: "10px",
         }}
       >
-        new sym key
+        Khóa Sym mới
       </button>
       {result !== "" && (
         <div

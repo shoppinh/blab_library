@@ -35,7 +35,7 @@ const GetId = () => {
           margin: "10px",
         }}
       >
-        Get Network ID
+        Nhận ID mạng
       </button>
       {result !== "" && (
         <div

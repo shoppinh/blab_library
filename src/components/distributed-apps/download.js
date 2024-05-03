@@ -48,7 +48,7 @@ const Download = () => {
           margin: "10px",
         }}
       >
-        download
+        Tải xuống
       </button>
       {result !== "" && (
         <div

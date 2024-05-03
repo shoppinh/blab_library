@@ -47,7 +47,7 @@ const AddPrivateKey = () => {
           margin: "10px",
         }}
       >
-        Add Private Key
+        Thêm khóa riêng
       </button>
       {result !== "" && (
         <div

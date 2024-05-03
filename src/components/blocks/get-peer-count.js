@@ -35,7 +35,7 @@ const GetPeerCount = () => {
           margin: "10px",
         }}
       >
-        Get Peer Count
+        Nhận số lượng ngang hàng
       </button>
       {result !== "" && (
         <div

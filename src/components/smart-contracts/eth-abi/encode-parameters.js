@@ -65,7 +65,7 @@ const EncodeParameters = () => {
           margin: "10px",
         }}
       >
-        Run example 1
+        Chạy Ví dụ 1{" "}
       </button>
       <button
         type="button"
@@ -78,7 +78,7 @@ const EncodeParameters = () => {
           margin: "10px",
         }}
       >
-        Run example 2
+        Chạy Ví dụ 2{" "}
       </button>
       <button
         type="button"
@@ -91,7 +91,7 @@ const EncodeParameters = () => {
           margin: "10px",
         }}
       >
-        Run example 3
+        Chạy Ví dụ 3{" "}
       </button>
       {result !== "" && (
         <div

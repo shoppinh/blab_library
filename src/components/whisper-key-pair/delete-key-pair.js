@@ -47,7 +47,7 @@ const DeletePrivateKey = () => {
           margin: "10px",
         }}
       >
-        Delete Private Key
+        Xóa khóa riêng
       </button>
       {result !== "" && (
         <div

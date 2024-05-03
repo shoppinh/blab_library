@@ -47,7 +47,7 @@ const Hexa = () => {
           margin: "10px",
         }}
       >
-        get sym key
+        Nhận khóa sym
       </button>
       {result !== "" && (
         <div

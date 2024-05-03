@@ -62,10 +62,10 @@ const EthSubscribe = () => {
           margin: "10px",
         }}
       >
-        <option value="newBlockHeaders">newBlockHeaders</option>
-        <option value="logs">logs</option>
-        <option value="pendingTransactions">pendingTransactions</option>
-        <option value="syncing">syncing</option>
+        <option value="newBlockHeaders">Tiêu đề khối mới</option>
+        <option value="logs">nhật ký</option>
+        <option value="pendingTransactions">đang chờ giao dịch</option>
+        <option value="syncing">đồng bộ</option>
       </select>
       <button
         type="button"
@@ -76,7 +76,7 @@ const EthSubscribe = () => {
           margin: "10px",
         }}
       >
-        Subscribe
+        Đăng ký
       </button>
       {result !== "" && (
         <div

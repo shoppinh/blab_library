@@ -48,7 +48,7 @@ const MarkTrustedBeer = () => {
           margin: "10px",
         }}
       >
-        Mark Trusted Peer
+        Đánh dấu đáng tin cậy ngang hàng
       </button>
       {result !== "" && (
         <div

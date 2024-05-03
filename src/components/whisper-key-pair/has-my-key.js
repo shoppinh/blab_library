@@ -47,7 +47,7 @@ const HasSymKey = () => {
           margin: "10px",
         }}
       >
-        Check Has Sym Key
+        Kiểm tra có khóa sym
       </button>
       {result !== "" && (
         <div

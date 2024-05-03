@@ -56,7 +56,7 @@ const DecodeParameter = () => {
           margin: "10px",
         }}
       >
-        decode parameter
+        giải mã tham số
       </button>
       {result !== "" && (
         <div

@@ -52,7 +52,7 @@ const Upload = () => {
           margin: "10px",
         }}
       >
-        upload
+        tải lên
       </button>
       {result !== "" && (
         <div

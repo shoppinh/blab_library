@@ -35,7 +35,7 @@ const GivenProvider = () => {
           margin: "10px",
         }}
       >
-        get given provider
+        Nhận nhà cung cấp
       </button>
       {result !== "" && (
         <div

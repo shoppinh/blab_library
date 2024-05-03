@@ -36,7 +36,7 @@ const DefaultBlock = () => {
           margin: "10px",
         }}
       >
-        get default block
+        Nhận khối mặc định
       </button>
       {result !== "" && (
         <div

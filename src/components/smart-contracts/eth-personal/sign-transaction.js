@@ -66,7 +66,7 @@ const SignTransaction = () => {
           margin: "10px",
         }}
       >
-        sign transaction
+        ký giao dịch
       </button>
       {result !== "" && (
         <div

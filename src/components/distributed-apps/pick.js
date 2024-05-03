@@ -53,7 +53,7 @@ const Pick = () => {
           margin: "10px",
         }}
       >
-        pick
+        Chọn
       </button>
       {result !== "" && (
         <div

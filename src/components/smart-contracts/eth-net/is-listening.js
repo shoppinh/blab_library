@@ -35,7 +35,7 @@ const IsListening = () => {
           margin: "10px",
         }}
       >
-        get is listening
+        Kiểm tra có đang nghe
       </button>
       {result !== "" && (
         <div

@@ -47,7 +47,7 @@ const GetPrivateKey = () => {
           margin: "10px",
         }}
       >
-        Get Private Key
+        Nhận khóa riêng
       </button>
       {result !== "" && (
         <div

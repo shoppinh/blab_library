@@ -71,7 +71,7 @@ const NewContract = () => {
           margin: "10px",
         }}
       >
-        get greeting
+        Nhận lời chào
       </button>
       {greetedData !== "" && (
         <div
@@ -107,7 +107,7 @@ const NewContract = () => {
           margin: "10px",
         }}
       >
-        sign transaction
+        ký giao dịch
       </button>
       {signedData !== "" && (
         <div
@@ -138,7 +138,7 @@ const NewContract = () => {
           margin: "10px",
         }}
       >
-        send signed transaction
+        Gửi giao dịch đã ký
       </button>
       {receipt !== "" && (
         <div

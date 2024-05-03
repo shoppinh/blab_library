@@ -46,7 +46,7 @@ const FromBban = () => {
           margin: "10px",
         }}
       >
-        Create Iban from Bban address
+        Tạo IBAN từ địa chỉ BBAN
       </button>
       {result !== "" && (
         <div

@@ -35,7 +35,7 @@ const CurrentProvider = () => {
           margin: "10px",
         }}
       >
-        get current provider
+        Nhận nhà cung cấp hiện tại
       </button>
       {result !== "" && (
         <div

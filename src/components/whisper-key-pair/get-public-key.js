@@ -47,7 +47,7 @@ const GetPublicKey = () => {
           margin: "10px",
         }}
       >
-        Get Public Key
+        Nhận khóa công khai
       </button>
       {result !== "" && (
         <div

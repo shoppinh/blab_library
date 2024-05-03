@@ -35,7 +35,7 @@ const DefaultChain = () => {
           margin: "10px",
         }}
       >
-        get default chain
+        Nhận chuỗi mặc định
       </button>
       {result !== "" && (
         <div

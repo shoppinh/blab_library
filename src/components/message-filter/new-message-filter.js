@@ -34,7 +34,7 @@ const MessageFilter = () => {
           margin: "10px",
         }}
       >
-        Create message filter
+        Tạo bộ lọc tin nhắn
       </button>
       <div
         style={{

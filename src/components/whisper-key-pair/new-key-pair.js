@@ -35,7 +35,7 @@ const NewKeyPair = () => {
           margin: "10px",
         }}
       >
-        New Key Pair
+        Cặp khóa mới
       </button>
       {result !== "" && (
         <div

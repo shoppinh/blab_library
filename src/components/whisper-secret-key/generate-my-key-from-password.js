@@ -47,7 +47,7 @@ const GenerateSymKeyFromPassword = () => {
           margin: "10px",
         }}
       >
-        generate sym key from password
+        Tạo khóa sym từ mật khẩu
       </button>
       {result !== "" && (
         <div

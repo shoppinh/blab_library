@@ -76,7 +76,7 @@ const ShhSubscribeOption = () => {
           margin: "10px",
         }}
       >
-        Get Sym Key
+        Nhận khóa sym
       </button>
       <button
         type="button"
@@ -87,7 +87,7 @@ const ShhSubscribeOption = () => {
           margin: "10px",
         }}
       >
-        Get Key Pair
+        Nhận cặp khóa
       </button>
       <button
         type="button"
@@ -98,7 +98,7 @@ const ShhSubscribeOption = () => {
           margin: "10px",
         }}
       >
-        Subscribe
+        Đăng ký
       </button>
       {result !== "" && (
         <div

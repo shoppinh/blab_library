@@ -36,7 +36,7 @@ const DefaultAccount = () => {
           margin: "10px",
         }}
       >
-        get default account
+        Nhận tài khoản mặc định
       </button>
       {result !== "" && (
         <div

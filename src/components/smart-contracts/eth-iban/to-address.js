@@ -46,7 +46,7 @@ const ToAddress = () => {
           margin: "10px",
         }}
       >
-        Convert to address
+        Chuyển đổi sang địa chỉ
       </button>
       {result !== "" && (
         <div

@@ -47,7 +47,7 @@ const GetFilterMessages = () => {
           margin: "10px",
         }}
       >
-        Get Filter Message
+        Nhận tin nhắn bộ lọc
       </button>
       {result !== "" && (
         <div

@@ -48,7 +48,7 @@ const SetMessageSize = () => {
           margin: "10px",
         }}
       >
-        Set Message Size
+        Đặt kích thước tin nhắn
       </button>
       {result !== "" && (
         <div

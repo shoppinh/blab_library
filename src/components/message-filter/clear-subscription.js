@@ -34,7 +34,7 @@ const ClearSubscription = () => {
           margin: "10px",
         }}
       >
-        Clear subscription
+        Xóa đăng ký
       </button>
       <div
         style={{

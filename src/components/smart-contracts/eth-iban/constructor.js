@@ -46,7 +46,7 @@ const IBanConstructor = () => {
           margin: "10px",
         }}
       >
-        create constructor
+        Tạo hàm tạo
       </button>
       {result !== "" && (
         <div
