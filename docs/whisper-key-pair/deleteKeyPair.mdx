@@ -4,24 +4,22 @@ sidebar_position: 3
 import DeletePrivateKey from "@site/src/components/whisper-key-pair/delete-key-pair"
 
 # Xóa cặp khóa riêng và khóa công khai
-## deleteKeyPair
 ```javascript
 web3.shh.deleteKeyPair(id, [callback])
 ```
-Deletes the specifies key if it exists.
+Xóa khóa chỉ định nếu nó tồn tại.
+### Thông số
+1. `String` - ID cặp khóa, được trả về bởi các chức năng tạo (shh.newKeypair và shh.addprivateKey).
+2. `function` - (tùy chọn) gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`Boolean` -` True 'thành công, lỗi về thất bại.
 
-### Parameters
-1. `String` - The key pair ID, returned by the creation functions (shh.newKeyPair and shh.addPrivateKey).
-2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Boolean` - `true` on success, error on failure.
-
-### Example
+### Ví dụ
 ```javascript
 web3.shh.deleteKeyPair('3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f')
 .then(console.log);
 > true
 `
 ```
-### Trial
+### Sự thử nghiệm
 <DeletePrivateKey/> 

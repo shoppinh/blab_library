@@ -4,27 +4,25 @@ sidebar_position: 3
 import GetPeerCount from "@site/src/components/blocks/get-peer-count"
 
 # Lấy số lượng block đã kết nối với nhau
-## getPeerCount
 
 ```javascript
 web3.eth.net.getPeerCount([callback])
 web3.bzz.net.getPeerCount([callback])
 web3.shh.net.getPeerCount([callback])
 ```
-Get the number of peers connected to.
+Nhận số lượng đồng nghiệp kết nối với.
 
+### Thông số
+không có
 
-### Parameters
-none
+### Trả lại
+`Promise` trả lại `Number`
 
-### Returns
-`Promise` returns `Number`
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.net.getPeerCount()
 .then(console.log);
 > 25
 ```
-### Trial
+### Sự thử nghiệm
 <GetPeerCount/>

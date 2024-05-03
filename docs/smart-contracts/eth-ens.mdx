@@ -16,56 +16,51 @@ import SetPubkey  from "@site/src/components/smart-contracts/eth-ens/set-pubkey"
 
 # Tương tác với dịch vụ tên trên blockchain
 
-The `web3.eth.ens` functions let you interact with ENS. We recommend reading the ENS documentation to get deeper insights about the internals of the name service.
-
-## registryAddress
+Các chức năng `Web3.eth.ens` cho phép bạn tương tác với ENS.Chúng tôi khuyên bạn nên đọc tài liệu ENS để hiểu sâu hơn về phần bên trong của dịch vụ tên.
+## Địa chỉ đăng ký
 ```javascript
 web3.eth.ens.registryAddress;
 ```
-The registryAddress property can be used to define a custom registry address when you are connected to an unknown chain.
-
+Thuộc tính RegistryAddress có thể được sử dụng để xác định địa chỉ đăng ký tùy chỉnh khi bạn được kết nối với một chuỗi không xác định.
 :::note
 
-If no address is defined will it try to detect the registry on the chain you are currently connected with and on the call of setProvider in the Eth module will it keep the defined address and use it for the ENS module.
+Nếu không có địa chỉ nào được xác định, nó sẽ cố gắng phát hiện sổ đăng ký trên chuỗi mà bạn hiện đang kết nối và theo lệnh gọi của SetProvider trong mô -đun ETH, nó sẽ giữ địa chỉ được xác định và sử dụng nó cho mô -đun ENS.
 :::
-### Returns
-`String` - The address of the custom registry.
+### Trả lại
+`String` - Địa chỉ của sổ đăng ký tùy chỉnh.
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.registryAddress;
 > "0x314159265dD8dbb310642f98f50C066173C1259b"
 ```
-### Trial
-{/* <RegistryAddress/> */}
-ENS is not supported in private networks. You can try this example on a public network 
-
-
-## registry
+### Sự thử nghiệm
+<RegistryAddress/>
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng
+## Đăng ký
 ```javascript
 web3.eth.ens.registry;
 ```
-Returns the network specific ENS registry.
+Trả về sổ đăng ký cụ thể của mạng.
+### Trả lại
+`Registry` - Đăng ký hiện tại.
 
-### Returns
-`Registry` - The current ENS registry.
-
-+ `contract: Contract` - The `Registry` contract with the interface we know from the Contract object.
-+ `owner(name, callback): Promise` - Deprecated please use `getOwner`
-+ `getOwner(name, callback): Promise`
-+ `setOwner(name, address, txConfig, callback): PromiEvent`
-+ `resolver(name, callback): Promise` - Deprecated please use `getResolver`
-+ `getResolver(name, callback): Promise`
-+ `setResolver(name, address, txConfig, callback): PromiEvent`
-+ `getTTL(name, callback): Promise`
-+ `setTTL(name, ttl, txConfig, callback): PromiEvent`
-+ `setSubnodeOwner(name, label, address, txConfig, callback): PromiEvent`
-+ `setRecord(name, owner, resolver, ttl, txConfig, callback): PromiEvent`
-+ setSubnodeRecord(name, label, owner, resolver, ttl, txConfig, callback): PromiEvent`
-+ `setApprovalForAll(operator, approved, txConfig, callback): PromiEvent`
-+ `isApprovedForAll(owner, operator, callback): Promise
-+ `recordExists(name, callback): Promise`
-### Example
++ `Hợp đồng: Hợp đồng` - Hợp đồng` Đăng ký 'với giao diện mà chúng ta biết từ đối tượng hợp đồng.
++ `Chủ sở hữu (tên, gọi lại): Promise` - không dùng
++ `getowner (tên, gọi lại): Promise`
++ `setOwneer (tên, địa chỉ, txconfig, gọi lại): advievent`
++ `Resolver (tên, gọi lại): Promise
++ `getresolver (tên, gọi lại): Promise`
++ `setresolver (tên, địa chỉ, txconfig, gọi lại): advievent`
++ `getttl (tên, gọi lại): Promise`
++ `Settl (Tên, TTL, TXCONFIG, Callback): ARWIELENT`
++ `setSubNodeAwner (tên, nhãn, địa chỉ, txconfig, ralback): advievent`
++ `setRecord (tên, chủ sở hữu, người giải quyết, TTL, txconfig, gọi lại): advievent`
++ SetSubNoderecord (Tên, Nhãn, Chủ sở hữu, Resolver, TTL, TXConfig, Callback): ARMIELENT`
++ `setApprovalForall (toán tử, được phê duyệt, txconfig, gọi lại): advievent`
++ `Isapprovedforall (chủ sở hữu, nhà điều hành, gọi lại): hứa hẹn
++ `RecordExists (tên, gọi lại): Promise`
+### Ví dụ
 ```javascript
 web3.eth.ens.registry;
 > {
@@ -86,168 +81,152 @@ web3.eth.ens.registry;
     recordExists(name, callback)
 }
 ```
-### Trial
+### Sự thử nghiệm
 
-{/* <Registry/> */}
-ENS is not supported in private networks. You can try this example on a public network 
-
-## resolver
+<Registry/>
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng
+## người giải quyết
 ```javascript
 web3.eth.ens.resolver(name [, callback]);
 ```
-Returns the resolver contract to an Ethereum address.
-
+Trả lại hợp đồng người giải quyết cho một địa chỉ Ethereum.
 :::note
 
-This method is deprecated please use getResolver
-
-### Parameters
-1. `name` - `String`: The ENS name.
-2. `callback` - `Function`: (optional) Optional callback
-### Returns
-`Promise<Resolver>` - The ENS resolver for this name.
-
+Phương pháp này không được dùng để sử dụng getresolver
+### Thông số
+1. `name` -` String`: Tên es.
+2. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
+`Hứa <Resolver>` - Người giải quyết được cho tên này.
 ### Example
-```javascript
+```jVí dụpt
 web3.eth.ens.resolver('ethereum.eth').then(function (contract) {
     console.log(contract);
 });
 > Contract<Resolver>
 ```
-### Trial
+### Sự thử nghiệm
 <Resolver/>
 
-## getResolver
+## Nhận người giải quyết
 ```javascript
 web3.eth.ens.getResolver(name [, callback]);
 ```
-Returns the resolver contract to an Ethereum address.
-
-### Parameters
-1. `name` - `String`: The ENS name.
-2. `callback` - `Function`: (optional) Optional callback
-### Returns
-`Promise<Resolver>` - The ENS resolver for this name.
-
-### Example
+Trả lại hợp đồng người giải quyết cho một địa chỉ Ethereum.
+### Thông số
+1. `name` - `String`: Tên es.
+2. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
+`Hứa <Resolver>` - Người giải quyết được cho tên này.
+### Ví dụ
 ```javascript
 web3.eth.ens.getResolver('ethereum.eth').then(function (contract) {
     console.log(contract);
 });
 > Contract<Resolver>
 ```
-### Trial
+### Sự thử nghiệm
 <GetResolver/>
 
-## setResolver
+## Đặt bộ giải quyết
 ```javascript
 web3.eth.ens.setResolver(name, address [, txConfig ] [, callback]);
 ```
-Sets the resolver contract address of a name.
-
-### Parameters
-1. `name` - `String`: The ENS name.
-2. `address` - `String`: The contract address of the deployed Resolver contract.
-3. `txConfig` - `Object`: (optional) The transaction options as described here
-4. `callback` - `Function`: (optional) Optional callback
-### Returns
-`PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
-
-### Example
+Đặt địa chỉ hợp đồng của người giải quyết của một tên.
+### Thông số
+1. `name` -` String`: Tên es.
+2. `Địa chỉ` -` String`: Địa chỉ hợp đồng của hợp đồng giải quyết được triển khai.
+3. `txconfig` -` object`: (tùy chọn) Các tùy chọn giao dịch như được mô tả ở đây
+4. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
+`Advievent <Giao dịchReceipt |Giao dịchREVERTINSTRUSTRUSERROR> `
+### Ví dụ
 ```javascript
 web3.eth.ens.setResolver('ethereum.eth', '0x...', {...}).then(function (receipt) {
     console.log(receipt);
 });
 > {...}
 ```
-### Trial
-ENS is not supported in private networks. You can try this example on a public network 
-{/* <SetResolver/> */}
+### Sự thử nghiệm
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng{/* <SetResolver/> */}
 
-## getOwner
+## Nhận chủ sở hữu
 ```javascript
 web3.eth.ens.getOwner(name [, callback]);
 ```
-Returns the owner of a name.
+Trả về chủ sở hữu của một tên.
+### Thông số
+1. `name` -` String`: Tên es.
+2. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
+`Promise<String>` - Địa chỉ của Nhà đăng ký (EOA hoặc CA).
 
-### Parameters
-1. `name` - `String`: The ENS name.
-2. `callback` - `Function`: (optional) Optional callback
-### Returns
-`Promise<String>` - The address of the registrar (EOA or CA).
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.getOwner('ethereum.eth').then(function (owner) {
     console.log(owner);
 });
 > '0x...'
 ```
-### Trial
-ENS is not supported in private networks. You can try this example on a public network 
-{/* <GetOwner/> */}
+### Sự thử nghiệm
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng{/* <GetOwner/> */}
 
-## setOwner
+## Đặt chủ sở hữu
 ```javascript
 web3.eth.ens.setOwner(name [, txConfig ] [, callback]);
 ```
-Sets the owner of the given name.
-
-### Parameters
-1. `name` - `String`: The ENS name.
-2. `txConfig` - `Object`: (optional) The transaction options as described here
-3. `callback` - `Function`: (optional) Optional callback
-### Returns
+Đặt chủ sở hữu của tên đã cho.
+### Thông số
+1. `name` -` String`: Tên es.
+2. `txconfig` -` object`: (tùy chọn) Các tùy chọn giao dịch như được mô tả ở đây
+3. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
 `PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.setOwner('ethereum.eth', {...}).then(function (receipt) {
     console.log(receipt);
 });
 > {...}
 ```
-### Trial
+### Sự thử nghiệm
 {/* <SetOwner/> */}
 ENS is not supported in private networks. You can try this example on a public network 
 
-## getAddress
-```javascript
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng```javascript
 web3.eth.ens.getAddress(ENSName [, callback]);
 ```
-Resolves an ENS name to an Ethereum address.
+Giải quyết một tên riêng cho một địa chỉ Ethereum.
+### Thông số
+1. `Ensname` -` String`: Tên đảm bảo để giải quyết.
+2. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
+`String` - Địa chỉ Ethereum của tên đã cho.
 
-### Parameters
-1. `ENSName` - `String`: The ENS name to resolve.
-2. `callback` - `Function`: (optional) Optional callback
-### Returns
-`String` - The Ethereum address of the given name.
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.getAddress('ethereum.eth').then(function (address) {
     console.log(address);
 })
 > 0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359
 ```
-### Trial
+### Sự thử nghiệm
 {/* <GetAddress/> */}
-ENS is not supported in private networks. You can try this example on a public network 
-
-## setAddress
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng
+## Đặt địa chỉ
 ```javascript
 web3.eth.ens.setAddress(ENSName, address [, txConfig ] [, callback]);
 ```
-Sets the address of an ENS name in this resolver.
+Đặt địa chỉ của một tên ENS trong trình phân giải này.
+### Thông số
+1. `Ensname` -` String`: Tên es
+2. `Địa chỉ` -` String`: Địa chỉ để đặt.
+3. `txconfig` -` object`: (tùy chọn) Các tùy chọn giao dịch như được mô tả ở đây
+4. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+Phát ra một sự kiện `addrchanged`.
 
-### Parameters
-1. `ENSName` - `String`: The ENS name.
-2. `address` - `String`: The address to set.
-3. `txConfig` - `Object`: (optional) The transaction options as described here
-4. `callback` - `Function`: (optional) Optional callback
-Emits an `AddrChanged` event.
-
-### Returns
+### Trả lại
 `PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
 
 ### Example
@@ -257,7 +236,7 @@ web3.eth.ens.setAddress(
     '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359',
     {
         from: '0x9CC9a2c777605Af16872E0997b3Aeb91d96D5D8c'
-    }
+    Ví dụ
 ).then(function (result) {
          console.log(result.events);
 });
@@ -298,24 +277,22 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
     .on('error', console.error);
 });
 ```
-### Trial
+### Sự thử nghiệm
 {/* <SetAddress/> */}
-ENS is not supported in private networks. You can try this example on a public network 
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng
 
-
-## getPubkey
+## Nhận khóa công khai
 ```javascript
 web3.eth.ens.getPubkey(ENSName [, callback]);
 ```
-Returns the X and Y coordinates of the curve point for the public key.
-
-### Parameters
-1. `ENSName` - `String`: The ENS name.
-2. `callback` - `Function`: (optional) Optional callback
-### Returns
+Trả về tọa độ X và Y của điểm đường cong cho khóa công khai.
+### Thông số
+1. `Ensname` -` String`: Tên es
+2. `Callback` -` function`: (Tùy chọn) Gọi lại tùy chọn
+### Trả lại
 `Promise<Object<String, String>>` - The X and Y coordinates.
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.getPubkey('ethereum.eth').then(function (result) {
     console.log(result)
@@ -327,28 +304,26 @@ web3.eth.ens.getPubkey('ethereum.eth').then(function (result) {
     "y": "0x0000000000000000000000000000000000000000000000000000000000000000"
 }
 ```
-### Trial
+### Sự thử nghiệm
 {/* <GetPubkey /> */}
-ENS is not supported in private networks. You can try this example on a public network 
-
-## setPubkey
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng
+## Đặt khóa công khai
 ```javascript
 web3.eth.ens.setPubkey(ENSName, x, y [, txConfig ] [, callback]);
 ```
-Sets the SECP256k1 public key associated with an ENS node.
+Đặt khóa công khai SECP256K1 được liên kết với một nút bảo vệ.
+### Thông số
+1. `Ensname` -` String`: Tên es
+2. `x` -` String`: tọa độ x của khóa công khai.
+3. `y` -` String`: tọa độ y của khóa công khai.
+4. `txconfig` -` object`: (tùy chọn) Các tùy chọn giao dịch như được mô tả ở đây
+5. `callback` -` function`: (tùy chọn) Gọi lại tùy chọn
+Phát ra một sự kiện `pubkeychanged`.
 
-### Parameters
-1. `ENSName` - `String`: The ENS name.
-2. `x` - `String`: The X coordinate of the public key.
-3. `y` - `String`: The Y coordinate of the public key.
-4. `txConfig` - `Object`: (optional) The transaction options as described here
-5. `callback` - `Function`: (optional) Optional callback
-Emits an `PubkeyChanged` event.
-
-### Returns
+### Trả lại
 `PromiEvent<TransactionReceipt | TransactionRevertInstructionError>`
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.ens.setPubkey(
     'ethereum.eth',
@@ -398,6 +373,6 @@ web3.eth.ens.resolver('ethereum.eth').then(function (resolver) {
     .on('error', console.error);
 });
 ```
-### Trial
+### Sự thử nghiệm
 {/* <SetPubkey /> */}
-ENS is not supported in private networks. You can try this example on a public network 
+ENS không được hỗ trợ trong các mạng riêng.Bạn có thể thử ví dụ này trên mạng công cộng

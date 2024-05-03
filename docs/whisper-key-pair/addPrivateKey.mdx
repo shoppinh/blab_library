@@ -4,23 +4,21 @@ sidebar_position: 2
 import AddPrivateKey from "@site/src/components/whisper-key-pair/add-private-key"
 
 # Thêm cặp khóa
-## addPrivateKey
 ```javascript
 web3.shh.addPrivateKey(privateKey, [callback])
 ```
-Stores a key pair derived from a private key, and returns its ID.
+Lưu trữ một cặp khóa có nguồn gốc từ khóa riêng và trả về ID của nó.
+### Thông số
+1. `String` - khóa riêng như hex byte để nhập.
+2. `function` - (tùy chọn) gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`String` - ID khóa thành công và lỗi về thất bại.
 
-### Parameters
-1. `String` - The private key as HEX bytes to import.
-2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`String` - Key ID on success and an error on failure.
-
-###  Example
+###  Ví dụ
 ```javascript
 web3.shh.addPrivateKey('0x8bda3abeb454847b515fa9b404cede50b1cc63cfdeddd4999d074284b4c21e15')
 .then(console.log);
 > "3e22b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f"
 ```
-### Trial
+### Sự thử nghiệm
 <AddPrivateKey/>

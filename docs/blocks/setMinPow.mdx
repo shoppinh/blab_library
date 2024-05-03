@@ -5,24 +5,22 @@ import SetMinPoW from "@site/src/components/blocks/set-min-pow"
 
 # Thiết lập số PoW tối thiểu
 
-## setMinPoW
 ```javascript
 web3.shh.setMinPoW(pow, [callback])
 ```
-Sets the minimal PoW required by this node.
+Đặt POW tối thiểu theo yêu cầu của nút này.
 
-This experimental function was introduced for the future dynamic adjustment of PoW requirement. If the node is overwhelmed with messages, it should raise the PoW requirement and notify the peers. The new value should be set relative to the old value (e.g. double). The old value can be obtained via web3.shh.getInfo().
-
-### Parameters
-1. `Number` - The new PoW requirement.
-2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
+Chức năng thử nghiệm này đã được giới thiệu để điều chỉnh động trong tương lai của yêu cầu POW.Nếu nút bị choáng ngợp với các tin nhắn, nó sẽ tăng yêu cầu POW và thông báo cho các đồng nghiệp.Giá trị mới phải được đặt so với giá trị cũ (ví dụ: gấp đôi).Giá trị cũ có thể được lấy thông qua web3.shh.getInfo ().
+### Thông số
+1. `Number` - Yêu cầu POW mới.
+2. `Function` - (optional) Callback tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
 ### Returns
-`Boolean` - `true` on success, error on failure.
-### Example
+`Boolean` - `true` Về thành công, lỗi về thất bại.
+### Ví dụ
 ```javascript
 web3.shh.setMinPoW(0.9)
 .then(console.log);
 > true
 ```
-### Trial
+### Sự thử nghiệm
 <SetMinPoW/>

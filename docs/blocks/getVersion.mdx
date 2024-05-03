@@ -5,22 +5,20 @@ import Version from "@site/src/components/blocks/get-version"
 
 # Xem phiên bản whisper đang chạy
 
-## getVersion
 ```javascript
 web3.shh.getVersion([callback])
 ```
-Returns the version of the running whisper.
+Trả về phiên bản của The Running Whisper.
+### Thông số
+`Function` - (optional) Callback tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`String` - Phiên bản của tiếng thì thầm hiện tại đang chạy.
 
-### Parameters
-`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`String` - The version of the current whisper running.
-
-### Example
+### Ví dụ
 ```javascript
 web3.shh.getVersion()
 .then(console.log);
 > "5.0"
 ```
-### Trial
+### Sự thử nghiệm
 <Version/>

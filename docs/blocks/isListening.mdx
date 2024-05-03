@@ -5,22 +5,21 @@ import IsListening from "@site/src/components/blocks/is-listening"
 
 # Kiểm tra các block có liên kết với nhau không
 
-## isListening
 ```javascript
 web3.eth.net.isListening([callback])
 web3.bzz.net.isListening([callback])
 web3.shh.net.isListening([callback])
 ```
-Checks if the node is listening for peers.
-### Parameters
-none
-### Returns
-`Promise` returns `Boolean`
-### Example
+Kiểm tra xem nút có nghe cho các đồng nghiệp không.
+### Thông số
+không có
+### Trả lại
+`Promise` trả lại `Boolean`
+### Ví dụ
 ```javascript
 web3.eth.net.isListening()
 .then(console.log);
 > true
 ```
-### Trial
+### Sự thử nghiệm
 <IsListening/>

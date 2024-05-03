@@ -5,21 +5,20 @@ import GetInfo from "@site/src/components/blocks/get-info"
 
 # Xem thông tin node (Số lượng tin nhắn, kích thước tin nhắn, kích thước bộ nhớ)
 
-## getInfo
 ```javascript
 web3.shh.getInfo([callback])
 ```
-Gets information about the current whisper node.
-### Parameters
-`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Object` - The information of the node with the following properties:
+Nhận thông tin về nút thì thầm hiện tại.
+### Thông số
+`Function` - (optional) Callback tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`Object` - Thông tin của nút với các thuộc tính sau:
 
-+ `messages` - `Number`: Number of currently floating messages.
-+ `maxMessageSize` - `Number`: The current message size limit in bytes.
-+ `memory` - `Number`: The memory size of the floating messages in bytes.
-+ `minPow` - `Number`: The current minimum PoW requirement.
-### Example
++ `messages` - `Number`: Số lượng tin nhắn đang trôi nổi.
++ `maxMessageSize` - `Number`: Giới hạn kích thước tin nhắn hiện tại trong byterong byte.
++ `memory` - `Number`: Kích thước bộ nhớ của các thông báo nổi trong byte.
++ `minPow` - `Number`: Yêu cầu POW tối thiểu hiện tại.
+### Ví dụ
 ```javascript
 web3.shh.getInfo()
 .then(console.log);
@@ -30,5 +29,5 @@ web3.shh.getInfo()
 "messages": 20
 }
 ```
-### Trial
+### Sự thử nghiệm
 <GetInfo/>

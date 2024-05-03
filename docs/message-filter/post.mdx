@@ -3,29 +3,26 @@ sidebar_position: 1
 ---
 
 # Đăng tin nhắn lên mạng
-## post
 ```javascript
 web3.shh.post(object [, callback])
 ```
-This method should be called, when we want to post whisper a message to the network.
-
-### Parameters
-1. `Object` - The post object:
-+ `symKeyID` - `String` (optional): ID of symmetric key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
-+ `pubKey` - `String` (optional): The public key for message encryption (Either symKeyID or pubKey must be present. Can not be both.).
-+ `sig` - `String` (optional): The ID of the signing key.
-+ `ttl` - `Number`: Time-to-live in seconds.
-+ `topic` - `String`: 4 Bytes (mandatory when key is symmetric): Message topic.
-+ `payload` - `String`: The payload of the message to be encrypted.
-+ `padding` - `Number` (optional): Padding (byte array of arbitrary length).
-+ `powTime` - `Number` (optional)?: Maximal time in seconds to be spent on proof of work.
+TPhương pháp của anh ấy nên được gọi, khi chúng tôi muốn đăng thông điệp thì thầm lên mạng.
+### Thông số
+1. `Object` - Đối tượng bài:
++ `symKeyID` - `String` (optional): ID của khóa đối xứng để mã hóa tin nhắn (phải có SymkeyId hoặc PubKey. Không thể có cả hai.).
++ `pubKey` - `String` (optional): Chìa khóa công khai để mã hóa tin nhắn (phải có Symkeyid hoặc PubKey. Không thể có cả hai.).
++ `sig` - `String` (optional): ID của khóa ký kết.
++ `ttl` - `Number`: Thời gian sống trong vài giây.
++ `topic` - `String`: 4 byte (bắt buộc khi khóa là đối xứng): Chủ đề tin nhắn.
++ `payload` - `String`: Tải trọng của thông báo sẽ được mã hóa.
++ `padding` - `Number` (optional): Đệm (mảng byte có độ dài tùy ý).
++ `powTime` - `Number` (optional)?: Thời gian tối đa trong vài giây để được sử dụng cho bằng chứng công việc.
 + `powTarget` - `Number` (optional)?: Minimal PoW target required for this message.
-+ `targetPeer` - `Number` (optional): Peer ID (for peer-to-peer message only).
-2. `callback` - `Function`: (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Promise` - returns a promise. Upon success, the `then` function will be passed a string representing the hash of the sent message. On error, the `catch` function will be passed a string containing the reason for the error.
-
-### Example
++ `targetPeer` - `Number` (optional):ID ngang hàng (chỉ dành cho tin nhắn ngang hàng).
+2. `callback` - `Function`: (optional) Callback tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`Promise` - trả lại một lời hứa.Sau khi thành công, hàm `sau đó` sẽ được truyền một chuỗi đại diện cho băm của tin nhắn đã gửi.Theo lỗi, hàm `bắt` sẽ được truyền một chuỗi chứa lý do cho lỗi.
+### Ví dụ
 ```javascript
 var identities = {};
 var subscription = null;
@@ -55,4 +52,4 @@ powTarget: 0.5
 .catch(err => console.log("Error: ", err));
 });
 ```
-### Trial
+### Sự thử nghiệm

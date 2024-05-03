@@ -4,28 +4,27 @@ sidebar_position: 4
 import Upload from "@site/src/components/distributed-apps/upload"
 
 # Upload các tệp, thư mục hoặc dữ liệu thô trên các ứng dụng phân tán (swam)
-## upload
 ```javascript
 web3.bzz.upload(mixed)
 ```
-Uploads files, folders or raw data to swarm.
+Tải lên các tập tin, thư mục hoặc dữ liệu thô lên bầy.
 ### Parameters
-1. `mixed` - `String|Buffer|Uint8Array|Object`: **The data to upload, can be a file content, file Buffer/Uint8Array, multiple files, or a directory or file (only in node.js). The following types are allowed:**
-+ `String|Buffer|Uint8Array`: A file content, file Uint8Array or Buffer to upload, or:
-+ `**Object**`:
-    + **Multiple key values for files and directories. The paths will be kept the same:**
-        + **key must be the files path, or name, e.g. `**"/foo.txt"**` and its value is an object with:**
-            + `type`: The mime-type of the file, e.g. `"text/html"`.
-            + `data`: A file content, file Uint8Array or Buffer to upload.
-    + **Upload a file or a directory from disk in Node.js. Requires and object with the following properties:**
-        + `path`: The path to the file or directory.
-        + `kind`: The type of the source `"directory"`, `"file"` or `"data"`.
-        + `defaultFile` (optional): Path of the “defaultFile” when `"kind"`: `"directory"`, e.g. `"/index.html"`.
-    + **Upload file or folder in the browser. Requires and object with the following properties:**
-        + `pick`: The file picker to launch. Can be `"file"`, `"directory"` or `"data"`.
-### Returns
-`Promise` returning `String`: Returns the content hash of the manifest.
-### Example
+1. `mixed` - `String|Buffer|Uint8Array|Object`:** Dữ liệu để tải lên, có thể là nội dung tệp, bộ đệm tệp/uint8array, nhiều tệp hoặc thư mục hoặc tệp (chỉ trong Node.js).Các loại sau được cho phép: **
++ `String|Buffer|Uint8Array`: Một nội dung tệp, tệp uint8array hoặc bộ đệm để tải lên hoặc:
++ `** Đối tượng **`:
+    + ** Nhiều giá trị chính cho các tệp và thư mục.Các đường dẫn sẽ được giữ giống nhau: **
+        + ** phím phải là đường dẫn tệp hoặc tên, ví dụ:`**"/foo.txt "**` và giá trị của nó là một đối tượng có: **
+            + `type`: loại mime của tệp, ví dụ:`" Text/html "`.
+            + `Data`: Một nội dung tệp, tệp UINT8Array hoặc bộ đệm để tải lên.
+    + ** Tải lên tệp hoặc thư mục từ đĩa trong Node.js.Yêu cầu và đối tượng với các thuộc tính sau: **
+        + `đường dẫn`: Đường dẫn đến tệp hoặc thư mục.
+        + `Kind`: loại của nguồn` "Thư mục" `,` "Tệp" `hoặc` "Dữ liệu" `.
+        + `defaultFile` (tùy chọn): Đường dẫn của DefaultFileFile khi` "loại" `:` "thư mục" `, ví dụ:`" /index.html "`.
+    + ** Tải lên tệp hoặc thư mục trong trình duyệt.Yêu cầu và đối tượng với các thuộc tính sau: **
+        + `pick`: Trình chọn tệp để khởi chạy.Có thể là `" tệp "`, `" thư mục "` hoặc `" dữ liệu "`.
+### Trả lại
+`Promise` returning `String`:Trả về nội dung băm của bản kê khai.
+### Ví dụ
 ```javascript
 var bzz = web3.bzz;
 
@@ -56,5 +55,5 @@ bzz.upload({
 bzz.upload({pick: "file"}) // could also be "directory" or "data"
 .then(console.log);
 ```
-### Trial
+### Sự thử nghiệm
 <Upload/>

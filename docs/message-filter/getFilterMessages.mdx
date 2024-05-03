@@ -4,18 +4,16 @@ sidebar_position: 5
 import GetFilterMessage from "@site/src/components/message-filter/get-filter-message"
 
 # Truy xuất các thông báo phù hợp với tiêu chí bộ lọc
-## getFilterMessages
 ```javascript
 web3.shh.getFilterMessages(id)
 ```
-Retrieve messages that match the filter criteria and are received between the last time this function was called and now.
+Lấy các tin nhắn phù hợp với tiêu chí bộ lọc và được nhận giữa lần cuối cùng chức năng này được gọi và bây giờ.
+### Thông số
+`String`: ID bộ lọc được tạo bằng shh.NewMessageFilter ().
+### Trả lại
+`Array`: Trả về một mảng các đối tượng tin nhắn như web3.shh.subscribe () Trả về thông báo
 
-### Parameters
-`String`: The filter ID created with shh.newMessageFilter().
-### Returns
-`Array`: Returns an array of message objects like web3.shh.subscribe() notification returns
-
-### Example
+### Ví dụ
 ```javascript
 web3.shh.getFilterMessages('2b47fbafb3cce24570812a82e6e93cd9e2551bbc4823f6548ff0d82d2206b326')
 .then(console.log);
@@ -31,5 +29,5 @@ web3.shh.getFilterMessages('2b47fbafb3cce24570812a82e6e93cd9e2551bbc4823f6548ff0
 "ttl": 50
 },{...}]
 ```
-### Trial
+### Sự thử nghiệm
 <GetFilterMessage/>

@@ -5,26 +5,24 @@ import MarkTrustedPeer from "@site/src/components/blocks/mark-trusted-peer"
 
 # Đánh dấu các node tin cậy
 
-## markTrustedPeer
 ```javascript
 web3.shh.markTrustedPeer(enode, [callback])
 ```
-Marks specific peer trusted, which will allow it to send historic (expired) messages.
-
+Đánh dấu sự tin cậy cụ thể, sẽ cho phép nó gửi các tin nhắn lịch sử (hết hạn).
 :::note
-This function is not adding new nodes, the node needs to be an existing peer.
+Hàm này không thêm các nút mới, nút cần phải là một ngang hàng hiện có.
 :::
-### Parameters
-1. `String` - Enode of the trusted peer.
-2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Boolean` - `true` on success, error on failure.
+### Thông số
+1. `String` - ENODE của đồng đẳng đáng tin cậy.
+2. `Function` - (optional) Gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là lần thứ hai.
+### Trả lại
+`Boolean` - `true` Về thành công, lỗi về thất bại.
 
-### Example
+### Ví dụ
 ```javascript
 web3.shh.markTrustedPeer()
 .then(console.log);
 > true
 ```
-### Trial
+### Sự thử nghiệm
 <MarkTrustedPeer/>

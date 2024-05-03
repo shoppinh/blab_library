@@ -4,17 +4,16 @@ sidebar_position: 5
 import Download from "@site/src/components/distributed-apps/download"
 
 # Download các tệp và thư mục từ swarm về dưới dạng bộ nhớ đệm hoặc ổ cứng
-## download
 ```javascript
 web3.bzz.download(bzzHash [, localpath])
 ```
-Downloads files and folders from swarm as buffer or to disk (only node.js).
-### Parameters
-1. `bzzHash` - `String`: The file or directory to download. If the hash is a raw file it will return a Buffer, if a manifest file, it will return the directory structure. If the `localpath` is given, it will return that path where it downloaded the files to.
-2. `localpath` - `String`: The local folder to download the content into. (only node.js)
-### Returns
-`Promise` returning` Buffer|Object|String`: The Buffer of the file downloaded, an object with the directory structure, or the path where it was downloaded to.
-### Example
+Tải xuống các tệp và thư mục từ Swarm dưới dạng bộ đệm hoặc vào đĩa (chỉ Node.js).
+### Thông số
+1. `bzzHash` - `String`:Tệp hoặc thư mục để tải xuống.Nếu băm là một tệp thô, nó sẽ trả về một bộ đệm, nếu một tệp kê khai, nó sẽ trả về cấu trúc thư mục.Nếu `LocalPath` được đưa ra, nó sẽ trả về đường dẫn đó mà nó đã tải xuống các tệp.
+2. `localpath` - `String`: Thư mục địa phương để tải nội dung vào.(Chỉ Node.js)
+### Trả lại
+`Promise` returning` Buffer|Object|String`: Bộ đệm của tệp được tải xuống, một đối tượng có cấu trúc thư mục hoặc đường dẫn được tải xuống.
+### Ví dụ
 ```javascript
 var bzz = web3.bzz;
 
@@ -40,5 +39,5 @@ bzz.download(dirHash, "/target/dir")
 .then(path => console.log(`Downloaded directory to ${path}.`))
 .catch(console.log);
 ```
-### Trial
+### Sự thử nghiệm
 <Download/>

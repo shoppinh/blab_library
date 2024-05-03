@@ -4,18 +4,16 @@ sidebar_position: 1
 import ToHex from "@site/src/components/decentralized-apps/hexa"
 
 # Chuyển về giá trị hexa
-## toHex
 ```javascript
 web3.utils.toHex(mixed)
 ```
-Will auto convert any given value to HEX. Number strings will be interpreted as numbers. Text strings will be interpreted as UTF-8 strings.
+Sẽ tự động chuyển đổi bất kỳ giá trị đã cho thành hex.Chuỗi số sẽ được hiểu là số.Chuỗi văn bản sẽ được hiểu là chuỗi UTF-8.
+### Thông số
+`mixed` - `String|Number|BN|BigNumber`: Đầu vào để chuyển đổi sang hex.
+### Trả lại
+`String`: Chuỗi hex kết quả.
 
-### Parameters
-`mixed` - `String|Number|BN|BigNumber`: The input to convert to HEX.
-### Returns
-`String`: The resulting HEX string.
-
-### Example
+### Ví dụ
 ```javascript
 web3.utils.toHex('234');
 > "0xea"
@@ -32,5 +30,5 @@ web3.utils.toHex(new BigNumber('234'));
 web3.utils.toHex('I have 100€');
 > "0x49206861766520313030e282ac"
 ```
-### Trial
+### Sự thử nghiệm
 <ToHex/>

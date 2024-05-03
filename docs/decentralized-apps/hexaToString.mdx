@@ -4,22 +4,20 @@ sidebar_position: 2
 import HexToString from "@site/src/components/decentralized-apps/hexa-to-string"
 
 # Chuyển giá trị hexa về số dạng chuỗi
-## hexToNumberString
 ```javascript
 web3.utils.hexToNumberString(hex)
 ```
-Returns the number representation of a given HEX value as a string.
+Trả về biểu diễn số của một giá trị hex đã cho dưới dạng chuỗi.
+### Thông số
+`hexString` - `String|HEX`: Một chuỗi để băm.
+### Trả lại
+`String`: Số dưới dạng chuỗi.
 
-### Parameters
-`hexString` - `String|HEX`: A string to hash.
-### Returns
-`String`: The number as a string.
-
-Example
+### Ví dụ
 ```javascript
 
 web3.utils.hexToNumberString('0xea');
 > "234"
 ``` 
-### Trial
+### Sự thử nghiệm
 <HexToString/>

@@ -9,20 +9,18 @@ import ToIBan from "@site/src/components/smart-contracts/eth-iban/to-iban";
 
 
 # Chuyển đổi địa chỉ của IBAN (International Bank Account Number) và BBAN (Basic Bank Account Number)
-The `web3.eth.Iban` function converts Ethereum addresses from and to IBAN and BBAN.
-
-## Iban instance
-This instance of Iban.
-```javascript
+Hàm `Web3.eth.iban` chuyển đổi địa chỉ Ethereum từ và sang IBAN và BBAN.
+## Ví dụ Iban
+Ví dụ này của Iban.```javascript
 > Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
 ```
 ## Iban constructor
 ```javascript
 new web3.eth.Iban(ibanAddress)
 ```
-Generates a iban object with conversion methods and validity checks.
+Tạo đối tượng IBAN với các phương thức chuyển đổi và kiểm tra tính hợp lệ.
 
-Also has singleton functions for conversion like:
+Cũng có các chức năng Singleton để chuyển đổi như:
 
 + Iban.toAddress()
 + Iban.toIban()
@@ -30,96 +28,92 @@ Also has singleton functions for conversion like:
 + Iban.fromBban()
 + Iban.createIndirect()
 + Iban.isValid()
-### Parameters
-`String`: the IBAN address to instantiate an Iban instance from.
-### Returns
-`Object` - The Iban instance.
+### Thông số
+`String`: Địa chỉ IBAN để khởi tạo một ví dụ iban từ.
+### Trả lại
+`Object` - Trường hợp Iban.
 
-### Example
+### Ví dụ
 ```javascript
 var iban = new web3.eth.Iban("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
 ```
-### Trial
+### Sự thử nghiệm
 <Constructor/>
-## toAddress
-Static function.
+## Đến địa chỉ
+Hàm tĩnh.
 ```javascript
 web3.eth.Iban.toAddress(ibanAddress)
 ```
-Singleton: Converts a direct IBAN address into an Ethereum address.
-
+Singleton: Chuyển đổi địa chỉ IBAN trực tiếp thành một địa chỉ Ethereum.
 :::note
 
-This method also exists on the IBAN instance.
+Phương pháp này cũng tồn tại trong trường hợp IBAN.
 :::
-### Parameters
-`String`: the IBAN address to convert.
-### Returns
-`String` - The Ethereum address.
+### Thông số
+`String`: Địa chỉ IBAN để chuyển đổi.
+###Trả lại
+`String` - Địa chỉ Ethereum.
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.Iban.toAddress("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
 > "0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8"
 ```
-### Trial
+### Sự thử nghiệm
 <ToAddress/>
 
-## toIban
-Static function.
+## đến Iban
+Hàm tĩnh.
 ```javascript
 web3.eth.Iban.toIban(address)
 ```
-Singleton: Converts an Ethereum address to a direct IBAN address.
+Singleton: Chuyển đổi địa chỉ Ethereum thành địa chỉ IBAN trực tiếp.
 
-### Parameters
-`String`: the Ethereum address to convert.
-### Returns
-`String` - The IBAN address.
+### Thông số
+`String`: Địa chỉ Ethereum để chuyển đổi.
+### Trả lại
+`String` - Địa chỉ IBAN.
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.Iban.toIban("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"
 ```
-### Trial
+### Sự thử nghiệm
 <ToIBan/>
-## fromAddress
-Static function, returns IBAN instance.
+## Từ địa chỉ
+Hàm tĩnh, trả về ví dụ IBAN.
 ```javascript
 web3.eth.Iban.fromAddress(address)
 ```
 Singleton: Converts an Ethereum address to a direct IBAN instance.
 
-### Parameters
-`String`: the Ethereum address to convert.
-### Returns
-`Object` - The IBAN instance.
-
-### Example
+### Thông số
+`String`: Địa chỉ Ethereum để chuyển đổi.
+### Trả lại
+`Object` - Trường hợp Iban.
+### Ví dụ
 ```javascript
 web3.eth.Iban.fromAddress("0x00c5496aEe77C1bA1f0854206A26DdA82a81D6D8");
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
-### Trial
+### Sự thử nghiệm
 <FromAddress/>
 
-## fromBan
+## Từ ban
 ```javascript
 web3.eth.Iban.fromBban(bbanAddress)
 ```
-Singleton: Converts an BBAN address to a direct IBAN instance.
-
-### Parameters
-`String`: the BBAN address to convert.
+Singleton: Chuyển đổi một địa chỉ BBAN thành một ví dụ iban trực tiếp.
+### Thông số
+`String`: Địa chỉ BBAN để chuyển đổi.
 ### Returns
-`Object` - The IBAN instance.
-
-### Example
+`Object` - Ví dụ Iban.
+### Ví dụ
 ```javascript
 web3.eth.Iban.fromBban('ETHXREGGAVOFYORK');
 > Iban {_iban: "XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS"}
 ```
-### Trial
+### Sự thử nghiệm
 <FromBBan/>

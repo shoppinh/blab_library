@@ -10,22 +10,20 @@ import DecodeParameters from "@site/src/components/smart-contracts/eth-abi/decod
 
 
 # Mã hóa và giải mã các tham số thành ABI (Giao diện ứng dụng nhị phân)
-The `web3.eth.abi` functions let you encode and decode parameters to ABI (Application Binary Interface) for function calls to the EVM (Ethereum Virtual Machine).
+Các hàm `Web3.eth.abi` cho phép bạn mã hóa và giải mã các tham số thành ABI (Giao diện nhị phân ứng dụng) cho các cuộc gọi chức năng đến EVM (Máy ảo Ethereum).
+## Mã hóa tham số
 
-
-## encodeParameter
 ```javascript
 web3.eth.abi.encodeParameter(type, parameter);
 ```
-Encodes a parameter based on its type to its ABI representation.
+Mã hóa một tham số dựa trên loại của nó thành đại diện ABI của nó.
+### Thông số
+1. `type` -` chuỗi | Đối tượng`: Loại tham số, xem tài liệu Sollity để biết danh sách các loại.
+2. `Tham số` -` hỗn hợp`: Tham số thực tế để mã hóa.
+### Trả lại
+`String` - Tham số được mã hóa ABI.
 
-### Parameters
-1. `type` - `String|Object`: The type of the parameter, see the solidity documentation for a list of types.
-2. `parameter` - `Mixed`: The actual parameter to encode.
-### Returns
-`String` - The ABI encoded parameter.
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.abi.encodeParameter('uint256', '2345675643');
 > "0x000000000000000000000000000000000000000000000000000000008bd02b7b"
@@ -64,22 +62,20 @@ web3.eth.abi.encodeParameter(
 );
 > "0x000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000038000000000000000000000000000000000000000000000000000000000000002d000000000000000000000000000000000000000000000000000000000000004e"
 ```
-### Trial
+### Sự thử nghiệm
 <EncodeParameter/>
 
-## encodeParameters
+## Mã hóa nhiều tham số
 ```javascript
 web3.eth.abi.encodeParameters(typesArray, parameters);
 ```
-Encodes a function parameters based on its JSON interface object.
-
-### Parameters
-1. `typesArray` - `Array<String|Object>|Object`: An array with types or a JSON interface of a function. See the solidity documentation for a list of types.
-2. `parameters` - `Array`: The parameters to encode.
-### Returns
-`String` - The ABI encoded parameters.
-
-### Example
+Mã hóa một tham số chức năng dựa trên đối tượng giao diện JSON của nó.
+### Thông số
+1. `typesArray` - `Array<String|Object>|Object`:Một mảng có loại hoặc giao diện JSON của một hàm.Xem tài liệu vững chắc cho một danh sách các loại.
+2. `parameters` - `Array`: Các tham số để mã hóa.
+### Trả lại
+`String` - Các tham số được mã hóa ABI.
+### Ví dụ
 ```javascript
 web3.eth.abi.encodeParameters(['uint256','string'], ['2345675643', 'Hello!%']);
 > "0x000000000000000000000000000000000000000000000000000000008bd02b7b0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000748656c6c6f212500000000000000000000000000000000000000000000000000"
@@ -117,22 +113,21 @@ web3.eth.abi.encodeParameters(
 ```
 
 
-### Trial
+### Sự thử nghiệm
 <EncodeParameters/>
 
-## decodeParameter
+## Giải mã tham số
 ```javascript
 web3.eth.abi.decodeParameter(type, hexString);
 ```
-Decodes an ABI encoded parameter to its JavaScript type.
+Giải mã một tham số được mã hóa ABI cho loại JavaScript của nó.
+### Thông số
+1. `type` -` chuỗi | Đối tượng`: Loại tham số, xem tài liệu Sollity để biết danh sách các loại.
+2. `HexString` -` String`: Mã byte ABI để giải mã.
+### Trả lại
+`Mixed` - Tham số được giải mã.
 
-### Parameters
-1. `type` - `String|Object`: The type of the parameter, see the solidity documentation for a list of types.
-2. `hexString` - `String`: The ABI byte code to decode.
-### Returns
-`Mixed` - The decoded parameter.
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.abi.decodeParameter('uint256', '0x0000000000000000000000000000000000000000000000000000000000000010');
 > "16"
@@ -195,22 +190,21 @@ web3.eth.abi.decodeParameter(
     }
 }
 ```
-### Trial
+### Sự thử nghiệm
 <DecodeParameter/>
 
-## decodeParameters
+## Giải mã nhiều tham số
 ```javascript
 web3.eth.abi.decodeParameters(typesArray, hexString);
 ```
-Decodes ABI encoded parameters to its JavaScript types.
+Giải mã các tham số được mã hóa ABI cho các loại JavaScript của nó.
+### Thông số
+1. `typesArray` - `Array<String|Object>|Object`: Một mảng có loại hoặc một mảng đầu ra giao diện JSON.Xem tài liệu vững chắc cho một danh sách các loại.
+2. `hexString` - `String`: Mã byte ABI để giải mã.
+### Trả lại
+`Object` - Đối tượng kết quả chứa các tham số được giải mã.
 
-### Parameters
-1. `typesArray` - `Array<String|Object>|Object`: An array with types or a JSON interface outputs array. See the solidity documentation for a list of types.
-2. `hexString` - `String`: The ABI byte code to decode.
-### Returns
-`Object` - The result object containing the decoded parameters.
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.abi.decodeParameters(['string', 'uint256'], '0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000ea000000000000000000000000000000000000000000000000000000000000000848656c6c6f212521000000000000000000000000000000000000000000000000');
 > Result { '0': 'Hello!%!', '1': '234' }
@@ -266,5 +260,5 @@ web3.eth.abi.decodeParameters([
     }
 }
 ```
-### Trial
+### Sự thử nghiệm
 <DecodeParameters/>

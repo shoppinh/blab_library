@@ -4,23 +4,21 @@ sidebar_position: 3
 import UTFToHex from "@site/src/components/decentralized-apps/utf-to-hexa"
 
 # Chuyển chuỗi định dạng UTF-8 về giá trị hexa
-## utf8ToHex
 ```javascript
 web3.utils.utf8ToHex(string)
 web3.utils.stringToHex(string) // ALIAS
 web3.utils.fromUtf8(string) // ALIAS, deprecated
 ```
-Returns the HEX representation of a given UTF-8 string.
+Trả về biểu diễn HEX của một chuỗi UTF-8 đã cho.
+### Thông số
+`string` - `String`: Một chuỗi UTF-8 để chuyển đổi thành chuỗi hex.
+### Trả lại
+`String`: Chuỗi hex.
 
-### Parameters
-`string` - `String`: A UTF-8 string to convert to a HEX string.
-### Returns
-`String`: The HEX string.
-
-### Example
+### Ví dụ
 ```javascript
 web3.utils.utf8ToHex('I have 100€');
 > "0x49206861766520313030e282ac"
 ```
-### Trial
+### Sự thử nghiệm
 <UTFToHex/>

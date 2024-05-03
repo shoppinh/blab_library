@@ -7,45 +7,44 @@ import DefaultBlock from "@site/src/components/smart-contracts/eth-contract/defa
 import DefaultChain from "@site/src/components/smart-contracts/eth-contract/default-chain";
 
 # Tương tác với hợp đồng thông minh trên blockchain
-## new contract
-### Parameters
-1. `jsonInterface` - `Object`: The json interface for the contract to instantiate
-2. `address` - String (optional): The address of the smart contract to call.
-3. `options` - Object **(optional): The options of the contract. Some are used as fallbacks for calls and transactions:**
-    + `from` - String: The address transactions should be made from.
-    + `gasPrice` - String: The gas price in wei to use for transactions.
-    + `gas` - Number: The maximum gas provided for a transaction (gas limit).
-    + `data` - String: The byte code of the contract. Used when the contract gets deployed.
-### Returns
-    `Object`: The contract instance with all its methods and events.
-### Example
+## Hợp đồng mới
+### Thông số
+1. `jsoninterface` -` object`: giao diện JSON cho hợp đồng để khởi tạo
+2. `Địa chỉ` - Chuỗi (tùy chọn): Địa chỉ của hợp đồng thông minh để gọi.
+3. `Tùy chọn` - Đối tượng ** (Tùy chọn): Các tùy chọn của hợp đồng.Một số được sử dụng làm dự phòng cho các cuộc gọi và giao dịch: **
+    + `Từ` - Chuỗi: Các giao dịch địa chỉ nên được thực hiện từ.
+    + `gasprice` - Chuỗi: Giá khí trong WEI để sử dụng cho các giao dịch.
+    + `gas` - Số: Khí tối đa được cung cấp cho một giao dịch (giới hạn khí).
+    + `Data` - Chuỗi: Mã byte của hợp đồng.Được sử dụng khi hợp đồng được triển khai.
+### Trả lại
+    `Object`: phiên bản hợp đồng với tất cả các phương thức và sự kiện của nó.
+### Ví dụ
 ```javascript
 var myContract = new web3.eth.Contract([...], '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe', {
     from: '0x1234567890123456789012345678901234567891', // default from address
     gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
 });
 ```
-### Trial
+### Sự thử nghiệmử nghiệm
 
 <NewContract/>
 
-## = Properties =
+## = Của cải =
 
-## defaultAccount
+## tài khoản mặc định
 ```javascript
 web3.eth.Contract.defaultAccount
 contract.defaultAccount // on contract instance
 ```
+Địa chỉ mặc định này được sử dụng làm mặc định `" từ "` thuộc tính, nếu không có `" từ "` thuộc tính được chỉ định trong các phương thức sau:
 
-This default address is used as the default `"from"` property, if no `"from"` property is specified in for the following methods:
-
-- web3.eth.sendTransaction()
-- web3.eth.call()
-- new web3.eth.Contract() -> myContract.methods.myMethod().call()
-- new web3.eth.Contract() -> myContract.methods.myMethod().send()
-###  Property
-    `String` - 20 Bytes: Any ethereum address. You should have the private key for that address in your node or keystore. (Default is `undefined`)
-### Example
+- Web3.eth.SendTransaction ()
+- Web3.eth.call ()
+- Web3.eth.Contract () -> myContract.methods.mymethod (). Gọi ()
+- new Web3.eth.Contract () -> myContract.methods.mymethod (). Gửi ()
+###  Thuộc tính
+    `String` - 20 Bytes: Bất kỳ địa chỉ Ethereum.Bạn nên có khóa riêng cho địa chỉ đó trong nút hoặc kho khóa của bạn.(Mặc định là `không xác định ')
+### Ví dụ
 ```javascript
 web3.eth.defaultAccount;
 > undefined
@@ -53,27 +52,27 @@ web3.eth.defaultAccount;
 // set the default account
 web3.eth.defaultAccount = '0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe';
 ```
-### Trial
+### Sự thử nghiệm
 
 <DefaultAccount/>
-## defaultBlock
+## khối mặc định
 ```javascript
 web3.eth.Contract.defaultBlock
 contract.defaultBlock // on contract instance
 ```
 
-    The default block is used for certain methods. You can override it by passing in the defaultBlock as last parameter. The default value is `"latest"`.
-###  Property
-    The default block parameters can be one of the following:
+Khối mặc định được sử dụng cho một số phương thức nhất định.Bạn có thể ghi đè nó bằng cách chuyển trong DefaultBlock dưới dạng tham số cuối cùng.Giá trị mặc định là `mới nhất" ".
+###  Thuộc tính
+   Các tham số khối mặc định có thể là một trong những điều sau đây:
 
-    + `Number|BN|BigNumber`: A block number
-    + `"earliest"` - `String`: The genesis block
-    + `"latest"` - `String`: The latest block (current head of the blockchain)
-    + `"pending"` - `String`: The currently mined block (including pending transactions)
-    + `"finalized"` - `String`: (For POS networks) The finalized block is one which has been accepted as canonical by >2/3 of validators.
-    + `"safe"` - `String`: (For POS networks) The safe head block is one which under normal network conditions, is expected to be included in the canonical chain. Under normal network conditions the safe head and the actual tip of the chain will be equivalent (with safe head trailing only by a few seconds). Safe heads will be less likely to be reorged than the proof of work networks latest blocks.
-    Default is `"latest"`.
-### Example
+    + `Số | BN | Bignumber`: Số khối
+    + `" sớm nhất "` - `String`: khối Genesis
+    + `" Mới nhất "` - `String`: Khối mới nhất (đầu hiện tại của blockchain)
+    + `" đang chờ xử lý "` - `String`: Khối hiện đang được khai thác (bao gồm cả giao dịch đang chờ xử lý)
+    + `" Hoàn thành "` - `String`: (đối với mạng POS) Khối hoàn thiện là một khối đã được chấp nhận là chính tắc bởi> 2/3 của trình xác nhận.
+    + `" An toàn "` - `String`: (Đối với mạng POS) Khối đầu an toàn là một trong các điều kiện mạng bình thường, dự kiến sẽ được đưa vào chuỗi chính tắc.Trong điều kiện mạng bình thường, đầu an toàn và đầu thực tế của chuỗi sẽ tương đương (với đầu an toàn chỉ kéo dài trong vài giây).Những người đứng đầu an toàn sẽ ít có khả năng được đưa ra so với bằng chứng của các mạng mới nhất.
+    Mặc định là `" mới nhất "".
+### Ví dụ
 ```javascript
 contract.defaultBlock;
 > "latest"
@@ -81,25 +80,24 @@ contract.defaultBlock;
 // set the default block
 contract.defaultBlock = 231;
 ```
-### Trial
+### Sự thử nghiệm
 <DefaultBlock/>
-## defaultChain
+## Chuỗi mặc định
 ```javascript
 contract.defaultChain
 ```
-The default chain property is used for signing transactions locally.
+Thuộc tính chuỗi mặc định được sử dụng để ký giao dịch cục bộ.
 
-### Property
-The default chain property can be one of the following:
+### Thuộc tính
+Thuộc tính chuỗi mặc định có thể là một trong những điều sau đây:
 
-`"mainnet"` - `String`
-`"goerli"` - `String`
-`"kovan"` - `String`
-`"rinkeby"` - `String`
-`"ropsten"` - `String`
-Default is `"mainnet"`
-
-### Example
+`" mainnet "` - `String`
+`" Goerli "` - `String`
+`" Kovan "` - `String`
+`" Rinkeby "` - `String`
+`" Ropsten "` - `String`
+Mặc định là `" mainnet "`
+### Ví dụ
 ```javascript
 contract.defaultChain;
 > "mainnet"
@@ -108,5 +106,5 @@ contract.defaultChain;
 contract.defaultChain = 'goerli';
 
 ```
-### Trial
+### Sự thử nghiệm
 <DefaultChain/>

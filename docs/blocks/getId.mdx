@@ -5,22 +5,21 @@ import GetId from "@site/src/components/blocks/get-id"
 
 # Nhận ID mạng hiện tại
 
-## getId
 ```javascript
 web3.eth.net.getId([callback])
 web3.bzz.net.getId([callback])
 web3.shh.net.getId([callback])
 ```
-Gets the current network ID.
-## Parameters
+Nhận ID mạng hiện tại.
+## Thông số
 none
-### Returns
-`Promise` returns `Number`: The network ID.
-### Example
+### Trả lại
+`Promise` returns `Number`: ID mạng.
+### Ví dụ
 ```javascript
 web3.eth.net.getId()
 .then(console.log);
 > 1
 ```
-### Trial
+### Sự thử nghiệm
 <GetId />

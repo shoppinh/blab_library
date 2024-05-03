@@ -9,7 +9,7 @@ import GetPeerCount from "@site/src/components/smart-contracts/eth-net/get-peerc
 
 
 # Lấy thông tin từ mạng hiện tại
-The `web3-net` package allows you to interact with an Ethereum node’s network properties.
+Gói `Web3-net` cho phép bạn tương tác với các thuộc tính mạng của Node Node.
 ```javascript
 var Net = require('web3-net');
 
@@ -27,71 +27,67 @@ var web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546')
 // -> web3.shh.net
 ```
 
-## getId
+## lấy ID
 ```javascript
 web3.eth.net.getId([callback])
 web3.bzz.net.getId([callback])
 web3.shh.net.getId([callback])
 ```
-Gets the current network ID.
+Nhận ID mạng hiện tại.
+### Thông số
+không có
 
-### Parameters
-none
-
-### Returns
-`Promise` returns `Number`: The network ID.
-
-### Example
+### Trả lại
+`Promise` trả về` number`: ID mạng.
+### Ví dụ
 ```javascript
 web3.eth.net.getId()
 .then(console.log);
 > 1
 ```
-### Trial
+### Sự thử nghiệm
 <GetId/>
 
-## isListening
+## Kiêm tra các nút có nghe
 ```javascript
 web3.eth.net.isListening([callback])
 web3.bzz.net.isListening([callback])
 web3.shh.net.isListening([callback])
 ```
-Checks if the node is listening for peers.
+Kiểm tra xem nút có nghe cho các đồng nghiệp không.
+### Thông số
+không có
 
-### Parameters
-none
+### Trả lại
+`Promise` trả lại` boolean`
 
-### Returns
-`Promise` returns `Boolean`
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.net.isListening()
 .then(console.log);
 > true
 ```
-### Trial
+### Sự thử nghiệm
 <IsListening/>
 
-## getPeerCount
+## Đếm số lượng kết nối
 ```javascript
 web3.eth.net.getPeerCount([callback])
 web3.bzz.net.getPeerCount([callback])
 web3.shh.net.getPeerCount([callback])
 ```
-Get the number of peers connected to.
+Nhận số lượng đồng nghiệp kết nối với.
+### Thông số
+không có
 
-### Parameters
-none
+### Trả lại
+`Promise` trả về` number`
 
-### Returns
-`Promise` returns `Number`
-
-### Example
+### Ví dụ
 ```javascript
 web3.eth.net.getPeerCount()
 .then(console.log);
 > 25
 ```
-### Trial
+### Sự thử nghiệm
 <GetPeerCount/>

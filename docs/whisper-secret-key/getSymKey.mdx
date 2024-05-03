@@ -5,23 +5,20 @@ import GetSymKey from "@site/src/components/whisper-secret-key/get-sym-key"
 
 # Kiểm tra xem khóa đối xứng được lưu với ID hay không
 
-## getSymKey
 ```javascript
 web3.shh.getSymKey(id, [callback])
 ```
-Returns the symmetric key associated with the given ID.
-
-### Parameters
-1. `String` - The key pair ID, returned by the creation functions (shh.newKeyPair and shh.addPrivateKey).
-2. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`String` - The raw symmetric key on success and an error on failure.
-
-### Example
+Trả về khóa đối xứng được liên kết với ID đã cho.
+### Thông số
+1. `String` - ID cặp khóa, được trả về bởi các chức năng tạo (shh.newKeypair và shh.addprivateKey).
+2. `function` - (tùy chọn) gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`String` - Khóa đối xứng thô khi thành công và lỗi về thất bại.
+### Ví dụ
 ```javascript
 web3.shh.getSymKey('af33b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f')
 .then(console.log);
 > "0xa82a520aff70f7a989098376e48ec128f25f767085e84d7fb995a9815eebff0a"
 ```
-### Trial
+### Sự thử nghiệm
 <GetSymKey/>

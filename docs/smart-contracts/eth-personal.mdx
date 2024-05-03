@@ -10,10 +10,9 @@ import SendTransaction from "@site/src/components/smart-contracts/eth-personal/s
 
 # Tương tác với các tài khoản trên node
 
-The `web3-eth-personal` package allows you to interact with the Ethereum node’s accounts.
-
+Gói `Web3-eth-personal` cho phép bạn tương tác với các tài khoản Ethereum Node.
 :::note
-Many of these functions send sensitive information like passwords. Never call these functions over a unsecured Websocket or HTTP provider, as your password will be sent in plain text!
+Nhiều trong số các chức năng này gửi thông tin nhạy cảm như mật khẩu.Không bao giờ gọi các chức năng này qua nhà cung cấp WebSocket hoặc HTTP không có bảo đảm, vì mật khẩu của bạn sẽ được gửi bằng văn bản đơn giản!
 :::
 ```javascript
 var Personal = require('web3-eth-personal');
@@ -29,7 +28,7 @@ var web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546')
 
 // -> web3.eth.personal
 ```
-## setProvider
+## Đặt nhà cung cấp
 ```javascript
 web3.setProvider(myProvider)
 web3.eth.setProvider(myProvider)
@@ -37,18 +36,16 @@ web3.shh.setProvider(myProvider)
 web3.bzz.setProvider(myProvider)
 ...
 ```
-Will change the provider for its module.
-
+Sẽ thay đổi nhà cung cấp cho mô -đun của nó.
 :::note
 
-When called on the umbrella package web3 it will also set the provider for all sub modules web3.eth, web3.shh, etc. EXCEPT web3.bzz which needs a separate provider at all times.
+Khi được gọi trên gói Umbrella Web3, nó cũng sẽ đặt nhà cung cấp cho tất cả các mô -đun phụ Web3.eth, Web3.shh, v.v. ngoại trừ Web3.bzz cần một nhà cung cấp riêng biệt mọi lúc.
 :::
-### Parameters
-`Object` - myProvider: a valid provider.
-### Returns
+### Thông số
+`Object` - MyProvider: một nhà cung cấp hợp lệ.
+### Trả lại
 `Boolean`
-
-### Example: Local Geth Node
+### Ví dụ: Nút Geth cục bộ
 ```javascript
 var Web3 = require('web3');
 var web3 = new Web3('http://localhost:8545');
@@ -68,16 +65,16 @@ var web3 = new Web3(new Web3.providers.IpcProvider('/Users/myuser/Library/Ethere
 // on windows the path is: "\\\\.\\pipe\\geth.ipc"
 // on linux the path is: "/users/myuser/.ethereum/geth.ipc"
 ```
-### Example: Remote Node Provider
+### Ví dụ: Nhà cung cấp nút từ xa
 ```javascript
 // Using a remote node provider, like Alchemy (https://www.alchemyapi.io/supernode), is simple.
 var Web3 = require('web3');
 var web3 = new Web3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
 ```
-### Trial
+### Sự thử nghiệm
 <SetProvider/>
 
-## givenProvider
+## đưa ra nhà cung cấp
 ```javascript
 web3.givenProvider
 web3.eth.givenProvider
@@ -85,59 +82,56 @@ web3.shh.givenProvider
 web3.bzz.givenProvider
 ...
 ```
-When using web3.js in an Ethereum compatible browser, it will set with the current native provider by that browser. Will return the given provider by the (browser) environment, otherwise null.
-
-### Returns
-`Object`: The given provider set or null;
-### Trial
+Khi sử dụng web3.js trong trình duyệt tương thích Ethereum, nó sẽ được đặt với nhà cung cấp gốc hiện tại bởi trình duyệt đó.Sẽ trả lại nhà cung cấp đã cho bởi môi trường (trình duyệt), nếu không thì không.
+### Trả lại
+`Object`: Các nhà cung cấp đã cho hoặc null;
+### Sự thử nghiệm
 <GivenProvider/>
-## newAccount
+## tài khoản mới
 ```javascript
 web3.eth.personal.newAccount(password, [callback])
 Creates a new account.
 ```
 :::note
 
-Never call this function over a unsecured Websocket or HTTP provider, as your password will be sent in plain text!
+Không bao giờ gọi chức năng này qua nhà cung cấp WebSocket hoặc HTTP không có bảo đảm, vì mật khẩu của bạn sẽ được gửi bằng văn bản đơn giản!
 :::
-### Parameters
-`password` - `String`: The password to encrypt this account with.
-### Returns
-`Promise` returns `String`: The address of the newly created account.
+### Thông số
+`Mật khẩu` -` String`: Mật khẩu để mã hóa tài khoản này bằng.
+### Trả lại
+`Promise` trả về` String`: địa chỉ của tài khoản mới được tạo.
 
-### Example
+### Ví dụ
 ```javascript
 web3.eth.personal.newAccount('!@superpassword')
 .then(console.log);
 > '0x1234567891011121314151617181920212223456'
 ```
-### Trial
+### Sự thử nghiệm
 <NewAccount/>
-## sign
+## Ký
 ```javascript
 web3.eth.personal.sign(dataToSign, address, password [, callback])
 ```
-The sign method calculates an Ethereum specific signature with:
+Phương pháp dấu hiệu tính toán một chữ ký cụ thể Ethereum với:
 ```javascript
 sign(keccak256("\x19Ethereum Signed Message:\n" + dataToSign.length + dataToSign)))
 ```
-Adding a prefix to the message makes the calculated signature recognisable as an Ethereum specific signature.
+Thêm một tiền tố vào thông báo làm cho chữ ký được tính toán có thể nhận ra là chữ ký cụ thể của Ethereum.
 
-If you have the original message and the signed message, you can discover the signing account address using web3.eth.personal.ecRecover. See example below.
-
+Nếu bạn có tin nhắn gốc và tin nhắn đã ký, bạn có thể khám phá địa chỉ tài khoản ký bằng Web3.eth.personal.ecrecover.Xem ví dụ dưới đây.
 :::note
 
-Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
+Gửi mật khẩu tài khoản của bạn qua kết nối HTTP RPC không có bảo đảm là rất không an toàn.
 :::
-### Parameters
-1. `String` - Data to sign. If String it will be converted using web3.utils.utf8ToHex.
-2. `String` - Address to sign data with.
-3. `String` - The password of the account to sign data with.
-4. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Promise` returns `String` - The signature.
-
-### Example
+### Thông số
+1. `String` - Dữ liệu để ký.Nếu chuỗi nó sẽ được chuyển đổi bằng Web3.utils.utf8tohex.
+2. `String` - Địa chỉ để ký dữ liệu với.
+3. `String` - Mật khẩu của tài khoản để ký dữ liệu.
+4. `function` - (tùy chọn) gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`Promise` trả về` String` - chữ ký.
+### Ví dụ
 ```javascript
 web3.eth.personal.sign("Hello world", "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe", "test password!")
 .then(console.log);
@@ -153,27 +147,25 @@ web3.eth.personal.ecRecover("Hello world", "0x30755ed65396...etc...")
 .then(console.log);
 > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
 ```
-### Trial
+### Sự thử nghiệm
 <Sign/>
-## signTransaction
+## ký giao dịch
 ```javascript
 web3.eth.personal.signTransaction(transaction, password [, callback])
 ```
-Signs a transaction. This account needs to be unlocked.
-
+Ký một giao dịch.Tài khoản này cần được mở khóa.
 :::note
 
-Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
+Gửi mật khẩu tài khoản của bạn qua kết nối HTTP RPC không có bảo đảm là rất không an toàn.
 :::
 
-### Parameters
-1. `Object` - The transaction data to sign web3.eth.sendTransaction() for more.
-2. `String` - The password of the from account, to sign the transaction with.
-3. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Promise` returns `Object` - The RLP encoded transaction. The raw property can be used to send the transaction using web3.eth.sendSignedTransaction.
-
-### Example
+### Thông số
+1. `Object` - Dữ liệu giao dịch để ký Web3.eth.SendTransaction () để biết thêm.
+2. `String` - Mật khẩu của tài khoản, để ký giao dịch với.
+3. `Function` - (Tùy chọn) Cuộc gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+###Trả lại
+`Promise` trả về` Object` - Giao dịch được mã hóa RLP.Thuộc tính RAW có thể được sử dụng để gửi giao dịch bằng Web3.eth.SendsignTransaction.
+### Ví dụ
 ```javascript
 web3.eth.signTransaction({
     from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
@@ -199,26 +191,24 @@ web3.eth.signTransaction({
     }
 }
 ```
-### Trial
+### Sự thử nghiệm
 <SingTransaction/>
-## sendTransaction
+## Gửi giao dịch
 ```javascript
 web3.eth.personal.sendTransaction(transactionOptions, password [, callback])
 ```
-This method sends a transaction over the management API.
+Phương pháp này gửi một giao dịch qua API quản lý.
 
 :::note
 
-Sending your account password over an unsecured HTTP RPC connection is highly unsecure.
-
-### Parameters
-1. `Object` - The transaction options
-2. `String` - The passphrase for the current account
-3. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`Promise<string>` - The transaction hash.
-
-### Example
+Gửi mật khẩu tài khoản của bạn qua kết nối HTTP RPC không có bảo đảm là rất không an toàn.
+### Thông số
+1. `Object` - Các tùy chọn giao dịch
+2. `String` - Cụm mật khẩu cho tài khoản hiện tại
+3. `Function` - (Tùy chọn) Cuộc gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.hai.
+### Trả lại
+`Promise <String>` - Giao dịch băm.
+### Ví dụ
 ```javascript
 web3.eth.personal.sendTransaction({
     from: "0xEB014f8c8B418Db6b45774c326A0E64C78914dC0",
@@ -230,5 +220,5 @@ web3.eth.personal.sendTransaction({
 }, 'MyPassword!').then(console.log);
 > '0xda3be87732110de6c1354c83770aae630ede9ac308d9f7b399ecfba23d923384'
 ```
-### Trial
+### Sự thử nghiệm
 <SendTransaction/>

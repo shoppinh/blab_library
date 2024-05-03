@@ -4,22 +4,20 @@ sidebar_position: 1
 import NewSymKey from "@site/src/components/whisper-secret-key/new-sym-key"
 
 # Tạo, xóa, trả về khóa đối xứng
-## newSymKey
 ```javascript
 web3.shh.newSymKey([callback])
 ```
-Generates a random symmetric key and stores it under an ID, which is then returned. Will be used for encrypting and decrypting of messages where the sym key is known to both parties.
+Tạo một khóa đối xứng ngẫu nhiên và lưu trữ nó dưới một ID, sau đó được trả về.Sẽ được sử dụng để mã hóa và giải mã các tin nhắn trong đó khóa SYM được cả hai bên biết.
+### Thông số
+`Function` - (tùy chọn) gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.
+### Trả lại
+`String` - ID khóa thành công và lỗi về thất bại.
 
-### Parameters
-`Function` - (optional) Optional callback, returns an error object as first parameter and the result as second.
-### Returns
-`String` - Key ID on success and an error on failure.
-
-### Example
+### Ví dụ
 ```javascript
 web3.shh.newSymKey()
 .then(console.log);
 > "cec94d139ff51d7df1d228812b90c23ec1f909afa0840ed80f1e04030bb681e4"
 ```
-### Trial
+### Sự thử nghiệm
 <NewSymKey/>

@@ -4,7 +4,6 @@ sidebar_position: 2
 import GivenProvider from "@site/src/components/distributed-apps/given-provider"
 
 # Trả về nhà cung cấp hiện tại
-## givenProvider
 ```javascript
 web3.givenProvider
 web3.eth.givenProvider
@@ -12,8 +11,8 @@ web3.shh.givenProvider
 web3.bzz.givenProvider
 ...
 ```
-When using web3.js in an Ethereum compatible browser, it will set with the current native provider by that browser. Will return the given provider by the (browser) environment, otherwise `null`.
-### Returns
-`Object`: The given provider set or `null`;
-### Trial
+Khi sử dụng web3.js trong trình duyệt tương thích Ethereum, nó sẽ được đặt với nhà cung cấp gốc hiện tại bởi trình duyệt đó.Sẽ trả lại nhà cung cấp đã cho bởi môi trường (trình duyệt), nếu không `null`.
+### Trả lại
+`Object`: Bộ cung cấp đã cho hoặc `null`;
+### Sự thử nghiệm
 <GivenProvider />

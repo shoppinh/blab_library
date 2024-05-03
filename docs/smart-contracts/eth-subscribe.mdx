@@ -7,39 +7,35 @@ import ClearSubscription from "@site/src/components/smart-contracts/eth-subscrib
 
 # Đăng ký các sự kiện cụ thể trong blockchain
 
-    The `web3.eth.subscribe` function lets you subscribe to specific events in the blockchain.
-
-## subsribe
+Chức năng `Web3.eth.subscribe` cho phép bạn đăng ký vào các sự kiện cụ thể trong blockchain.
+## đặt mua
 
 ```javascript
 web3.eth.subscribe(type [, options] [, callback]);
 ```
 
-### Parameters
+### Thông số
 
-    1. `String` - The subscription you want to subscribe to.
-    2. `Mixed` - (optional) Optional additional parameters, depending on the subscription type.
-    3. `Function` - (optional) Optional callback, returns an error object as first parameter and the result as second. Will be called for each incoming subscription, and the subscription itself as the 3rd parameter.
+    1. `String` - Đăng ký bạn muốn đăng ký.
+    2. `hỗn hợp` - (tùy chọn) Các tham số bổ sung tùy chọn, tùy thuộc vào loại đăng ký.
+    3. `Function` - (Tùy chọn) Cuộc gọi lại tùy chọn, trả về một đối tượng lỗi làm tham số đầu tiên và kết quả là thứ hai.Sẽ được gọi cho mỗi đăng ký đến và chính đăng ký là tham số thứ 3.
+### Trả lại
 
-### Returns
+`Eventemitter` - một phiên bản đăng ký
 
-`EventEmitter` - A Subscription instance
+- `Đăng ký.id`: ID đăng ký, được sử dụng để xác định và hủy đăng ký đăng ký.
+- `Đăng ký.subscribe ([Callback])`: Có thể được sử dụng để đăng ký lại với cùng một tham số.
+- `Đăng ký.
+- `Đăng ký.Argument`: Các đối số đăng ký, được sử dụng khi đăng ký lại.
+- `BẬT (" Dữ liệu ")` Trả về `Object`: Fites trên mỗi nhật ký đến với đối tượng nhật ký làm đối số.
+- `BẬT (" Đã thay đổi ")` Trả về `Object`: Các vụ cháy trên mỗi nhật ký đã được xóa khỏi blockchain.Nhật ký sẽ có thuộc tính bổ sung "Đã xóa: true".
+- `BẬT (" Lỗi ")` Trả về `Object`: bắn khi xảy ra lỗi trong đăng ký.
+- `BẬT (" được kết nối ")` Trả về `String`: Fites một lần sau khi đăng ký kết nối thành công.Trả về ID đăng ký.
 
-- `subscription.id`: The subscription id, used to identify and unsubscribing the subscription.
-- `subscription.subscribe([callback])`: Can be used to re-subscribe with the same parameters.
-- `subscription.unsubscribe([callback])`: Unsubscribes the subscription and returns TRUE in the callback if successful.
-- `subscription.arguments`: The subscription arguments, used when re-subscribing.
-- `on("data")` returns `Object`: Fires on each incoming log with the log object as argument.
-- `on("changed")` returns `Object`: Fires on each log which was removed from the blockchain. The log will have the additional property "removed: true".
-- `on("error")` returns `Object`: Fires when an error in the subscription occurs.
-- `on("connected")` returns `String`: Fires once after the subscription successfully connected. Returns the subscription id.
+### Thông báo trả về
 
-### Notification returns
-
-- `Mixed` - depends on the subscription, see the different subscriptions for more.
-
-### Example
-
+- `hỗn hợp` - phụ thuộc vào đăng ký, hãy xem các đăng ký khác nhau để biết thêm.
+### Ví dụ
 ```javascript
 var subscription = web3.eth.subscribe(
   "logs",
@@ -58,30 +54,30 @@ subscription.unsubscribe(function (error, success) {
 });
 ```
 
-### Trial
+### Sự thử nghiệm
 
 <EthSubscribe />
 
-## clearSubscriptions
+## đăng ký rõ ràng
 
 ```javascript
 web3.eth.clearSubscriptions();
 ```
 
-Resets subscriptions.
+Đặt lại đăng ký.
 :::note
-This will not reset subscriptions from other packages like `web3-shh`, as they use their own requestManager.
+Điều này sẽ không đặt lại đăng ký từ các gói khác như `web3-shh`, vì họ sử dụng người yêu cầu của riêng họ.
 :::
 
-### Parameters
+### Thông số
 
-1.`Boolean`: If `true` it keeps the `"syncing"` subscription.
+1.`Boolean`: Nếu `true`, nó sẽ giữ cho đăng ký` "đồng bộ hóa" `.
 
-### Returns
+### Trả lại
 
 `Boolean`
 
-### Example
+### Ví dụ
 
 ```javascript
 web3.eth.subscribe('logs', {} ,function(){ ... });
@@ -90,6 +86,6 @@ web3.eth.clearSubscriptions();
 ```
 
 
-### Trial
+### Sự thử nghiệm
 
 <ClearSubscription />
