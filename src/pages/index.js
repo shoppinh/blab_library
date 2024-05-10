@@ -21,7 +21,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/smart-contracts"
           >
-            Go to BLAB Library Document
+            Di chuyển đến thư viện BLAB
           </Link>
         </div>
       </div>
@@ -30,10 +30,10 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+  // const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title="Thư viện BLAB"
       description="Description will go into a meta tag in <head />"
     >
       <HomepageHeader />

@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: "Easy to Use",
+    title: "Dễ sử dụng",
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
     description: (
       <>
@@ -14,7 +14,7 @@ const FeatureList = [
     ),
   },
   {
-    title: "Focus on What Matters",
+    title: "Tập trung vào những gì quan trọng",
     Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
     description: (
       <>
@@ -25,7 +25,7 @@ const FeatureList = [
     ),
   },
   {
-    title: "Powered by Web3JS",
+    title: "Được cung cấp bởi web3js",
     Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
     description: (
       <>

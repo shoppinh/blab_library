@@ -8,8 +8,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "BLAB Library",
-  tagline: "An supporting Library for ETH development",
+  title: "Thư viện BLAB",
+  tagline: "Một thư viện hỗ trợ để phát triển ETH",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -62,7 +62,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "BLAB Library",
+        title: "Thư viện BLAB",
         logo: {
           alt: "BLAB Library Logo",
           src: "img/logo.svg",
@@ -85,16 +85,16 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "Tài liệu",
             items: [
               {
-                label: "ETH Contract",
+                label: "Hợp đồng ETH",
                 to: "/docs/smart-contracts/eth-contract",
               },
             ],
           },
           {
-            title: "More",
+            title: "Nhiều hơn",
             items: [
               {
                 label: "GitHub",
@@ -103,7 +103,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} BLAB, Inc. Built with Docusaurus.`,
+        copyright: `Bản quyền © ${new Date().getFullYear()} BLAB, Inc. Được xây dựng với Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
