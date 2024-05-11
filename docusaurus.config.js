@@ -62,7 +62,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Thư viện BLAB",
+        title: "Home",
         logo: {
           alt: "BLAB Library Logo",
           src: "img/logo.svg",
@@ -72,12 +72,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Docs",
-          },
-          {
-            href: "https://github.com/shoppinh/blab_library",
-            label: "GitHub",
-            position: "right",
+            label: "Thư viện BLAB",
           },
         ],
       },
@@ -85,7 +80,7 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Tài liệu",
+            title: "Thư viện BLAB",
             items: [
               {
                 label: "Hợp đồng ETH",
@@ -93,17 +88,8 @@ const config = {
               },
             ],
           },
-          {
-            title: "Nhiều hơn",
-            items: [
-              {
-                label: "GitHub",
-                href: "https://github.com/shoppinh/blab_library",
-              },
-            ],
-          },
         ],
-        copyright: `Bản quyền © ${new Date().getFullYear()} BLAB, Inc. Được xây dựng với Docusaurus.`,
+        copyright: `Bản quyền © ${new Date().getFullYear()} BLAB, Inc.`,
       },
       prism: {
         theme: prismThemes.github,
