@@ -8,7 +8,7 @@ import ClearSubscription from "@site/src/components/smart-contracts/eth-subscrib
 # Đăng ký các sự kiện cụ thể trong blockchain
 
 Chức năng `Web3.eth.subscribe` cho phép bạn đăng ký vào các sự kiện cụ thể trong blockchain.
-## đặt mua
+## Đăng ký
 
 ```javascript
 web3.eth.subscribe(type [, options] [, callback]);
@@ -54,11 +54,11 @@ subscription.unsubscribe(function (error, success) {
 });
 ```
 
-### Sự thử nghiệm
+### Thử nghiệm
 
 <EthSubscribe />
 
-## đăng ký rõ ràng
+## Xóa đăng ký
 
 ```javascript
 web3.eth.clearSubscriptions();
@@ -86,6 +86,6 @@ web3.eth.clearSubscriptions();
 ```
 
 
-### Sự thử nghiệm
+### Thử nghiệm
 
 <ClearSubscription />

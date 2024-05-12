@@ -31,7 +31,7 @@ const DecodeParameter = () => {
         type="text"
         value={type}
         onChange={(e) => setType(e.target.value)}
-        placeholder="Enter your type"
+        placeholder="Nhập kiểu"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,7 +41,7 @@ const DecodeParameter = () => {
         type="text"
         value={hexString}
         onChange={(e) => setHexString(e.target.value)}
-        placeholder="Enter your hex string"
+        placeholder="Nhập chuỗi HEX"
         style={{
           padding: "10px",
           margin: "10px",

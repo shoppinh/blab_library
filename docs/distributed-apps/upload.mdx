@@ -8,7 +8,7 @@ import Upload from "@site/src/components/distributed-apps/upload"
 web3.bzz.upload(mixed)
 ```
 Tải lên các tập tin, thư mục hoặc dữ liệu thô lên bầy.
-### Parameters
+### Thông số
 1. `mixed` - `String|Buffer|Uint8Array|Object`:** Dữ liệu để tải lên, có thể là nội dung tệp, bộ đệm tệp/uint8array, nhiều tệp hoặc thư mục hoặc tệp (chỉ trong Node.js).Các loại sau được cho phép: **
 + `String|Buffer|Uint8Array`: Một nội dung tệp, tệp uint8array hoặc bộ đệm để tải lên hoặc:
 + `** Đối tượng **`:
@@ -55,5 +55,5 @@ bzz.upload({
 bzz.upload({pick: "file"}) // could also be "directory" or "data"
 .then(console.log);
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <Upload/>

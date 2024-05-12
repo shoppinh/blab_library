@@ -35,7 +35,7 @@ const SignAccount = () => {
         type="text"
         value={data}
         onChange={(e) => setData(e.target.value)}
-        placeholder="Enter your data"
+        placeholder="Nhập dữ liệu"
         style={{
           padding: "10px",
           margin: "10px",
@@ -45,7 +45,7 @@ const SignAccount = () => {
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter your password"
+        placeholder="Nhập password"
         style={{
           padding: "10px",
           margin: "10px",

@@ -31,7 +31,7 @@ const EncodeParameter = () => {
         type="text"
         value={type}
         onChange={(e) => setType(e.target.value)}
-        placeholder="Enter your type"
+        placeholder="Nhập kiểu"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,7 +41,7 @@ const EncodeParameter = () => {
         type="text"
         value={parameter}
         onChange={(e) => setParameter(e.target.value)}
-        placeholder="Enter your parameter"
+        placeholder="Nhập tham số "
         style={{
           padding: "10px",
           margin: "10px",

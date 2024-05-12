@@ -32,7 +32,7 @@ const SignAccount = () => {
         type="text"
         value={data}
         onChange={(e) => setData(e.target.value)}
-        placeholder="Enter your data"
+        placeholder="Nhập dữ liệu"
         style={{
           padding: "10px",
           margin: "10px",
@@ -42,7 +42,7 @@ const SignAccount = () => {
         type="text"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="Enter your address"
+        placeholder="Nhập địa chỉ"
         style={{
           padding: "10px",
           margin: "10px",

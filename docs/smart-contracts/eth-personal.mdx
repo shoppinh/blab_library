@@ -71,10 +71,10 @@ var web3 = new Web3(new Web3.providers.IpcProvider('/Users/myuser/Library/Ethere
 var Web3 = require('web3');
 var web3 = new Web3("https://eth-mainnet.alchemyapi.io/v2/your-api-key");
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <SetProvider/>
 
-## đưa ra nhà cung cấp
+## Đưa ra nhà cung cấp
 ```javascript
 web3.givenProvider
 web3.eth.givenProvider
@@ -85,9 +85,9 @@ web3.bzz.givenProvider
 Khi sử dụng web3.js trong trình duyệt tương thích Ethereum, nó sẽ được đặt với nhà cung cấp gốc hiện tại bởi trình duyệt đó.Sẽ trả lại nhà cung cấp đã cho bởi môi trường (trình duyệt), nếu không thì không.
 ### Trả lại
 `Object`: Các nhà cung cấp đã cho hoặc null;
-### Sự thử nghiệm
+### Thử nghiệm
 <GivenProvider/>
-## tài khoản mới
+## Tài khoản mới
 ```javascript
 web3.eth.personal.newAccount(password, [callback])
 Creates a new account.
@@ -107,7 +107,7 @@ web3.eth.personal.newAccount('!@superpassword')
 .then(console.log);
 > '0x1234567891011121314151617181920212223456'
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <NewAccount/>
 ## Ký
 ```javascript
@@ -147,9 +147,9 @@ web3.eth.personal.ecRecover("Hello world", "0x30755ed65396...etc...")
 .then(console.log);
 > "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe"
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <Sign/>
-## ký giao dịch
+## Ký giao dịch
 ```javascript
 web3.eth.personal.signTransaction(transaction, password [, callback])
 ```
@@ -191,7 +191,7 @@ web3.eth.signTransaction({
     }
 }
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <SingTransaction/>
 ## Gửi giao dịch
 ```javascript
@@ -220,5 +220,5 @@ web3.eth.personal.sendTransaction({
 }, 'MyPassword!').then(console.log);
 > '0xda3be87732110de6c1354c83770aae630ede9ac308d9f7b399ecfba23d923384'
 ```
-### Sự thử nghiệm
+### Thử nghiệm
 <SendTransaction/>
