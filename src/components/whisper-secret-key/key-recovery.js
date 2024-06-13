@@ -1,16 +1,18 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import {
+  getAccountFromMnemonic,
+  getAccountFromPrivateKey,
+} from "../../utils/lib";
 
-const GetFilterMessages = () => {
-  const { web3 } = useWeb3();
+const GetAccountFromMnemonic = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [filterId, setFilterId] = React.useState("");
+  const [mnemonic, setMnemonic] = React.useState("");
 
-  const handleGetFilterMessage = useCallback(async (input) => {
+  const handleGetAccountFromMnemonic = useCallback(async (mnemonic) => {
     setError(null);
     try {
-      const result = await web3.shh.getFilterMessages(input);
+      const result = getAccountFromMnemonic(mnemonic);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -28,11 +30,10 @@ const GetFilterMessages = () => {
       }}
     >
       <input
-        type="text"
-        id="filterId"
-        value={filterId}
-        onChange={(e) => setFilterId(e.target.value)}
-        placeholder="filter ID"
+        id="mnemonic"
+        value={mnemonic}
+        onChange={(e) => setMnemonic(e.target.value)}
+        placeholder="Chuỗi mnemonic"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,13 +42,13 @@ const GetFilterMessages = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleGetFilterMessage(filterId)}
+        onClick={() => handleGetAccountFromMnemonic(mnemonic)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Nhận tin nhắn bộ lọc
+        Khôi phục
       </button>
       {result !== "" && (
         <div
@@ -81,4 +82,4 @@ const GetFilterMessages = () => {
   );
 };
 
-export default GetFilterMessages;
+export default GetAccountFromMnemonic;

@@ -1,15 +1,14 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getCurrentBlock } from "../../utils/lib";
 
-const NewSymKey = () => {
-  const { web3 } = useWeb3();
+const GetBlockNumber = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-
-  const handleGenerateNewSymKey = useCallback(async (url) => {
+  const handleGetInfo = useCallback(async () => {
     setError(null);
+
     try {
-      const result = await web3.shh.newSymKey();
+      const result = await getCurrentBlock();
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -29,13 +28,13 @@ const NewSymKey = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleGenerateNewSymKey}
+        onClick={handleGetInfo}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Khóa Sym mới
+        Nhận thông tin
       </button>
       {result !== "" && (
         <div
@@ -69,4 +68,4 @@ const NewSymKey = () => {
   );
 };
 
-export default NewSymKey;
+export default GetBlockNumber;

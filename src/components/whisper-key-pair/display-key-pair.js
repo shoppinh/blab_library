@@ -1,16 +1,16 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../utils/useWeb3";
+import { createKeyPair, showKeyPair } from "../../utils/lib";
 
-const HasSymKey = () => {
+const DisplayKeyPair = () => {
   const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [input, setInput] = React.useState("");
 
-  const handleCheckHasSymKey = useCallback(async (input) => {
+  const handleGenNewKeyPair = useCallback(async () => {
     setError(null);
     try {
-      const result = await web3.shh.hasSymKey(input);
+      const result = showKeyPair();
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -27,27 +27,16 @@ const HasSymKey = () => {
         alignItems: "center",
       }}
     >
-      <input
-        type="text"
-        id="input"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="keypair ID"
-        style={{
-          padding: "10px",
-          margin: "10px",
-        }}
-      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleCheckHasSymKey(input)}
+        onClick={handleGenNewKeyPair}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Kiểm tra có khóa sym
+        Hiển thị cặp khóa
       </button>
       {result !== "" && (
         <div
@@ -81,4 +70,4 @@ const HasSymKey = () => {
   );
 };
 
-export default HasSymKey;
+export default DisplayKeyPair;

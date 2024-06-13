@@ -1,17 +1,15 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getBlock } from "../../utils/lib";
 
-const MarkTrustedBeer = () => {
-  const { web3 } = useWeb3();
+const GetInfo = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [input, setInput] = React.useState("");
-  const handleMarkTrustedPeer = useCallback(async (input) => {
+  const [blockNumber, setBlockNumber] = React.useState(null);
+  const handleGetInfo = useCallback(async (blockNumber) => {
     setError(null);
 
     try {
-      const result = await web3.shh.markTrustedPeer(input);
-
+      const result = await getBlock(blockNumber);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -30,10 +28,10 @@ const MarkTrustedBeer = () => {
     >
       <input
         type="text"
-        id="eNode"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="ENode of trusted peer"
+        id="blockNumber"
+        value={blockNumber}
+        onChange={(e) => setBlockNumber(Number(e.target.value))}
+        placeholder="Số khối"
         style={{
           padding: "10px",
           margin: "10px",
@@ -42,13 +40,13 @@ const MarkTrustedBeer = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleMarkTrustedPeer(input)}
+        onClick={() => handleGetInfo(blockNumber)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Đánh dấu đáng tin cậy ngang hàng
+        Nhận thông tin
       </button>
       {result !== "" && (
         <div
@@ -82,4 +80,4 @@ const MarkTrustedBeer = () => {
   );
 };
 
-export default MarkTrustedBeer;
+export default GetInfo;

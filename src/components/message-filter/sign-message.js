@@ -1,16 +1,18 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useWeb3 } from "../../utils/useWeb3";
-
-const GenerateSymKeyFromPassword = () => {
-  const { web3 } = useWeb3();
+import { signMessage, createKeyPair } from "../../utils/lib";
+const SignMessage = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [password, setPassword] = React.useState("");
 
-  const handleGenerateSymKeyFromPassword = useCallback(async (password) => {
+  const [message, setMessage] = React.useState("");
+  const keyPair = useMemo(() => {
+    return createKeyPair();
+  }, []);
+  const handleSignMessage = useCallback(async (privateKey, message) => {
     setError(null);
     try {
-      const result = await web3.shh.generateSymKeyFromPassword(password);
+      const result = await signMessage(privateKey, message);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -18,6 +20,7 @@ const GenerateSymKeyFromPassword = () => {
       setError(error);
     }
   }, []);
+
   return (
     <div
       style={{
@@ -28,11 +31,23 @@ const GenerateSymKeyFromPassword = () => {
       }}
     >
       <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
+        type="text"
+        id="privateKey"
+        value={keyPair.privateKey}
+        // onChange={(e) => setPrivateKey(e.target.value)}
+        placeholder="Khóa bí mật"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+        readOnly
+      />
+      <input
+        type="text"
+        id="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Tin nhắn"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,13 +56,13 @@ const GenerateSymKeyFromPassword = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleGenerateSymKeyFromPassword(password)}
+        onClick={() => handleSignMessage(keyPair.privateKey, message)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Tạo khóa sym từ mật khẩu
+        Ký tin nhắn
       </button>
       {result !== "" && (
         <div
@@ -58,11 +73,7 @@ const GenerateSymKeyFromPassword = () => {
           }}
           name="result"
         >
-          <div>
-            <pre style={{ wordBreak: "break-word", whiteSpace: "pre-wrap" }}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </div>
+          <div>{result}</div>
         </div>
       )}
       {error && (
@@ -81,4 +92,4 @@ const GenerateSymKeyFromPassword = () => {
   );
 };
 
-export default GenerateSymKeyFromPassword;
+export default SignMessage;

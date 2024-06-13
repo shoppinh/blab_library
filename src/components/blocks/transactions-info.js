@@ -1,16 +1,15 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getBlock, getTransactionsInBlock } from "../../utils/lib";
 
-const SetMinPow = () => {
-  const { web3 } = useWeb3();
+const TransactionsInfo = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [input, setInput] = React.useState(0);
-  const handleSetMinPow = useCallback(async (input) => {
+  const [blockNumber, setBlockNumber] = React.useState(null);
+  const handleGetInfo = useCallback(async (blockNumber) => {
     setError(null);
 
     try {
-      const result = await web3.shh.setMinPoW(input);
+      const result = await getTransactionsInBlock(blockNumber);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -28,11 +27,11 @@ const SetMinPow = () => {
       }}
     >
       <input
-        type="number"
-        id="minPow"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Message size"
+        type="text"
+        id="blockNumber"
+        value={blockNumber}
+        onChange={(e) => setBlockNumber(Number(e.target.value))}
+        placeholder="Số khối"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,13 +40,13 @@ const SetMinPow = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleSetMinPow(input)}
+        onClick={() => handleGetInfo(blockNumber)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Đặt MinPoW
+        Nhận thông tin
       </button>
       {result !== "" && (
         <div
@@ -58,7 +57,11 @@ const SetMinPow = () => {
           }}
           name="result"
         >
-          <div>{JSON.stringify(result, null, 2)}</div>
+          <div>
+            <pre style={{ wordBreak: "break-word", whiteSpace: "pre-wrap" }}>
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
         </div>
       )}
       {error && (
@@ -77,4 +80,4 @@ const SetMinPow = () => {
   );
 };
 
-export default SetMinPow;
+export default TransactionsInfo;

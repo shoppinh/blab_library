@@ -1,0 +1,25 @@
+---
+sidebar_position: 1
+---
+import GetId from "@site/src/components/blocks/get-id"
+
+# Nhận ID mạng hiện tại
+
+```javascript
+web3.eth.net.getId([callback])
+web3.bzz.net.getId([callback])
+web3.shh.net.getId([callback])
+```
+Nhận ID mạng hiện tại.
+## Thông số
+none
+### Trả lại
+`Promise` returns `Number`: ID mạng.
+### Ví dụ
+```javascript
+web3.eth.net.getId()
+.then(console.log);
+> 1
+```
+### Thử nghiệm
+<GetId />

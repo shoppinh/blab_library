@@ -1,0 +1,28 @@
+---
+sidebar_position: 5
+---
+import SignMessage from "@site/src/components/message-filter/sign-message"
+
+# Ký tin nhắn
+```javascript
+signMessage(privateKey, message)
+```
+Lấy các tin nhắn phù hợp với tiêu chí bộ lọc và được nhận giữa lần cuối cùng chức năng này được gọi và bây giờ.
+### Thông số
+`String`: Khóa bí mật
+`String`: Nội dung tin nhắn
+### Trả lại
+`String`: Trả về một chuỗi đã được mã hóa
+
+### Ví dụ
+```javascript
+signMessage(
+      "0xd61f3aa744725f4f1d0dfcff889e4e2566d762e7b1d4aadf74eed27096d0e5e2",
+      "Hello World"
+    )
+.then(console.log);
+>"0xb5edbfb11439df338713470a5e50ffd5d46959aee3c9f088e05545e6757a45c667ba70d69a39da855b07e10a17fa927177ab8da95ccf8f2975e019d63a3611a71c",
+
+```
+### Thử nghiệm
+<SignMessage/>

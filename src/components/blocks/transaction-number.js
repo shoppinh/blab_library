@@ -1,18 +1,16 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getBlock, getTransactionsInBlock } from "../../utils/lib";
 
-const SetMessageSize = () => {
-  const { web3 } = useWeb3();
+const TransactionNumber = () => {
   const [result, setResult] = React.useState("");
-  console.log("🚀 ~ SetMessageSize ~ result:", result);
   const [error, setError] = React.useState(null);
-  const [input, setInput] = React.useState(0);
-  const handleGetInfo = useCallback(async (input) => {
+  const [blockNumber, setBlockNumber] = React.useState(null);
+  const handleGetInfo = useCallback(async (blockNumber) => {
     setError(null);
 
     try {
-      const result = await web3.shh.setMaxMessageSize(input);
-      setResult(result);
+      const result = await getTransactionsInBlock(blockNumber);
+      setResult(result.length);
     } catch (error) {
       console.error(error);
       setResult(null);
@@ -29,11 +27,11 @@ const SetMessageSize = () => {
       }}
     >
       <input
-        type="number"
-        id="messageSize"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Message size"
+        type="text"
+        id="blockNumber"
+        value={blockNumber}
+        onChange={(e) => setBlockNumber(Number(e.target.value))}
+        placeholder="Số khối"
         style={{
           padding: "10px",
           margin: "10px",
@@ -42,13 +40,13 @@ const SetMessageSize = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleGetInfo(input)}
+        onClick={() => handleGetInfo(blockNumber)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Đặt kích thước tin nhắn
+        Nhận thông tin
       </button>
       {result !== "" && (
         <div
@@ -59,7 +57,11 @@ const SetMessageSize = () => {
           }}
           name="result"
         >
-          <div>{JSON.stringify(result, null, 2)}</div>
+          <div>
+            <pre style={{ wordBreak: "break-word", whiteSpace: "pre-wrap" }}>
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
         </div>
       )}
       {error && (
@@ -78,4 +80,4 @@ const SetMessageSize = () => {
   );
 };
 
-export default SetMessageSize;
+export default TransactionNumber;

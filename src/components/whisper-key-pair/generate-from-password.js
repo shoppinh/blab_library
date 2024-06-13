@@ -1,16 +1,17 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../utils/useWeb3";
+import { createKeyPairFromPassword } from "../../utils/lib";
 
-const AddPrivateKey = () => {
+const GenerateKeyPairFromPassword = () => {
   const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
   const [input, setInput] = React.useState("");
 
-  const handleAddNewPrivateKey = useCallback(async (input) => {
+  const handleGenerateKeyPair = useCallback(async (input) => {
     setError(null);
     try {
-      const result = await web3.shh.newKeyPair();
+      const result = createKeyPairFromPassword(input);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -32,7 +33,7 @@ const AddPrivateKey = () => {
         id="input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="private key to import"
+        placeholder="password"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,13 +42,13 @@ const AddPrivateKey = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleAddNewPrivateKey(input)}
+        onClick={() => handleGenerateKeyPair(input)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Thêm khóa riêng
+        Tạo cặp khóa
       </button>
       {result !== "" && (
         <div
@@ -81,4 +82,4 @@ const AddPrivateKey = () => {
   );
 };
 
-export default AddPrivateKey;
+export default GenerateKeyPairFromPassword;

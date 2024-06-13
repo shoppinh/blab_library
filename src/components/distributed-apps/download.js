@@ -66,7 +66,7 @@ const Download = () => {
           </div>
         </div>
       )}
-      {error && (
+      {error && Object.keys(error)?.length > 0 && (
         <div
           style={{
             padding: "10px",

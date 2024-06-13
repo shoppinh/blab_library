@@ -1,15 +1,16 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getTransactionReceipt } from "../../utils/lib";
 
-const GetInfo = () => {
-  const { web3 } = useWeb3();
+const TransactionInfo = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const handleGetInfo = useCallback(async () => {
+  const [hash, setHash] = React.useState(null);
+  const handleGetInfo = useCallback(async (hash) => {
     setError(null);
 
     try {
-      const result = await web3.shh.getInfo();
+      const result = await getTransactionReceipt(hash);
+      console.log("🚀 ~ handleGetInfo ~ result:", result);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -26,10 +27,21 @@ const GetInfo = () => {
         alignItems: "center",
       }}
     >
+      <input
+        type="text"
+        id="hash"
+        value={hash}
+        onChange={(e) => setHash(e.target.value)}
+        placeholder="Chuỗi băm"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleGetInfo}
+        onClick={() => handleGetInfo(hash)}
         style={{
           padding: "10px",
           margin: "10px",
@@ -69,4 +81,4 @@ const GetInfo = () => {
   );
 };
 
-export default GetInfo;
+export default TransactionInfo;

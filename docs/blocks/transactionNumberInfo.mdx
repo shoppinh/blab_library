@@ -1,0 +1,23 @@
+---
+sidebar_position: 2
+---
+import TransactionNumber from "@site/src/components/blocks/transaction-number"
+
+# Thông tin số transaction
+
+```javascript
+getTransactionsInBlock(blockNumber)
+```
+Kiểm tra xem nút có nghe cho các đồng nghiệp không.
+### Thông số
+1. `Number` - Số khối.
+### Trả lại
+`Promise` trả lại `Array`
+### Ví dụ
+```javascript
+getTransactionsInBlock(1).length
+
+> 1
+```
+### Thử nghiệm
+<TransactionNumber/>

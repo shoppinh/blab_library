@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../utils/useWeb3";
+import { createKeyPair } from "../../utils/lib";
 
 const NewKeyPair = () => {
   const { web3 } = useWeb3();
@@ -9,7 +10,7 @@ const NewKeyPair = () => {
   const handleGenNewKeyPair = useCallback(async () => {
     setError(null);
     try {
-      const result = await web3.shh.newKeyPair();
+      const result = createKeyPair();
       setResult(result);
     } catch (error) {
       console.error(error);

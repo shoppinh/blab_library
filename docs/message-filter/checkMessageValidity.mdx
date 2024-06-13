@@ -1,0 +1,30 @@
+---
+sidebar_position: 4
+---
+import MessageValidity from "@site/src/components/message-filter/message-validity"
+
+# Kiểm tra tin nhắn có hợp lệ hay không
+```javascript
+verifyMessage(signature, message, address)
+```
+Tạo một bộ lọc mới trong nút.Bộ lọc này có thể được sử dụng để thăm dò ý kiến cho các thông điệp mới phù hợp với tập hợp các tiêu chí.
+
+### Thông số
+`String`: signature:  Chữ ký.
+`String`: message: tin nhắn.
+`String`: address: địa chỉ.
+### Trả lại
+`Boolean`: thông tin tin nhắn hợp lệ hay không.
+
+### Ví dụ
+```javascript
+ verifyMessage(
+      "0x8e110be78885e5b6e61620b7f1b4fa455dc2b24997c71c4d011bf28d1e8bd7016256495a24d97b2dcd9771401392ecc0b999c07a4c106a9164f3c5833cdb29791c",
+      "Hello World",
+      "0x8C92D6D77032f433A30A1D19842Ae2A4d6e4ec6c"
+    )
+> true
+
+```
+### Thử nghiệm
+<MessageValidity/>

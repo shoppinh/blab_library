@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { hashMessageFunc } from "../../utils/lib";
 
-const ClearSubscription = () => {
+const HashMessage = () => {
   const [result, setResult] = React.useState("");
-  const { web3 } = useWeb3();
+  const [message, setMessage] = React.useState("");
   const [error, setError] = React.useState(null);
 
-  const handleClearSubscription = useCallback(async () => {
+  const handleHashMessage = useCallback(async (message) => {
     setError(null);
     try {
-      const result = web3.shh.clearSubscriptions();
+      const result = hashMessageFunc(message);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -25,16 +25,27 @@ const ClearSubscription = () => {
         alignItems: "center",
       }}
     >
+      <input
+        type="text"
+        id="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Tin nhắn"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleClearSubscription}
+        onClick={() => handleHashMessage(message)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Xóa đăng ký
+        Mã hóa tin nhắn
       </button>
       <div
         style={{
@@ -57,4 +68,4 @@ const ClearSubscription = () => {
   );
 };
 
-export default ClearSubscription;
+export default HashMessage;

@@ -1,23 +1,31 @@
 import React, { useCallback } from "react";
 import { useWeb3 } from "../../utils/useWeb3";
+import { checkKeypairValidity } from "../../utils/lib";
 
-const GetSymKey = () => {
+const CheckValidity = () => {
   const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
+  const [privateKey, setPrivateKey] = React.useState("");
+  const [publicKey, setPublicKey] = React.useState("");
   const [error, setError] = React.useState(null);
-  const [keyPairId, setKeyPairId] = React.useState("");
 
-  const handleGetSymKey = useCallback(async (input) => {
-    setError(null);
-    try {
-      const result = await web3.shh.getSymKey(input);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
-  }, []);
+  const handleGenerateCheckValidity = useCallback(
+    async (privateKey, publicKey) => {
+      setError(null);
+      try {
+        const result = checkKeypairValidity({
+          privateKey,
+          publicKey,
+        });
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    },
+    []
+  );
   return (
     <div
       style={{
@@ -29,10 +37,21 @@ const GetSymKey = () => {
     >
       <input
         type="text"
-        id="keyPairId"
-        value={keyPairId}
-        onChange={(e) => setKeyPairId(e.target.value)}
-        placeholder="keyPairId"
+        id="privateKey"
+        value={privateKey}
+        onChange={(e) => setPrivateKey(e.target.value)}
+        placeholder="Khóa bí mật"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
+      <input
+        type="text"
+        id="publicKey"
+        value={publicKey}
+        onChange={(e) => setPublicKey(e.target.value)}
+        placeholder="Khóa công khai"
         style={{
           padding: "10px",
           margin: "10px",
@@ -41,13 +60,13 @@ const GetSymKey = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={() => handleGetSymKey(keyPairId)}
+        onClick={() => handleGenerateCheckValidity(privateKey, publicKey)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Chuyển đổi sang Hex
+        Kiểm tra
       </button>
       {result !== "" && (
         <div
@@ -81,4 +100,4 @@ const GetSymKey = () => {
   );
 };
 
-export default GetSymKey;
+export default CheckValidity;

@@ -1,20 +1,19 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
-import NewKeyPair from "@site/src/components/whisper-key-pair/new-key-pair"
+import DisplayKeyPair from "@site/src/components/whisper-key-pair/display-key-pair"
 
-# Tạo cặp khóa riêng và khóa công khai
+# Hiển thị cặp khóa
 
 ```javascript
-createKeyPair()
+showKeyPair()
 ```
-Tạo một cặp khóa công khai và riêng tư mới để giải mã và mã hóa tin nhắn.
 ### Thông số
 ### Trả lại
 `Object` - Object bao gồm thông tin cặp khóa.
 ### Ví dụ
 ```javascript
-createKeyPair()
+showKeyPair()
 .then(console.log);
 > {
   "address": "0x68448BE2C20A482310601EbB2ABF4Cd726c1524e",
@@ -24,4 +23,4 @@ createKeyPair()
 }
 ```
 ### Thử nghiệm
-<NewKeyPair/>
+<DisplayKeyPair/>

@@ -1,17 +1,15 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../utils/useWeb3";
+import { getAccountFromPrivateKey } from "../../utils/lib";
 
-const GetVersion = () => {
-  const { web3 } = useWeb3();
+const GetAccountFromPassword = () => {
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
-  const handleGetVersion = useCallback(async () => {
+  const [privateKey, setPrivateKey] = React.useState("");
+
+  const handleGetAccountFromSecret = useCallback(async (privateKey) => {
     setError(null);
-
     try {
-      console.log("current provider", web3.shh.currentProvider);
-      const result = await web3.shh.getVersion();
-
+      const result = await getAccountFromPrivateKey(privateKey);
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -28,16 +26,26 @@ const GetVersion = () => {
         alignItems: "center",
       }}
     >
+      <input
+        id="privateKey"
+        value={privateKey}
+        onChange={(e) => setPrivateKey(e.target.value)}
+        placeholder="Khóa bí mật"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleGetVersion}
+        onClick={() => handleGetAccountFromSecret(privateKey)}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Nhận phiên bản
+        Lấy thông tin tài khoản
       </button>
       {result !== "" && (
         <div
@@ -71,4 +79,4 @@ const GetVersion = () => {
   );
 };
 
-export default GetVersion;
+export default GetAccountFromPassword;

@@ -1,0 +1,47 @@
+---
+sidebar_position: 2
+---
+import BlockInfo from "@site/src/components/blocks/block-info"
+
+# Thông tin block
+
+```javascript
+getBlock(blockNumber)
+```
+Lấy thông tin block
+### Thông số
+1. `Number` - Số khối.
+### Trả lại
+`Promise` trả lại `Object`
+### Ví dụ
+```javascript
+getBlock(1)
+.then(console.log);
+> {
+  "hash": "0x43ac0cc232a68068e0464ed8260b1523fd59862e8465998b44435ee36a3eef1c",
+  "parentHash": "0xbe5a327a23f9d03cbd739a5677a73cb573e39687e4cede52ff3c329d74dee4a5",
+  "number": 1,
+  "timestamp": 1716124834,
+  "nonce": "0x0000000000000000",
+  "difficulty": 0,
+  "gasLimit": {
+    "type": "BigNumber",
+    "hex": "0x6691b7"
+  },
+  "gasUsed": {
+    "type": "BigNumber",
+    "hex": "0x08edca"
+  },
+  "miner": "0x0000000000000000000000000000000000000000",
+  "extraData": "0x",
+  "transactions": [
+    "0x502562a2a1d94813882e5b182923b8760f5211dc445cd2a3551cb32263a667b4"
+  ],
+  "_difficulty": {
+    "type": "BigNumber",
+    "hex": "0x00"
+  }
+}
+```
+### Thử nghiệm
+<BlockInfo/>
