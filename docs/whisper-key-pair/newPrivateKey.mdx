@@ -1,0 +1,24 @@
+---
+sidebar_position: 1
+---
+import NewKeyPair from "@site/src/components/whisper-key-pair/new-private-key"
+
+# Tạo khóa riêng
+
+```javascript
+createPrivateKey()
+```
+Tạo một cặp khóa công khai và riêng tư mới để giải mã và mã hóa tin nhắn.
+### Thông số
+### Trả lại
+`Object` - Object bao gồm thông tin cặp khóa.
+### Ví dụ
+```javascript
+createKeyPair()
+.then(console.log);
+> {
+  "privateKey": "0x061ae4f6f3ad4e0cf3d944f03c48ba85b141ebf40fc6bb5ec7bba8722bb11397",
+}
+```
+### Thử nghiệm
+<NewKeyPair/>

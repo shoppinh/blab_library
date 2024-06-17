@@ -57,35 +57,3 @@ subscription.unsubscribe(function (error, success) {
 ### Thử nghiệm
 
 <EthSubscribe />
-
-## Xóa đăng ký
-
-```javascript
-web3.eth.clearSubscriptions();
-```
-
-Đặt lại đăng ký.
-:::note
-Điều này sẽ không đặt lại đăng ký từ các gói khác như `web3-shh`, vì họ sử dụng người yêu cầu của riêng họ.
-:::
-
-### Thông số
-
-1.`Boolean`: Nếu `true`, nó sẽ giữ cho đăng ký` "đồng bộ hóa" `.
-
-### Trả lại
-
-`Boolean`
-
-### Ví dụ
-
-```javascript
-web3.eth.subscribe('logs', {} ,function(){ ... });
-...
-web3.eth.clearSubscriptions();
-```
-
-
-### Thử nghiệm
-
-<ClearSubscription />

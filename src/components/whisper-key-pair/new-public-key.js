@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
+import { createPublicKey } from "../../utils/lib";
 import { useWeb3 } from "../../utils/useWeb3";
-import { createKeyPair } from "../../utils/lib";
 
 const NewKeyPair = () => {
   const { web3 } = useWeb3();
@@ -10,7 +10,7 @@ const NewKeyPair = () => {
   const handleGenNewKeyPair = useCallback(async () => {
     setError(null);
     try {
-      const result = createKeyPair();
+      const result = createPublicKey();
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -36,7 +36,7 @@ const NewKeyPair = () => {
           margin: "10px",
         }}
       >
-        Cặp khóa mới
+        Tạo
       </button>
       {result !== "" && (
         <div

@@ -1,15 +1,16 @@
 import React, { useCallback } from "react";
+import { createPrivateKey } from "../../utils/lib";
 import { useWeb3 } from "../../utils/useWeb3";
 
-const CurrentProvider = () => {
-  const { bzz } = useWeb3();
+const NewKeyPair = () => {
+  const { web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
 
-  const handleGetCurrentProvider = useCallback(async (url) => {
+  const handleGenNewKeyPair = useCallback(async () => {
     setError(null);
     try {
-      const result = bzz.currentProvider;
+      const result = createPrivateKey();
       setResult(result);
     } catch (error) {
       console.error(error);
@@ -29,13 +30,13 @@ const CurrentProvider = () => {
       <button
         type="button"
         id="ethSubscribe"
-        onClick={handleGetCurrentProvider}
+        onClick={handleGenNewKeyPair}
         style={{
           padding: "10px",
           margin: "10px",
         }}
       >
-        Nhận URL nhà cung cấp hiện tại
+        Tạo
       </button>
       {result !== "" && (
         <div
@@ -69,4 +70,4 @@ const CurrentProvider = () => {
   );
 };
 
-export default CurrentProvider;
+export default NewKeyPair;

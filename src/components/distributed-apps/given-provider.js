@@ -9,8 +9,9 @@ const GivenProvider = () => {
   const handleGetGivenProvider = useCallback(async (url) => {
     setError(null);
     try {
-      const result = bzz.givenProvider;
-      setResult(result);
+      const a = document.createElement("a");
+      a.href = bzz.currentProvider;
+      setResult(a.hostname);
     } catch (error) {
       console.error(error);
       setResult(null);
@@ -35,7 +36,7 @@ const GivenProvider = () => {
           margin: "10px",
         }}
       >
-        Nhận nhà cung cấp
+        Nhận nhà cung cấp hiện tại
       </button>
       {result !== "" && (
         <div

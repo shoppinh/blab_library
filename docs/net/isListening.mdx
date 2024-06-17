@@ -1,0 +1,28 @@
+---
+sidebar_position: 1
+---
+import IsListening from "@site/src/components/smart-contracts/eth-net/is-listening";
+
+# Kiểm tra các node có liên kết với nhau không
+
+
+```javascript
+web3.eth.net.isListening([callback])
+web3.bzz.net.isListening([callback])
+web3.shh.net.isListening([callback])
+```
+Kiểm tra xem nút có nghe cho các đồng nghiệp không.
+### Thông số
+không có
+
+### Trả lại
+`Promise` trả lại` boolean`
+
+### Ví dụ
+```javascript
+web3.eth.net.isListening()
+.then(console.log);
+> true
+```
+### Thử nghiệm
+<IsListening/>

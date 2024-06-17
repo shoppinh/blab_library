@@ -38,6 +38,20 @@ function createKeyPair() {
   };
 }
 
+function createPrivateKey() {
+  const result = createKeyPair();
+  return {
+    privateKey: result.privateKey,
+  };
+}
+
+function createPublicKey() {
+  const result = createKeyPair();
+  return {
+    publicKey: result.publicKey,
+  };
+}
+
 function showKeyPair() {
   return createKeyPair();
 }
@@ -128,4 +142,6 @@ export {
   getTransactionsInBlock,
   getTransactionReceipt,
   showKeyPair,
+  createPublicKey,
+  createPrivateKey,
 };

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 ---
 import Constructor from "@site/src/components/smart-contracts/eth-iban/constructor";
 import FromAddress from "@site/src/components/smart-contracts/eth-iban/from-address";
@@ -15,32 +15,7 @@ Ví dụ này của Iban.
 ```javascript
 > Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
 ```
-## Iban constructor
-```javascript
-new web3.eth.Iban(ibanAddress)
-```
-Tạo đối tượng IBAN với các phương thức chuyển đổi và kiểm tra tính hợp lệ.
 
-Cũng có các chức năng Singleton để chuyển đổi như:
-
-+ Iban.toAddress()
-+ Iban.toIban()
-+ Iban.fromAddress()
-+ Iban.fromBban()
-+ Iban.createIndirect()
-+ Iban.isValid()
-### Thông số
-`String`: Địa chỉ IBAN để khởi tạo một ví dụ iban từ.
-### Trả lại
-`Object` - Trường hợp Iban.
-
-### Ví dụ
-```javascript
-var iban = new web3.eth.Iban("XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS");
-> Iban { _iban: 'XE7338O073KYGTWWZN0F2WZ0R8PX5ZPPZS' }
-```
-### Thử nghiệm
-<Constructor/>
 ## Đến địa chỉ
 Hàm tĩnh.
 ```javascript

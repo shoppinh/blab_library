@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 ---
 import EncodeParameter from "@site/src/components/smart-contracts/eth-abi/encode-parameter";
 import EncodeParameters from "@site/src/components/smart-contracts/eth-abi/encode-parameters";
@@ -65,56 +65,6 @@ web3.eth.abi.encodeParameter(
 ### Thử nghiệm
 <EncodeParameter/>
 
-## Mã hóa nhiều tham số
-```javascript
-web3.eth.abi.encodeParameters(typesArray, parameters);
-```
-Mã hóa một tham số chức năng dựa trên đối tượng giao diện JSON của nó.
-### Thông số
-1. `typesArray` - `Array<String|Object>|Object`:Một mảng có loại hoặc giao diện JSON của một hàm.Xem tài liệu vững chắc cho một danh sách các loại.
-2. `parameters` - `Array`: Các tham số để mã hóa.
-### Trả lại
-`String` - Các tham số được mã hóa ABI.
-### Ví dụ
-```javascript
-web3.eth.abi.encodeParameters(['uint256','string'], ['2345675643', 'Hello!%']);
-> "0x000000000000000000000000000000000000000000000000000000008bd02b7b0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000748656c6c6f212500000000000000000000000000000000000000000000000000"
-
-web3.eth.abi.encodeParameters(['uint8[]','bytes32'], [['34','434'], '0x324567fff']);
-> "0x0"
-
-web3.eth.abi.encodeParameters(
-    [
-        'uint8[]',
-        {
-            "ParentStruct": {
-                "propertyOne": 'uint256',
-                "propertyTwo": 'uint256',
-                "ChildStruct": {
-                    "propertyOne": 'uint256',
-                    "propertyTwo": 'uint256'
-                }
-            }
-        }
-    ],
-    [
-        ['34','434'],
-        {
-            "propertyOne": '42',
-            "propertyTwo": '56',
-            "ChildStruct": {
-                "propertyOne": '45',
-                "propertyTwo": '78'
-            }
-        }
-    ]
-);
-> "0x00000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000038000000000000000000000000000000000000000000000000000000000000002d000000000000000000000000000000000000000000000000000000000000004e0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000018"
-```
-
-
-### Thử nghiệm
-<EncodeParameters/>
 
 ## Giải mã tham số
 ```javascript
@@ -192,73 +142,3 @@ web3.eth.abi.decodeParameter(
 ```
 ### Thử nghiệm
 <DecodeParameter/>
-
-## Giải mã nhiều tham số
-```javascript
-web3.eth.abi.decodeParameters(typesArray, hexString);
-```
-Giải mã các tham số được mã hóa ABI cho các loại JavaScript của nó.
-### Thông số
-1. `typesArray` - `Array<String|Object>|Object`: Một mảng có loại hoặc một mảng đầu ra giao diện JSON.Xem tài liệu vững chắc cho một danh sách các loại.
-2. `hexString` - `String`: Mã byte ABI để giải mã.
-### Trả lại
-`Object` - Đối tượng kết quả chứa các tham số được giải mã.
-
-### Ví dụ
-```javascript
-web3.eth.abi.decodeParameters(['string', 'uint256'], '0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000ea000000000000000000000000000000000000000000000000000000000000000848656c6c6f212521000000000000000000000000000000000000000000000000');
-> Result { '0': 'Hello!%!', '1': '234' }
-
-web3.eth.abi.decodeParameters([{
-    type: 'string',
-    name: 'myString'
-},{
-    type: 'uint256',
-    name: 'myNumber'
-}], '0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000ea000000000000000000000000000000000000000000000000000000000000000848656c6c6f212521000000000000000000000000000000000000000000000000');
-> Result {
-    '0': 'Hello!%!',
-    '1': '234',
-    myString: 'Hello!%!',
-    myNumber: '234'
-}
-
-web3.eth.abi.decodeParameters([
-  'uint8[]',
-  {
-    "ParentStruct": {
-      "propertyOne": 'uint256',
-      "propertyTwo": 'uint256',
-      "childStruct": {
-        "propertyOne": 'uint256',
-        "propertyTwo": 'uint256'
-      }
-    }
-  }
-], '0x00000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000038000000000000000000000000000000000000000000000000000000000000002d000000000000000000000000000000000000000000000000000000000000004e0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000002a0000000000000000000000000000000000000000000000000000000000000018');
-> Result {
-    '0': ['42', '24'],
-    '1': {
-        '0': '42',
-        '1': '56',
-        '2':
-            {
-                '0': '45',
-                '1': '78',
-                'propertyOne': '45',
-                'propertyTwo': '78'
-            },
-        'childStruct':
-            {
-                '0': '45',
-                '1': '78',
-                'propertyOne': '45',
-                'propertyTwo': '78'
-            },
-        'propertyOne': '42',
-        'propertyTwo': '56'
-    }
-}
-```
-### Thử nghiệm
-<DecodeParameters/>

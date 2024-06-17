@@ -2,8 +2,24 @@
 sidebar_position: 1
 ---
 import SetProvider from "@site/src/components/distributed-apps/set-provider"
+import GivenProvider from "@site/src/components/distributed-apps/given-provider"
 
-# Thiết lập nhà cung cấp module
+# Thiết lập nhà cung cấp module, Trả về nhà cung cấp hiện tại
+
+## Trả về nhà cung cấp hiện tại
+```javascript
+web3.givenProvider
+web3.eth.givenProvider
+web3.shh.givenProvider
+web3.bzz.givenProvider
+...
+```
+Khi sử dụng web3.js trong trình duyệt tương thích Ethereum, nó sẽ được đặt với nhà cung cấp gốc hiện tại bởi trình duyệt đó.Sẽ trả lại nhà cung cấp đã cho bởi môi trường (trình duyệt), nếu không `null`.
+### Trả lại
+`Object`: Bộ cung cấp đã cho hoặc `null`;
+### Thử nghiệm
+<GivenProvider />
+## Thiết lập nhà cung cấp module
 
 ```javascript
 web3.bzz.setProvider(myProvider)
