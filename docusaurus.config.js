@@ -62,12 +62,18 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Home",
+        // title: "Home",
         logo: {
           alt: "BLAB Library Logo",
           src: "img/logo.svg",
         },
+
         items: [
+          {
+            position: "left",
+            label: "Trang chủ",
+            to: "http://117.4.240.104:3000",
+          },
           {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
