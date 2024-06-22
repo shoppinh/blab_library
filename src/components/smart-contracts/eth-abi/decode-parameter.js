@@ -9,14 +9,16 @@ const DecodeParameter = () => {
 
   const handleDecodeParameter = useCallback(async (type, hexString) => {
     setError(null);
-    try {
-      const result = web3.eth.abi.decodeParameter(type, hexString);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (type && hexString) {
+      try {
+        const result = web3.eth.abi.decodeParameter(type, hexString);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div

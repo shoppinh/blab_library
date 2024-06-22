@@ -19,7 +19,7 @@ const GenerateKeyPairFromPassword = () => {
         setResult(null);
         setError(error);
       }
-    } else alert("Giá trị nhập thể để trống");
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div

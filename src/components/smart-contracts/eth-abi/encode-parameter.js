@@ -9,14 +9,16 @@ const EncodeParameter = () => {
 
   const handleEncodeParameter = useCallback(async (type, parameter) => {
     setError(null);
-    try {
-      const result = web3.eth.abi.encodeParameter(type, parameter);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (type && parameter) {
+      try {
+        const result = web3.eth.abi.encodeParameter(type, parameter);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div

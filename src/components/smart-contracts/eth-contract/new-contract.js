@@ -15,31 +15,33 @@ const NewContract = () => {
   const handleCreateNewContract = useCallback(
     async (input) => {
       setError(null);
-      try {
-        const account = web3.eth.accounts.privateKeyToAccount(privateKey);
-        const contract = new web3.eth.Contract(greeterAbi, addressContract);
-        const transaction = contract.methods.setGreeting(input);
+      if (input) {
+        try {
+          const account = web3.eth.accounts.privateKeyToAccount(privateKey);
+          const contract = new web3.eth.Contract(greeterAbi, addressContract);
+          const transaction = contract.methods.setGreeting(input);
 
-        const gas = await transaction.estimateGas({ from: account.address });
-        const gasPrice = await web3.eth.getGasPrice();
-        const data = transaction.encodeABI();
-        const nonce = await web3.eth.getTransactionCount(account.address);
-        const signedTransaction = await web3.eth.accounts.signTransaction(
-          {
-            to: addressContract,
-            data,
-            gas,
-            gasPrice,
-            nonce,
-          },
-          privateKey
-        );
-        setSignedData(signedTransaction);
-      } catch (error) {
-        console.error(error);
-        setSignedData(null);
-        setError(error);
-      }
+          const gas = await transaction.estimateGas({ from: account.address });
+          const gasPrice = await web3.eth.getGasPrice();
+          const data = transaction.encodeABI();
+          const nonce = await web3.eth.getTransactionCount(account.address);
+          const signedTransaction = await web3.eth.accounts.signTransaction(
+            {
+              to: addressContract,
+              data,
+              gas,
+              gasPrice,
+              nonce,
+            },
+            privateKey
+          );
+          setSignedData(signedTransaction);
+        } catch (error) {
+          console.error(error);
+          setSignedData(null);
+          setError(error);
+        }
+      } else alert("Giá trị nhập không thể để trống");
     },
     [privateKey, addressContract]
   );

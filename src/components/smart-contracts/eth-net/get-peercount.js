@@ -7,16 +7,18 @@ const GetPeerCount = () => {
 
   const handleGetPeerCount = useCallback(async () => {
     setError(null);
-    try {
-      const web3 = new Web3(provider || process.env.RPC_URL);
-      const result = await web3.eth.net.getPeerCount();
+    if (provider) {
+      try {
+        const web3 = new Web3(provider || process.env.RPC_URL);
+        const result = await web3.eth.net.getPeerCount();
 
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, [provider]);
   return (
     <div

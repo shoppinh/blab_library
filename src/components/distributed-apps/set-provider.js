@@ -8,15 +8,17 @@ const SetProvider = () => {
 
   const handleSetProvider = useCallback(async (address) => {
     setError(null);
-    try {
-      bzz.setProvider(address);
-      const result = bzz.currentProvider;
-      setResult(result);
-    } catch (error) {
-      console.error("🚀 ~ handleCreateAccount ~ error:", error);
-      setResult(null);
-      setError(error);
-    }
+    if (address) {
+      try {
+        bzz.setProvider(address);
+        const result = bzz.currentProvider;
+        setResult(result);
+      } catch (error) {
+        console.error("🚀 ~ handleCreateAccount ~ error:", error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div

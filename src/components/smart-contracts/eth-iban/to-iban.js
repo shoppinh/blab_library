@@ -8,14 +8,16 @@ const ToIBan = () => {
 
   const handleConvertToIBanAddress = useCallback(async (address) => {
     setError(null);
-    try {
-      const result = web3.eth.Iban.toIban(address);
-      setResult(result);
-    } catch (error) {
-      console.error("🚀 ~ handleCreateAccount ~ error:", error);
-      setResult(null);
-      setError(error);
-    }
+    if (address) {
+      try {
+        const result = web3.eth.Iban.toIban(address);
+        setResult(result);
+      } catch (error) {
+        console.error("🚀 ~ handleCreateAccount ~ error:", error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div

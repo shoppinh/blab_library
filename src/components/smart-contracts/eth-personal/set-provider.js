@@ -8,19 +8,21 @@ const SetProvider = () => {
 
   const handleSetProvider = useCallback(async (address) => {
     setError(null);
-    try {
-      web3.setProvider(address);
-      const result = web3.eth.currentProvider;
+    if (address) {
+      try {
+        web3.setProvider(address);
+        const result = web3.eth.currentProvider;
 
-      setResult({
-        host: result.host,
-        timeout: result.timeout,
-      });
-    } catch (error) {
-      console.error("🚀 ~ handleCreateAccount ~ error:", error);
-      setResult(null);
-      setError(error);
-    }
+        setResult({
+          host: result.host,
+          timeout: result.timeout,
+        });
+      } catch (error) {
+        console.error("🚀 ~ handleCreateAccount ~ error:", error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
