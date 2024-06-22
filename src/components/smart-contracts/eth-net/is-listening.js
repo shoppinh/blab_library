@@ -58,7 +58,7 @@ const IsListening = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

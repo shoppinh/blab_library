@@ -9,14 +9,16 @@ const HexToString = () => {
 
   const handleConvertHexToNumString = useCallback(async (input) => {
     setError(null);
-    try {
-      const result = web3.utils.hexToNumberString(input);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (input) {
+      try {
+        const result = web3.utils.hexToNumberString(input);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
@@ -74,7 +76,7 @@ const HexToString = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

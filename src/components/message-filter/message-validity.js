@@ -14,14 +14,16 @@ const MessageFilter = () => {
 
   const handleCreateMessageFilter = useCallback(
     async (signature, message, address) => {
-      setError(null);
-      try {
-        const result = verifyMessage(signature, message, address);
-        setResult(result);
-      } catch (error) {
-        console.error(error);
-        setError(error);
-      }
+      if (signature && message && address) {
+        setError(null);
+        try {
+          const result = verifyMessage(signature, message, address);
+          setResult(result);
+        } catch (error) {
+          console.error(error);
+          setError(error);
+        }
+      } else alert("Giá trị nhập không thể để trống");
     },
     []
   );
@@ -93,7 +95,7 @@ const MessageFilter = () => {
           color: "red",
         }}
       >
-        {error?.message ?? ""}
+        {error?.message || error?.data?.stack || ""}
       </div>
     </div>
   );

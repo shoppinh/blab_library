@@ -7,15 +7,16 @@ const GetInfo = () => {
   const [blockNumber, setBlockNumber] = React.useState(null);
   const handleGetInfo = useCallback(async (blockNumber) => {
     setError(null);
-
-    try {
-      const result = await getBlock(blockNumber);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (blockNumber) {
+      try {
+        const result = await getBlock(blockNumber);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị khối không thể để trống");
   }, []);
   return (
     <div
@@ -36,6 +37,7 @@ const GetInfo = () => {
           padding: "10px",
           margin: "10px",
         }}
+        va
       />
       <button
         type="button"
@@ -73,7 +75,7 @@ const GetInfo = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

@@ -11,14 +11,16 @@ const GetAccountFromMnemonic = () => {
 
   const handleGetAccountFromMnemonic = useCallback(async (mnemonic) => {
     setError(null);
-    try {
-      const result = getAccountFromMnemonic(mnemonic);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (mnemonic) {
+      try {
+        const result = getAccountFromMnemonic(mnemonic);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
@@ -75,7 +77,7 @@ const GetAccountFromMnemonic = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

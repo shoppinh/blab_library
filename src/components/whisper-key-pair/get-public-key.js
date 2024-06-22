@@ -74,7 +74,7 @@ const GetPublicKey = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

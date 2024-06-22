@@ -11,14 +11,16 @@ const SignMessage = () => {
   }, []);
   const handleSignMessage = useCallback(async (privateKey, message) => {
     setError(null);
-    try {
-      const result = await signMessage(privateKey, message);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (privateKey && message) {
+      try {
+        const result = await signMessage(privateKey, message);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
 
   return (
@@ -85,7 +87,7 @@ const SignMessage = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

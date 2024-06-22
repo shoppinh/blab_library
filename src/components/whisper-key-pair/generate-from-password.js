@@ -10,14 +10,16 @@ const GenerateKeyPairFromPassword = () => {
 
   const handleGenerateKeyPair = useCallback(async (input) => {
     setError(null);
-    try {
-      const result = createKeyPairFromPassword(input);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (input) {
+      try {
+        const result = createKeyPairFromPassword(input);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập thể để trống");
   }, []);
   return (
     <div
@@ -75,7 +77,7 @@ const GenerateKeyPairFromPassword = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

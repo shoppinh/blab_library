@@ -12,17 +12,19 @@ const CheckValidity = () => {
   const handleGenerateCheckValidity = useCallback(
     async (privateKey, publicKey) => {
       setError(null);
-      try {
-        const result = checkKeypairValidity({
-          privateKey,
-          publicKey,
-        });
-        setResult(result);
-      } catch (error) {
-        console.error(error);
-        setResult(null);
-        setError(error);
-      }
+      if (privateKey && publicKey) {
+        try {
+          const result = checkKeypairValidity({
+            privateKey,
+            publicKey,
+          });
+          setResult(result);
+        } catch (error) {
+          console.error(error);
+          setResult(null);
+          setError(error);
+        }
+      } else alert("Giá trị nhập không thể để trống");
     },
     []
   );
@@ -93,7 +95,7 @@ const CheckValidity = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

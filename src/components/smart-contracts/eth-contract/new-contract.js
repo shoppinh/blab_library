@@ -3,6 +3,7 @@ import greeterAbi from "./abi.json";
 import { useWeb3 } from "../../../utils/useWeb3";
 const NewContract = () => {
   const [error, setError] = useState(null);
+  console.log("🚀 ~ NewContract ~ error:", error);
   const { privateWeb3: web3 } = useWeb3();
   const privateKey = process.env.FROM_PRIVATE_KEY ?? "";
   const addressContract = process.env.GREETER_CONTRACT_ADDRESS;
@@ -11,34 +12,37 @@ const NewContract = () => {
   const [greetedData, setGreetedData] = useState("");
   const [receipt, setReceipt] = useState("");
 
-  const handleCreateNewContract = useCallback(async (input) => {
-    setError(null);
-    try {
-      const account = web3.eth.accounts.privateKeyToAccount(privateKey);
-      const contract = new web3.eth.Contract(greeterAbi, addressContract);
-      const transaction = contract.methods.setGreeting(input);
+  const handleCreateNewContract = useCallback(
+    async (input) => {
+      setError(null);
+      try {
+        const account = web3.eth.accounts.privateKeyToAccount(privateKey);
+        const contract = new web3.eth.Contract(greeterAbi, addressContract);
+        const transaction = contract.methods.setGreeting(input);
 
-      const gas = await transaction.estimateGas({ from: account.address });
-      const gasPrice = await web3.eth.getGasPrice();
-      const data = transaction.encodeABI();
-      const nonce = await web3.eth.getTransactionCount(account.address);
-      const signedTransaction = await web3.eth.accounts.signTransaction(
-        {
-          to: addressContract,
-          data,
-          gas,
-          gasPrice,
-          nonce,
-        },
-        privateKey
-      );
-      setSignedData(signedTransaction);
-    } catch (error) {
-      console.error(error);
-      setSignedData(null);
-      setError(error);
-    }
-  }, []);
+        const gas = await transaction.estimateGas({ from: account.address });
+        const gasPrice = await web3.eth.getGasPrice();
+        const data = transaction.encodeABI();
+        const nonce = await web3.eth.getTransactionCount(account.address);
+        const signedTransaction = await web3.eth.accounts.signTransaction(
+          {
+            to: addressContract,
+            data,
+            gas,
+            gasPrice,
+            nonce,
+          },
+          privateKey
+        );
+        setSignedData(signedTransaction);
+      } catch (error) {
+        console.error(error);
+        setSignedData(null);
+        setError(error);
+      }
+    },
+    [privateKey, addressContract]
+  );
   const handleGetGreeting = useCallback(async () => {
     const contract = new web3.eth.Contract(greeterAbi, addressContract);
     try {
@@ -46,8 +50,9 @@ const NewContract = () => {
       setGreetedData(result);
     } catch (error) {
       console.log("🚀 ~ handleGetGreeting ~ error:", error);
+      setError(error);
     }
-  }, []);
+  }, [addressContract]);
 
   const handleSendSignedTransaction = useCallback(async () => {
     try {
@@ -56,9 +61,9 @@ const NewContract = () => {
       );
       setReceipt(receipt);
     } catch (error) {
-      console.log("🚀 ~ handleSendSignedTransaction ~ error:", error);
+      setError(error);
     }
-  }, [signedData]);
+  }, [signedData.rawTransaction]);
   return (
     <div
       style={{
@@ -175,7 +180,7 @@ const NewContract = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

@@ -8,14 +8,16 @@ const GetAccountFromPassword = () => {
 
   const handleGetAccountFromSecret = useCallback(async (privateKey) => {
     setError(null);
-    try {
-      const result = await getAccountFromPrivateKey(privateKey);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (privateKey) {
+      try {
+        const result = await getAccountFromPrivateKey(privateKey);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
@@ -72,7 +74,7 @@ const GetAccountFromPassword = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

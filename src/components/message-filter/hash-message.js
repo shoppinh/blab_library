@@ -8,13 +8,15 @@ const HashMessage = () => {
 
   const handleHashMessage = useCallback(async (message) => {
     setError(null);
-    try {
-      const result = hashMessageFunc(message);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setError(error);
-    }
+    if (message) {
+      try {
+        const result = hashMessageFunc(message);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
@@ -62,7 +64,7 @@ const HashMessage = () => {
           color: "red",
         }}
       >
-        {error?.message ?? ""}
+        {error?.message || error?.data?.stack || ""}
       </div>
     </div>
   );

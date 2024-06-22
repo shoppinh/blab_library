@@ -9,14 +9,16 @@ const Hexa = () => {
 
   const handleConvertToHex = useCallback(async (input) => {
     setError(null);
-    try {
-      const result = web3.utils.toHex(input);
-      setResult(result);
-    } catch (error) {
-      console.error(error);
-      setResult(null);
-      setError(error);
-    }
+    if (input) {
+      try {
+        const result = web3.utils.toHex(input);
+        setResult(result);
+      } catch (error) {
+        console.error(error);
+        setResult(null);
+        setError(error);
+      }
+    } else alert("Giá trị nhập không thể để trống");
   }, []);
   return (
     <div
@@ -47,7 +49,7 @@ const Hexa = () => {
           margin: "10px",
         }}
       >
-        Nhận khóa sym
+        Chuyển đổi
       </button>
       {result !== "" && (
         <div
@@ -74,7 +76,7 @@ const Hexa = () => {
           }}
           name="error"
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>

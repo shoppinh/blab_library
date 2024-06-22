@@ -99,7 +99,7 @@ const EthSubscribe = () => {
             color: "red",
           }}
         >
-          {error?.message ?? ""}
+          {error?.message || error?.data?.stack || ""}
         </div>
       )}
     </div>
