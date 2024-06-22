@@ -41,15 +41,23 @@ const NewContract = () => {
   }, []);
   const handleGetGreeting = useCallback(async () => {
     const contract = new web3.eth.Contract(greeterAbi, addressContract);
-    const result = await contract.methods.greet().call();
-    setGreetedData(result);
+    try {
+      const result = await contract.methods.greet().call();
+      setGreetedData(result);
+    } catch (error) {
+      console.log("🚀 ~ handleGetGreeting ~ error:", error);
+    }
   }, []);
 
   const handleSendSignedTransaction = useCallback(async () => {
-    const receipt = await web3.eth.sendSignedTransaction(
-      signedData.rawTransaction
-    );
-    setReceipt(receipt);
+    try {
+      const receipt = await web3.eth.sendSignedTransaction(
+        signedData.rawTransaction
+      );
+      setReceipt(receipt);
+    } catch (error) {
+      console.log("🚀 ~ handleSendSignedTransaction ~ error:", error);
+    }
   }, [signedData]);
   return (
     <div
