@@ -39,7 +39,7 @@ const MessageFilter = () => {
         id="signature"
         value={signature}
         onChange={(e) => setSignature(e.target.value)}
-        placeholder="Chữ ký"
+        placeholder="Nhập Chữ ký"
         style={{
           padding: "10px",
           margin: "10px",
@@ -50,7 +50,7 @@ const MessageFilter = () => {
         id="message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Tin nhắn"
+        placeholder="Nhập Tin nhắn"
         style={{
           padding: "10px",
           margin: "10px",
@@ -61,7 +61,7 @@ const MessageFilter = () => {
         id="address"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="Địa chỉ"
+        placeholder="Nhập Địa chỉ"
         style={{
           padding: "10px",
           margin: "10px",

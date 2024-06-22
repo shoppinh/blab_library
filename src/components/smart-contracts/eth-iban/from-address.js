@@ -31,7 +31,7 @@ const FromAddress = () => {
         id="IBanAddress"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="IBanAddress"
+        placeholder="Nhập điah chỉ IBan"
         style={{
           padding: "10px",
           margin: "10px",

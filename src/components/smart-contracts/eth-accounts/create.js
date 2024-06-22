@@ -35,7 +35,7 @@ const CreateAccount = () => {
           margin: "10px",
         }}
       >
-        tạo một tài khoản
+        Tạo một tài khoản
       </button>
       {result !== "" && (
         <div

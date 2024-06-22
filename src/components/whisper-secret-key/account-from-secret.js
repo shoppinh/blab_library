@@ -30,7 +30,7 @@ const GetAccountFromPassword = () => {
         id="privateKey"
         value={privateKey}
         onChange={(e) => setPrivateKey(e.target.value)}
-        placeholder="Khóa bí mật"
+        placeholder="Nhập Khóa bí mật"
         style={{
           padding: "10px",
           margin: "10px",

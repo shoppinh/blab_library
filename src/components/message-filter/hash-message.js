@@ -30,7 +30,7 @@ const HashMessage = () => {
         id="message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Tin nhắn"
+        placeholder="Nhập Tin nhắn"
         style={{
           padding: "10px",
           margin: "10px",

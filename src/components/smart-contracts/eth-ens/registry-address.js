@@ -35,7 +35,7 @@ const RegistryAddress = () => {
           margin: "10px",
         }}
       >
-        get registry address
+        Nhận địa chỉ
       </button>
       {result !== "" && (
         <div

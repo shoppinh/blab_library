@@ -31,7 +31,7 @@ const NewAccount = () => {
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
+        placeholder="Nhập password"
         style={{
           padding: "10px",
           margin: "10px",
@@ -46,7 +46,7 @@ const NewAccount = () => {
           margin: "10px",
         }}
       >
-        tạo tài khoản
+        Tạo tài khoản
       </button>
       {result !== "" && (
         <div

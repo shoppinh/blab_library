@@ -33,7 +33,7 @@ const GetAccountFromMnemonic = () => {
         id="mnemonic"
         value={mnemonic}
         onChange={(e) => setMnemonic(e.target.value)}
-        placeholder="Chuỗi mnemonic"
+        placeholder="Nhập Chuỗi mnemonic"
         style={{
           padding: "10px",
           margin: "10px",

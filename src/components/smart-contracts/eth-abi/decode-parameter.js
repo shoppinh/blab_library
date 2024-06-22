@@ -31,7 +31,7 @@ const DecodeParameter = () => {
         type="text"
         value={type}
         onChange={(e) => setType(e.target.value)}
-        placeholder="Nhập kiểu"
+        placeholder="Nhập Nhập kiểu"
         style={{
           padding: "10px",
           margin: "10px",
@@ -56,7 +56,7 @@ const DecodeParameter = () => {
           margin: "10px",
         }}
       >
-        giải mã tham số
+        Giải mã tham số
       </button>
       {result !== "" && (
         <div

@@ -11,7 +11,11 @@ const SetProvider = () => {
     try {
       web3.setProvider(address);
       const result = web3.eth.currentProvider;
-      setResult(result);
+
+      setResult({
+        host: result.host,
+        timeout: result.timeout,
+      });
     } catch (error) {
       console.error("🚀 ~ handleCreateAccount ~ error:", error);
       setResult(null);
@@ -32,7 +36,7 @@ const SetProvider = () => {
         id="provider"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="provider"
+        placeholder="Nhập nhà cung cấp"
         style={{
           padding: "10px",
           margin: "10px",

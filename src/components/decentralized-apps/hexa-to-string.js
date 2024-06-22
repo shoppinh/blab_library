@@ -32,7 +32,7 @@ const HexToString = () => {
         id="input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="hexa string"
+        placeholder="Nhập chuỗi"
         style={{
           padding: "10px",
           margin: "10px",

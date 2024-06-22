@@ -32,7 +32,7 @@ const SetProvider = () => {
         id="provider"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="provider"
+        placeholder="Nhập nhà cung cấp"
         style={{
           padding: "10px",
           margin: "10px",

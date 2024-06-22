@@ -56,7 +56,7 @@ const EncodeParameter = () => {
           margin: "10px",
         }}
       >
-        mã hóa tham số
+        Mã hóa tham số
       </button>
       {result !== "" && (
         <div

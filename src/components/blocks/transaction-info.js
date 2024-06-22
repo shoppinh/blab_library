@@ -32,7 +32,7 @@ const TransactionInfo = () => {
         id="hash"
         value={hash}
         onChange={(e) => setHash(e.target.value)}
-        placeholder="Chuỗi băm"
+        placeholder="Nhập Chuỗi băm"
         style={{
           padding: "10px",
           margin: "10px",

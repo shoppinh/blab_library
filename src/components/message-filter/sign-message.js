@@ -35,7 +35,7 @@ const SignMessage = () => {
         id="privateKey"
         value={keyPair.privateKey}
         // onChange={(e) => setPrivateKey(e.target.value)}
-        placeholder="Khóa bí mật"
+        placeholder="Nhập Khóa bí mật"
         style={{
           padding: "10px",
           margin: "10px",
@@ -47,7 +47,7 @@ const SignMessage = () => {
         id="message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Tin nhắn"
+        placeholder="Nhập Tin nhắn"
         style={{
           padding: "10px",
           margin: "10px",

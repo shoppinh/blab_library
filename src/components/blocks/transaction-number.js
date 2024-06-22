@@ -31,7 +31,7 @@ const TransactionNumber = () => {
         id="blockNumber"
         value={blockNumber}
         onChange={(e) => setBlockNumber(Number(e.target.value))}
-        placeholder="Số khối"
+        placeholder="Nhập Số khối"
         style={{
           padding: "10px",
           margin: "10px",

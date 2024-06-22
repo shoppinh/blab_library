@@ -40,7 +40,7 @@ const CheckValidity = () => {
         id="privateKey"
         value={privateKey}
         onChange={(e) => setPrivateKey(e.target.value)}
-        placeholder="Khóa bí mật"
+        placeholder="Nhập Khóa bí mật"
         style={{
           padding: "10px",
           margin: "10px",
@@ -51,7 +51,7 @@ const CheckValidity = () => {
         id="publicKey"
         value={publicKey}
         onChange={(e) => setPublicKey(e.target.value)}
-        placeholder="Khóa công khai"
+        placeholder="Nhập Khóa công khai"
         style={{
           padding: "10px",
           margin: "10px",

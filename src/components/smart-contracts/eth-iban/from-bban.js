@@ -31,7 +31,7 @@ const FromBban = () => {
         id="BbanAddress"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="Địa chỉ BBan"
+        placeholder="Nhập Địa chỉ BBan"
         style={{
           padding: "10px",
           margin: "10px",

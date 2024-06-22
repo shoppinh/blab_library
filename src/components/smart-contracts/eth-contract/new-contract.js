@@ -4,8 +4,8 @@ import { useWeb3 } from "../../../utils/useWeb3";
 const NewContract = () => {
   const [error, setError] = useState(null);
   const { privateWeb3: web3 } = useWeb3();
-  const privateKey = process.env.TO_PRIVATE_KEY ?? "";
-  const addressContract = "0x8F85D17BE2d15c817B054ecc85CE77a55f7400d6";
+  const privateKey = process.env.FROM_PRIVATE_KEY ?? "";
+  const addressContract = process.env.GREETER_CONTRACT_ADDRESS;
   const [input, setInput] = useState("");
   const [signedData, setSignedData] = useState("");
   const [greetedData, setGreetedData] = useState("");
@@ -41,9 +41,7 @@ const NewContract = () => {
   }, []);
   const handleGetGreeting = useCallback(async () => {
     const contract = new web3.eth.Contract(greeterAbi, addressContract);
-    console.log("🚀 ~ handleGetGreeting ~ contract:", contract);
     const result = await contract.methods.greet().call();
-    console.log("🚀 ~ handleGetGreeting ~ result:", result);
     setGreetedData(result);
   }, []);
 
@@ -92,7 +90,7 @@ const NewContract = () => {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="input"
+        placeholder="Nhập"
         style={{
           padding: "10px",
           margin: "10px",
@@ -107,7 +105,7 @@ const NewContract = () => {
           margin: "10px",
         }}
       >
-        ký giao dịch
+        Ký giao dịch
       </button>
       {signedData !== "" && (
         <div

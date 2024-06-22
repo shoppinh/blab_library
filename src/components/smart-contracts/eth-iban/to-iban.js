@@ -31,7 +31,7 @@ const ToIBan = () => {
         id="address"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="address"
+        placeholder="Nhập địa chỉ"
         style={{
           padding: "10px",
           margin: "10px",

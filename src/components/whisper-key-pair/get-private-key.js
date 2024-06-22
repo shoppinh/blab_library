@@ -32,7 +32,7 @@ const GetPrivateKey = () => {
         id="keyPairId"
         value={keyPairId}
         onChange={(e) => setKeyPairId(e.target.value)}
-        placeholder="keyPairId"
+        placeholder="Nhập ID của cặp khóa"
         style={{
           padding: "10px",
           margin: "10px",

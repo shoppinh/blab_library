@@ -32,7 +32,7 @@ const UTFToHex = () => {
         id="input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="UTF8 string"
+        placeholder="Nhập chuỗi UTF8"
         style={{
           padding: "10px",
           margin: "10px",

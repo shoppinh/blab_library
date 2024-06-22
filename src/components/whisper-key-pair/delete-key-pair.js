@@ -32,7 +32,7 @@ const DeletePrivateKey = () => {
         id="input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="keypair ID"
+        placeholder="Nhập ID của cặp khóa"
         style={{
           padding: "10px",
           margin: "10px",

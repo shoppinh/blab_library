@@ -31,7 +31,7 @@ const ToAddress = () => {
         id="IBanAddress"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="IBanAddress"
+        placeholder="Nhập địa chỉ IBan"
         style={{
           padding: "10px",
           margin: "10px",

@@ -65,7 +65,7 @@ const EthSubscribe = () => {
         <option value="newBlockHeaders">Tiêu đề khối mới</option>
         <option value="logs">nhật ký</option>
         <option value="pendingTransactions">đang chờ giao dịch</option>
-        <option value="syncing">đồng bộ</option>
+        {/* <option value="syncing">đồng bộ</option> */}
       </select>
       <button
         type="button"

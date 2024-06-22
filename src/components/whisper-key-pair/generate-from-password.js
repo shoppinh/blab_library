@@ -33,7 +33,7 @@ const GenerateKeyPairFromPassword = () => {
         id="input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="password"
+        placeholder="Nhập password"
         style={{
           padding: "10px",
           margin: "10px",

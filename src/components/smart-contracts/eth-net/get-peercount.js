@@ -1,13 +1,14 @@
 import React, { useCallback } from "react";
-import { useWeb3 } from "../../../utils/useWeb3";
+import Web3 from "web3";
 const GetPeerCount = () => {
-  const { privateWeb3: web3 } = useWeb3();
   const [result, setResult] = React.useState("");
   const [error, setError] = React.useState(null);
+  const [provider, setProvider] = React.useState("");
 
   const handleGetPeerCount = useCallback(async () => {
     setError(null);
     try {
+      const web3 = new Web3(provider || process.env.RPC_URL);
       const result = await web3.eth.net.getPeerCount();
 
       setResult(result);
@@ -16,7 +17,7 @@ const GetPeerCount = () => {
       setResult(null);
       setError(error);
     }
-  }, []);
+  }, [provider]);
   return (
     <div
       style={{
@@ -26,6 +27,18 @@ const GetPeerCount = () => {
         alignItems: "center",
       }}
     >
+      <input
+        type="text"
+        id="rpcProvider"
+        value={provider}
+        onChange={(e) => setProvider(e.target.value)}
+        placeholder="Nhập nhà cung cấp"
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      />
+
       <button
         type="button"
         id="ethSubscribe"
