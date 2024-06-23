@@ -14,14 +14,13 @@ const EthSubscribe = () => {
         web3.eth.subscribe(
           subscribeType,
           {
-            address: process.env.TO_ADDRESS,
+            address: process.env.FROM_ADDRESS,
           },
           (error, result) => {
             if (error) {
               console.error(error);
               setError(error);
             }
-            console.log(result);
             setResult(result);
           }
         );
@@ -36,7 +35,7 @@ const EthSubscribe = () => {
             console.error(error);
             setError(error);
           }
-          console.log(result);
+
           setResult(result);
         });
       } catch (error) {
@@ -63,7 +62,7 @@ const EthSubscribe = () => {
         }}
       >
         <option value="newBlockHeaders">Tiêu đề khối mới</option>
-        <option value="logs">nhật ký</option>
+        {/* <option value="logs">nhật ký</option> */}
         <option value="pendingTransactions">đang chờ giao dịch</option>
         {/* <option value="syncing">đồng bộ</option> */}
       </select>
