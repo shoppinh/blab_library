@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useWeb3 } from "../../../utils/useWeb3";
 
 const EthSubscribe = () => {
@@ -6,9 +6,11 @@ const EthSubscribe = () => {
   const [result, setResult] = React.useState("");
   const { privateWeb3WS: web3 } = useWeb3();
   const [error, setError] = React.useState(null);
+  const [loadingMessage, setLoadingMessage] = useState("");
 
   const handleSubscribe = useCallback((subscribeType) => {
     setError(null);
+    setResult("");
     if (subscribeType === "logs") {
       try {
         web3.eth.subscribe(
@@ -30,13 +32,19 @@ const EthSubscribe = () => {
       }
     } else {
       try {
+        if (subscribeType === "newBlockHeaders") {
+          setLoadingMessage("Server đang lắng nghe ...");
+        }
         web3.eth.subscribe(subscribeType, (error, result) => {
           if (error) {
             console.error(error);
             setError(error);
           }
+          if (result) {
+            setResult(result);
+          }
 
-          setResult(result);
+          setLoadingMessage("");
         });
       } catch (error) {
         console.error(error);
@@ -77,6 +85,14 @@ const EthSubscribe = () => {
       >
         Đăng ký
       </button>
+      <div
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        {loadingMessage}
+      </div>
       {result !== "" && (
         <div
           style={{
